@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>amasok's blog</title>
+  <subtitle>技術ネタ中心ブログ</subtitle>
+  <id>http://amasok.github.io/blog/article</id>
+  <link href="http://amasok.github.io/blog/article"/>
+  <link href="http://amasok.github.io/blog/feed.xml" rel="self"/>
+  <updated>2014-01-22T08:25:00Z</updated>
+  <author>
+    <name>amasok</name>
+  </author>
+  <entry>
+    <title>「情熱プログラマー」読了</title>
+    <link rel="alternate" href="http://amasok.github.io/blog/article/2014/01/22/jonetu_programmer.html"/>
+    <id>http://amasok.github.io/blog/article/2014/01/22/jonetu_programmer.html</id>
+    <published>2014-01-22T08:25:00Z</published>
+    <updated>2014-01-27T16:38:48+09:00</updated>
+    <author>
+      <name>amasok</name>
+    </author>
+    <content type="html">&lt;p&gt;※あくまで個人の感想文です。&lt;/p&gt;
+
+&lt;p&gt;ネタバレあり（問題無いと思うけど）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.amazon.co.jp/%E6%83%85%E7%86%B1%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E5%B9%B8%E3%81%9B%E3%81%AA%E7%94%9F%E3%81%8D%E6%96%B9-Chad-Fowler/dp/4274067939"&gt;情熱プログラマー ソフトウェア開発者の幸せな生き方&lt;/a&gt;を読み終えました。
+この本は技術書というよりも、エンジニア（特にソフトウェア）はこう生きるべき！　という指南書的な本です。&lt;/p&gt;
+
+&lt;p&gt;全体で53項目あり、１項目につき２〜３ページで書かれています。&lt;/p&gt;
+
+&lt;p&gt;とりあえず全体的な感想だけ述べようと思う。&lt;/p&gt;
+
+&lt;h3 id="toc_0"&gt;今すぐ始めよう&lt;/h3&gt;
+
+&lt;p&gt;項目毎に「今すぐ始めよう！」というのが書かれているのだが、それらは本当にちょっとしたことから始められるものが多かった。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;キャリアに関する最大の不安はなにか考えてリストアップしてみよう&lt;/li&gt;
+&lt;li&gt;新しいプログラミング言語を学ぼう&lt;/li&gt;
+&lt;li&gt;自分にとって「一番下手くそになる」状況を見つけよう&lt;/li&gt;
+&lt;li&gt;ビジネス屋（エンジニア職ではなく営業職とか？）の連中をランチに誘ってみよう&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;などなど、エンジニアとして伸び悩んだ時にどう行動すべきかの指針を示してくれている。
+このあたりはまた読み返そうと思う。  &lt;/p&gt;
+
+&lt;h3 id="toc_1"&gt;スペシャリスト&lt;/h3&gt;
+
+&lt;p&gt;当たり前のことだけど以下の内容に焦りを感じた。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;ほかに何も知らないことがスペシャリストだって勘違いしてるんじゃないか？&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Javaのコードしか書いたことないJavaのスペシャリスト()&lt;br&gt;
+Railsのコードしか書いたことないRailsのスペシャリスト()&lt;br&gt;
+iOSアプリしか書いたことないiOSアプリのスペシャリスト()  &lt;/p&gt;
+
+&lt;p&gt;その周辺技術も知らないと（もしくは同じ機能を有する別の技術）本当の意味で自分が使っている技術の旨味ってわからないですね。&lt;/p&gt;
+
+&lt;p&gt;そのためだと思うけど、この本の項目には以下の内容が並んでいる。
+* 万能選手になろう
+* スペシャリストになろう&lt;/p&gt;
+
+&lt;p&gt;一見、対照的に見えるかもしれないけど、スペシャリストになるためにあらゆる技術に精通する必要があるということだ。&lt;br&gt;
+まあ、その中で最も得意といえるものが必要になってくるんだろうけど。  &lt;/p&gt;
+
+&lt;p&gt;僕はいろんな技術を中途半端にやっているので勘違いこそしていないが、これなら任せろと言えるものもあまりない。
+がんばらなければならないと思う。&lt;/p&gt;
+
+&lt;h3 id="toc_2"&gt;キャリア&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;自分の人生を他人任せにするな&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という項目でこのように書かれている。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;僕は従業員の一人にこう尋ねた。
+「これからどんな方向に進みたい？　何になりたいんだい？」
+返ってきた答えは「JavaEEのアーキテクトになりたいです」だった。
+~中略~
+彼は雇われているわけでもない特定の会社によって作られた特定のテクノロジの上にキャリアを築こうとしていたわけだ。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ベンダ中心の見方はよろしくないというのはまさにそのとおりだと思う。&lt;br&gt;
+特にIT技術は進歩が早すぎる。  &lt;/p&gt;
+
+&lt;p&gt;まあ、当たり前かもしれないけど、投資先は必要なわけで（投資しないよりは投資したほうがマシというレベルの低い目線）それに比べたら全然マシだよと思ったりもするが。。。&lt;br&gt;
+視野が狭くなりがちな人に対してのアンチテーゼとなっているが、最近は逆に「あれもしたい。これもしたい。もっとしたい。もっともっとしたい。。。」というようにいろんな技術に目がいっている気がする。&lt;/p&gt;
+
+&lt;p&gt;あせりばかりが先行して身についていない気もする。&lt;/p&gt;
+
+&lt;p&gt;あせっていないで、ここに書かれている「やってみよう」を少しでも実践してみようかな。。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>iOSアプリを実機で動かすまで</title>
+    <link rel="alternate" href="http://amasok.github.io/blog/article/2014/01/15/ios_regist.html"/>
+    <id>http://amasok.github.io/blog/article/2014/01/15/ios_regist.html</id>
+    <published>2014-01-15T01:23:00Z</published>
+    <updated>2014-01-22T16:57:26+09:00</updated>
+    <author>
+      <name>amasok</name>
+    </author>
+    <content type="html">&lt;p&gt;iOSのディベロッパー登録めんどくさいです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://mushikago.com/i/?p=917"&gt;http://mushikago.com/i/?p=917&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;こことかを見てやるといいです。&lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;前提条件&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;iOSのディベロッパー登録を済ませておく&lt;/li&gt;
+&lt;li&gt;シミュレータでiOSアプリを動かしたことがある&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="toc_1"&gt;Provisioning Profileの入手&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="https://developer.apple.com/"&gt;https://developer.apple.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;iOS Dev Center&lt;/p&gt;
+
+&lt;p&gt;＞ [iOS Developer Program] Certificates, Identifiers &amp;amp; Profiles&lt;br&gt;
+＞ [iOS Apps] Provisioning Profiles&lt;br&gt;
+上記をたどっていくと、
+「iOS Team Provisioning Profile: *」をダウンロードしておく&lt;/p&gt;
+
+&lt;h2 id="toc_2"&gt;実機をxcodeに登録&lt;/h2&gt;
+
+&lt;p&gt;今回はデバイス登録で動かすまでのmemo&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;xcodeを起動&lt;/li&gt;
+&lt;li&gt;Window -&gt; Orgnizer(shift + command + 2)に移動&lt;/li&gt;
+&lt;li&gt;iOSでバイスをMacとUSB接続する&lt;/li&gt;
+&lt;li&gt;「接続されたPCを信頼しますか？」的なダイアログがiOSでバイスで表示されるのでOKする&lt;/li&gt;
+&lt;li&gt;Orgnizer - Devicesで接続したデバイスが認識されているかを確認する&lt;/li&gt;
+&lt;li&gt;「Use for Development」というボタンをクリックして全部Requestをおす&lt;/li&gt;
+&lt;li&gt;左のバーから「Provisioning Profiles」を選択&lt;/li&gt;
+&lt;li&gt;下にあるAddから先ほど入手したProvisioning Profileを追加する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="toc_3"&gt;アプリを動かす&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Xcode右上の [アプリ名]　＞　iPhone(シミュレータ名)　をクリックして実際のデバイス名を選択&lt;/li&gt;
+&lt;li&gt;▶(Run)をクリック&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Objective-Cのクラスとかメソッドについて</title>
+    <link rel="alternate" href="http://amasok.github.io/blog/article/2014/01/12/ios1.html"/>
+    <id>http://amasok.github.io/blog/article/2014/01/12/ios1.html</id>
+    <published>2014-01-12T14:25:00Z</published>
+    <updated>2014-01-22T16:57:26+09:00</updated>
+    <author>
+      <name>amasok</name>
+    </author>
+    <content type="html">&lt;p&gt;最近、ちょっとずつiOSアプリ開発のお勉強をしているので、それのメモ&lt;/p&gt;
+
+&lt;p&gt;xcodeの使い方がまずよくわかってない。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、プロジェクトから始める。&lt;/p&gt;
+
+&lt;p&gt;iOS &amp;gt; Application &amp;gt; Single View Application&lt;/p&gt;
+&lt;pre class="highlight shell"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl"&gt;&lt;div class="lineno"&gt;1&lt;/div&gt;&lt;div class="lineno"&gt;2&lt;/div&gt;&lt;div class="lineno"&gt;3&lt;/div&gt;&lt;div class="lineno"&gt;4&lt;/div&gt;&lt;div class="lineno"&gt;5&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;AppDelegate.h
+AppDelegate.m     
+Main.storyboard   &lt;span class="c"&gt;#見た目をこれで作る&lt;/span&gt;
+ViewController.h  &lt;span class="c"&gt;#ViewControllerのヘッダファイル&lt;/span&gt;
+ViewController.m  &lt;span class="c"&gt;#基本的にプログラムを書くのはこのファイル&lt;/span&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/pre&gt;
+&lt;p&gt;ViewController.mの中身を見てみる。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;ViewController.m&lt;/em&gt;&lt;/p&gt;
+&lt;pre class="highlight c"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl"&gt;&lt;div class="lineno"&gt;1&lt;/div&gt;&lt;div class="lineno"&gt;2&lt;/div&gt;&lt;div class="lineno"&gt;3&lt;/div&gt;&lt;div class="lineno"&gt;4&lt;/div&gt;&lt;div class="lineno"&gt;5&lt;/div&gt;&lt;div class="lineno"&gt;6&lt;/div&gt;&lt;div class="lineno"&gt;7&lt;/div&gt;&lt;div class="lineno"&gt;8&lt;/div&gt;&lt;div class="lineno"&gt;9&lt;/div&gt;&lt;div class="lineno"&gt;10&lt;/div&gt;&lt;div class="lineno"&gt;11&lt;/div&gt;&lt;div class="lineno"&gt;12&lt;/div&gt;&lt;div class="lineno"&gt;13&lt;/div&gt;&lt;div class="lineno"&gt;14&lt;/div&gt;&lt;div class="lineno"&gt;15&lt;/div&gt;&lt;div class="lineno"&gt;16&lt;/div&gt;&lt;div class="lineno"&gt;17&lt;/div&gt;&lt;div class="lineno"&gt;18&lt;/div&gt;&lt;div class="lineno"&gt;19&lt;/div&gt;&lt;div class="lineno"&gt;20&lt;/div&gt;&lt;div class="lineno"&gt;21&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;span class="cp"&gt;#import &amp;quot;ViewController.h&amp;quot;
+&lt;/span&gt;
+&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;interface&lt;/span&gt; &lt;span class="n"&gt;ViewController&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;
+
+&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;implementation&lt;/span&gt; &lt;span class="n"&gt;ViewController&lt;/span&gt;
+
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;viewDidLoad&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;super&lt;/span&gt; &lt;span class="n"&gt;viewDidLoad&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="c1"&gt;// Do any additional setup after loading the view, typically from a nib.
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;didReceiveMemoryWarning&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;super&lt;/span&gt; &lt;span class="n"&gt;didReceiveMemoryWarning&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="c1"&gt;// Dispose of any resources that can be recreated.
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/pre&gt;
+&lt;h2 id="toc_0"&gt;objective-cのクラス&lt;/h2&gt;
+
+&lt;p&gt;7行目にクラスのはじまりが書かれている。&lt;/p&gt;
+&lt;pre class="highlight c"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl"&gt;&lt;div class="lineno"&gt;1&lt;/div&gt;&lt;div class="lineno"&gt;2&lt;/div&gt;&lt;div class="lineno"&gt;3&lt;/div&gt;&lt;div class="lineno"&gt;4&lt;/div&gt;&lt;div class="lineno"&gt;5&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;implementation&lt;/span&gt; &lt;span class="err"&gt;クラス名&lt;/span&gt;
+
+&lt;span class="c1"&gt;// ここにメソッドを実装していく
+&lt;/span&gt;
+&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/pre&gt;
+&lt;h2 id="toc_1"&gt;objective-cのメソッド&lt;/h2&gt;
+
+&lt;p&gt;9行目や15行目にメソッドが書かれている。&lt;/p&gt;
+&lt;pre class="highlight c"&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="gutter gl"&gt;&lt;div class="lineno"&gt;1&lt;/div&gt;&lt;div class="lineno"&gt;2&lt;/div&gt;&lt;div class="lineno"&gt;3&lt;/div&gt;&lt;div class="lineno"&gt;4&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;戻り値の型&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;メソッド名&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;//ここにコードを書いて行く
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/pre&gt;
+&lt;p&gt;どのタイミングでどのメソッドが呼ばれるかは、またいつか書きたいと思ってる。
+UIViewController ライフサイクルは大事。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>2014年抱負</title>
+    <link rel="alternate" href="http://amasok.github.io/blog/article/2014/01/02/aspiration2014.html"/>
+    <id>http://amasok.github.io/blog/article/2014/01/02/aspiration2014.html</id>
+    <published>2014-01-02T12:28:00Z</published>
+    <updated>2014-01-22T16:57:26+09:00</updated>
+    <author>
+      <name>amasok</name>
+    </author>
+    <content type="html">&lt;p&gt;明けましておめでとうございます。&lt;/p&gt;
+
+&lt;p&gt;新年早々、風邪をひいて熱をだしてしまいました。&lt;br&gt;
+年末には実家に帰る直前に肩が痛くなって動けなくなったり、割と大変な目にあっております。  &lt;/p&gt;
+
+&lt;p&gt;今も、熱はないものの喉が痛くて口内炎もあるし。。&lt;/p&gt;
+
+&lt;p&gt;体調管理しっかりしたいですね。&lt;/p&gt;
+
+&lt;p&gt;今年の抱負としていくつか目標を箇条書きしていこうと思います。
+まあ、完璧ではなくてもなるべく達成できるように目指して行きたいですね。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;残業しない（自分の時間を作るため）&lt;/li&gt;
+&lt;li&gt;料理する（お昼の弁当とか）&lt;/li&gt;
+&lt;li&gt;英語に毎日触れる（本を読む、映画を見る、人と話す、等）&lt;/li&gt;
+&lt;li&gt;海外に行く&lt;/li&gt;
+&lt;li&gt;姿勢を直す（姿勢が悪いので）&lt;/li&gt;
+&lt;li&gt;運動する(週１以上目標)&lt;/li&gt;
+&lt;li&gt;何かしらサービスを作る&lt;/li&gt;
+&lt;li&gt;新しい技術を学ぶ（会社関係なしに）&lt;/li&gt;
+&lt;li&gt;ブログを週１以上のペースで書く（技術以外含む）&lt;/li&gt;
+&lt;li&gt;本を年間２０冊読む(漫画以外、技術書含む)&lt;/li&gt;
+&lt;li&gt;勉強会主催&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;記憶をなくさない&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;新しいバーの開拓&lt;/li&gt;
+&lt;li&gt;一日睡眠6時間&lt;/li&gt;
+&lt;li&gt;病気しない&lt;/li&gt;
+&lt;li&gt;怪我しない&lt;/li&gt;
+&lt;li&gt;怖がらないで人と話すようにする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;さて、いくつできるかな。&lt;br&gt;
+まあ、すでに達成不能なものもいくつかありますが、あくまで日々を律する目標ってことで。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>2013年総括</title>
+    <link rel="alternate" href="http://amasok.github.io/blog/article/2013/12/31/generalization.html"/>
+    <id>http://amasok.github.io/blog/article/2013/12/31/generalization.html</id>
+    <published>2013-12-31T11:54:00Z</published>
+    <updated>2014-01-22T16:57:26+09:00</updated>
+    <author>
+      <name>amasok</name>
+    </author>
+    <content type="html">&lt;p&gt;今年も終わりなので、まとめでも書こうかと思います。&lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;ブログ始めた&lt;/h2&gt;
+
+&lt;p&gt;このブログのことですね。&lt;br&gt;
+11月下旬から始めたので、年内で言うと割と後半のことですが、&lt;br&gt;
+実は一年程前にはてなブログをちょこっとやってました。&lt;/p&gt;
+
+&lt;p&gt;まあ、全然続かなかったので心機一転したいといって、新しくブログ作りたいってことでmiddlemanで作りました。&lt;/p&gt;
+
+&lt;p&gt;来年も続けて行きたいです。アウトプットを癖にしたい。&lt;/p&gt;
+
+&lt;p&gt;三日坊主あかん&lt;/p&gt;
+
+&lt;h2 id="toc_1"&gt;会社に１年勤めた&lt;/h2&gt;
+
+&lt;p&gt;一つの会社に1月から12月まで勤めたのは初めてでした。&lt;/p&gt;
+
+&lt;p&gt;いや決して移り気が激しいとかではないんですが、中途で業界２年目なのでやっとちょっと落ち着いたというところでしょうか。&lt;/p&gt;
+
+&lt;p&gt;とりあえず来年もがんばろっ&lt;/p&gt;
+
+&lt;h2 id="toc_2"&gt;ジムに通った&lt;/h2&gt;
+
+&lt;p&gt;春から秋にかけて週１〜３のペースで通っていたが、やはり時間の使い方がうまくないとだめだな(ヽ&amp;#39;ω`)&lt;/p&gt;
+
+&lt;p&gt;ちょっと忙しくなったら通えなくなってすぐに辞めてしまった。&lt;br&gt;
+運動する意識を作らないと。。。&lt;/p&gt;
+
+&lt;h2 id="toc_3"&gt;海外旅行に行った&lt;/h2&gt;
+
+&lt;p&gt;２年前に台湾にいったのだけど、こんなに英語を覚えたいと思える旅行はなかった。&lt;/p&gt;
+
+&lt;p&gt;本当に英語って大事だなぁ。。。(；´∀｀)&lt;/p&gt;
+
+&lt;p&gt;来年も海外行きたい。（お金があれば）&lt;/p&gt;
+
+&lt;h2 id="toc_4"&gt;わりとたくさん勉強会にいった&lt;/h2&gt;
+
+&lt;p&gt;今年の暑い時期はわりと時間があったのでいろんな勉強会に参加した（主にweb系？）&lt;br&gt;
+(主催もしてみたし登壇もしてみた)&lt;/p&gt;
+
+&lt;p&gt;しかしまあ、思ったことがある。&lt;/p&gt;
+
+&lt;p&gt;「いろんな勉強会に参加しすぎるのもよくない！」&lt;/p&gt;
+
+&lt;p&gt;なんでよくないと思ったかというと、下地がないのに参加しても勉強会の内容についていけないということだ。&lt;/p&gt;
+
+&lt;p&gt;それだけ僕のレベルは低いわけだけど、何がよくないって勉強した気になっちゃうのがよくない。&lt;/p&gt;
+
+&lt;p&gt;下地がないのにインプットを多くしても整理できずに流れて行くだけ。&lt;/p&gt;
+
+&lt;p&gt;じゃあ身に付いてるかと言われたらあんまし身に付いてなかったりする。&lt;/p&gt;
+
+&lt;p&gt;決して勉強会に参加すること自体を否定したいわけじゃなくて、参加する目的をはっきりした上で参加しないと時間の無駄になってしまうと思った。&lt;/p&gt;
+
+&lt;p&gt;来年にでも書く。&lt;/p&gt;
+
+&lt;h3 id="toc_5"&gt;こうやって見ると&lt;/h3&gt;
+
+&lt;p&gt;ガチすぎるプライベートな内容は避けて今年一年の出来事を綴ったが、内容うっす。。。(ヽ&amp;#39;ω`)&lt;/p&gt;
+
+&lt;p&gt;まあ、来年やらなきゃいけないことが自然と決まった課題の多い一年だったということで。&lt;/p&gt;
+
+&lt;p&gt;来年あたまにでも2014年の豊富やら目標やら書くかな。&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>シンガポール旅行④</title>
+    <link rel="alternate" href="http://amasok.github.io/blog/article/2013/12/19/singapore-4.html"/>
+    <id>http://amasok.github.io/blog/article/2013/12/19/singapore-4.html</id>
+    <published>2013-12-18T15:00:00Z</published>
+    <updated>2014-01-22T16:57:26+09:00</updated>
+    <author>
+      <name>amasok</name>
+    </author>
+    <content type="html">&lt;p&gt;ちょっと書く時間がとれないので写真を張りながら一言感想的な記事に。&lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;ベイサンズのデッキすげぇ&lt;/h2&gt;
+
+&lt;p&gt;マリーナベイサンズの上にいます。&lt;/p&gt;
+
+&lt;p&gt;やっぱすごい。&lt;br&gt;
+&lt;img alt="観光客たくさん" src="/images/bay3.JPG" /&gt;&lt;/p&gt;
+
+&lt;p&gt;貿易船がたくさん見えた。&lt;br&gt;
+&lt;img src="/images/bay4.JPG" /&gt;&lt;/p&gt;
+
+&lt;p&gt;プールがあるところはホテル宿泊者しか行けないようです。&lt;br&gt;
+&lt;img src="/images/bay5.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;ちょっとホテルに泊まる金額調べたらやっぱりそこそこ高かった。  &lt;/p&gt;
+
+&lt;p&gt;いやー、無理だな。。。  &lt;/p&gt;
+
+&lt;h2 id="toc_1"&gt;ホテルで休憩した後はゲイランへ&lt;/h2&gt;
+
+&lt;p&gt;さて、ゲイランの写真はほとんどないので文章で。&lt;/p&gt;
+
+&lt;p&gt;ゲイランは中華だったり歓楽街？な感じ。実際のところどういうところなのかは知らないが、&lt;br&gt;
+ネットで調べたところ「植民地時代風」とのことだった。&lt;/p&gt;
+
+&lt;p&gt;実際、わりと治安はよくなさそうな感じだった。&lt;/p&gt;
+
+&lt;p&gt;飛び交う言葉は中国語が多かった気がする。（多分地元の人が多い？）&lt;/p&gt;
+
+&lt;p&gt;↓ある店の水槽にカエルぎっしり&lt;br&gt;
+&lt;img alt="aaaa" src="/images/kaeru.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;まあ、どうせならそういうところに行ってみたいよね。てことでゲイランに向かったわけだが、&lt;br&gt;
+今まで超有名どころの観光地にいただけにゲイランは新鮮だった。&lt;/p&gt;
+
+&lt;p&gt;適当に歩いて町を堪能した後、適当に中華の店に。&lt;/p&gt;
+
+&lt;p&gt;店員さんに英語か日本語しゃべれるか聞いたところ、&lt;/p&gt;
+
+&lt;p&gt;できない(；´∀｀)って言われた。&lt;/p&gt;
+
+&lt;p&gt;でもまあ単語が通じればなんとかなる。&lt;/p&gt;
+
+&lt;p&gt;タイガービールを頼みました。
+&lt;img alt="ビールおいしかった" src="/images/yoru.jpg" /&gt;&lt;/p&gt;
+
+&lt;p&gt;さて、この後料理が運ばれてきたのだが、&lt;br&gt;
+そこからがわりと大変だった。  &lt;/p&gt;
+
+&lt;p&gt;立てかけてあったメニューが倒れる　→　ビールビンが倒れる　→　僕のジョッキにあたってジョッキ粉砕&lt;/p&gt;
+
+&lt;p&gt;(ヽ&amp;#39;ω`)&lt;/p&gt;
+
+&lt;p&gt;慌てて店員に謝ったけど通じたのだろうか。&lt;/p&gt;
+
+&lt;p&gt;店員さんはとても親切だった。&lt;br&gt;
+料理はガラスの破片が入ってるかもしれないから食うなってことで下げてくれた。  &lt;/p&gt;
+
+&lt;p&gt;怪我ない？　みたいな感じ心配してくれた（と思う）&lt;br&gt;
+まあ、正直お互い片言の英語と身振り手振りだったから本当のところはよくわからんが。&lt;/p&gt;
+
+&lt;p&gt;この後、申し訳なく思った僕らはおなかの許す限りここで食事をしまくった。（お金を店に落とそうと思って）  &lt;/p&gt;
+</content>
+  </entry>
+</feed>

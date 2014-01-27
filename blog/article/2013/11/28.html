@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <title>amasok's blog</title>
+    <meta name="keywords" content="github, 技術, amasok, アマ">
+    <meta name="description" content="適当にブログ書いてます。rubyとか">
+    <link href="/stylesheets/normalize.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Finger+Paint" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/blog.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/syntaxhighlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    </head>
+  <body class="note" >
+    
+    <header>
+  <h1><a href="/blog">amasok's blog</a></h1>
+</header>
+
+  <div class="wrapper">
+    <main>
+      <h2>Archive for
+  
+    Nov 28 2013
+  
+</h2>
+  
+  <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2013/11/28/bundle-exec.html">bundle execの省略が微妙</a></h1>
+    <span>2013/11/28 01:00 tags:
+    <a href="/blog/article/categories/bundle.html">bundle</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/28/bundle-exec.html" data-text= "amasok's blog bundle execの省略が微妙" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/28/bundle-exec.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog bundle execの省略が微妙" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>結論から書くと、僕が望んでいた形ではインストールできませんでした。</p>
+
+<p>僕が望んでいた形は、</p>
+
+<ul>
+<li>gemをグローバルな領域にインストールしない(path=vendor/bundleを使用)</li>
+<li>プロジェクト配下のディレクトリならどの階層でも”bundle exec”を省略できる</li>
+</ul>
+
+<p>今回は、僕が調べたことを３つ記していこうかと思います。
+よかったら試してみてください。</p>
+
+<h2 id="toc_0">対象者</h2>
+
+<ul>
+<li>bundleを使って&ldquo;bundle exec&quot;を毎回打ってる人</li>
+</ul>
+
+<h2 id="toc_1">実行環境</h2>
+
+<ul>
+<li>mac(Mountain Lion)</li>
+<li>ruby(2.0.0p247)</li>
+</ul>
+
+<h2 id="toc_2">rbenv-binstubsを使う</h2>
+
+<h3 id="toc_3">制限事項</h3>
+
+<ul>
+<li>rbenvを使ってrubyを管理している</li>
+<li>bundle installはグローバルな領域にインストールする（pathは指定しない）</li>
+</ul>
+
+<h3 id="toc_4">方法</h3>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code">$ cd
+$ mkdir .rbenv/plugins
+$ cd .rbenv/plugins
+$ git clone git://github.com/ianheggie/rbenv-binstubs.git
+</td></tr></tbody></table></pre>
+<p>上記のようにrbenvのプラグインとしてrbenv-binstubsてのを導入</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">$ bundle install --binstubs=vendor/bin
+$ rbenv rehash
+$ middleman s
+</td></tr></tbody></table></pre>
+<p>上みたいに、bundle install &ndash;binstubs=bendor/binでgem自体はグローバルな領域で作るけど、バイナリ（コマンド）ファイルはプロジェクトディレクトリ内で作る。</p>
+
+<p>これならプロジェクト内のどの階層でもbundle execが必要なくなるけどgemがグローバルな領域で存在しつづけてしまう。</p>
+
+<h2 id="toc_5">binstubsで作ったbinにパスを通す</h2>
+
+<h3 id="toc_6">制限事項</h3>
+
+<ul>
+<li>プロジェクトディレクトリの第一階層のみで省略可（プロジェクトディレクトリ内のより深い階層からは省略不可）</li>
+</ul>
+
+<h3 id="toc_7">方法</h3>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ export PATH=./vendor/bin:$PATH
+</td></tr></tbody></table></pre>
+<p>上記パスを通した後、下記のようにbundle install時にオプションを指定</p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ bundle install --path=vendor/bundle --binstubs=vendor/bin
+</td></tr></tbody></table></pre>
+<p>はい、この方法でプロジェクトのディレクトリの第一階層上でのみbundle execを省略できます。<br>
+なんか、うまいパスの通し方ないかなぁ。。<br>
+うまくいくと、このやり方の応用が一番なんとかできそうだけど。。  </p>
+
+<h2 id="toc_8">aliasをかける</h2>
+
+<h3 id="toc_9">制限事項</h3>
+
+<ul>
+<li>文字数が少なければOK（完璧に省略する必要はないと考える人）</li>
+</ul>
+
+<h3 id="toc_10">方法</h3>
+
+<p>書くまでもないかな。。。</p>
+
+<p><em>.bash_profile</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">alias be=&#39;bundle exec&#39;
+</td></tr></tbody></table></pre>
+<p>はい、これで</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ be middleman s
+</td></tr></tbody></table></pre>
+<p>とかができるようになりました。<br>
+どれもいまいち腑に落ちないけど、今のところ調べた結果のログとして記します。<br>
+なんか良い方法見つけたら新しく書こう。<br>
+てか、誰か良い方法教えてほしい。  </p>
+
+<h4 id="toc_11">参考</h4>
+
+<p><a href="http://blog.takapra.com/2013/04/ruby-bundler-basic/">http://blog.takapra.com/2013/04/ruby-bundler-basic/</a></p>
+
+<p><a href="http://qiita.com/naoty_k/items/9000280b3c3a0e74a618">http://qiita.com/naoty_k/items/9000280b3c3a0e74a618</a></p>
+
+    </section>
+  </article>
+  
+<div class="pagination">
+
+
+</div>
+
+
+    </main>
+    <aside>
+      <h2>Recent Articles</h2>
+  <ol>
+    
+      <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
+    
+      <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
+    
+      <li><a href="/blog/article/2013/12/31/generalization.html">2013年総括</a> <span>(13/12/31 20:54)</span></li>
+    
+      <li><a href="/blog/article/2013/12/19/singapore-4.html">シンガポール旅行④</a> <span>(13/12/19 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/15/singapore-3.html">シンガポール旅行③</a> <span>(13/12/15 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/10/singapore-2.html">シンガポール旅行②</a> <span>(13/12/10 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/08/singapore-1.html">シンガポール旅行①</a> <span>(13/12/08 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a> <span>(13/12/03 23:36)</span></li>
+    
+  </ol>
+
+  <h2>Tags</h2>
+  <ol>
+    
+      <li><a href="/blog/article/categories/markdown.html">markdown</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/middleman.html">middleman</a> (6)</a></li>
+    
+      <li><a href="/blog/article/categories/test.html">test</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">焼肉</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">五反田</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/bundle.html">bundle</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/rbenv.html">rbenv</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/ruby.html">ruby</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">スポーツ</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">シンガポール</a> (4)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+  </ol>
+
+  <h2>By Year</h2>
+  <ul>
+    
+        <li><a href="/blog/article/2014.html">2014</a>(4)</li>
+      <ul>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (4)</li>
+      
+        <li><a href="#">12</a> (8)</li>
+      
+        <li><a href="#">11</a> (9)</li>
+      
+      </ul>
+    
+        <li><a href="/blog/article/2013.html">2013</a>(17)</li>
+      <ul>
+      
+        <li><a href="#">1</a> (4)</li>
+      
+        <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
+      
+        <li><a href="/blog/article/2013/11.html">11</a> (9)</li>
+      
+      </ul>
+    
+  </ul>
+
+    </aside>
+  </div>
+    <footer>
+  <p>&copy; Copyright 2013, amasok.</p>
+</footer>
+    
+    <script src="/javascripts/tweet.js" type="text/javascript"></script>
+<script src="/javascripts/googleAnalytics.js" type="text/javascript"></script>
+<script src="http://b.st-hatena.com/js/bookmark_button.js" type="text/javascript"></script>
+  </body>
+</html>

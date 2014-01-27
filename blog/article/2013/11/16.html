@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <title>amasok's blog</title>
+    <meta name="keywords" content="github, 技術, amasok, アマ">
+    <meta name="description" content="適当にブログ書いてます。rubyとか">
+    <link href="/stylesheets/normalize.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Finger+Paint" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/blog.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/syntaxhighlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    </head>
+  <body class="note" >
+    
+    <header>
+  <h1><a href="/blog">amasok's blog</a></h1>
+</header>
+
+  <div class="wrapper">
+    <main>
+      <h2>Archive for
+  
+    Nov 16 2013
+  
+</h2>
+  
+  <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2013/11/16/markdown.html">markdown記法まとめ</a></h1>
+    <span>2013/11/16 21:15 tags:
+    <a href="/blog/article/categories/markdown.html">markdown</a>,
+  
+    <a href="/blog/article/categories/middleman.html">middleman</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/16/markdown.html" data-text= "amasok's blog markdown記法まとめ" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/16/markdown.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog markdown記法まとめ" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>markdown記法を下記にまとめます。<br>
+表記自体はcssの設定に依存します。</p>
+
+<h2 id="toc_0">見出し</h2>
+
+<hr>
+
+<p><em>表記</em></p>
+<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div></td><td class="code"><span class="c1"># レベル１の見出し</span>
+<span class="err">レベル１の見出し</span><span class="p">(</span><span class="err">別の書き方</span><span class="p">)</span>
+<span class="o">============</span>
+<span class="c1">## レベル２の見出し</span>
+<span class="err">レベル２の見出し</span><span class="p">(</span><span class="err">別の書き方</span><span class="p">)</span>
+<span class="o">---------------------</span>
+<span class="c1">### レベル３の見出し</span>
+<span class="c1">#### レベル４の見出し</span>
+<span class="c1">##### レベル５の見出し</span>
+<span class="c1">###### レベル６の見出し</span>
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<h1 id="toc_1">レベル１の見出し</h1>
+
+<h1 id="toc_2">レベル１の見出し(別の書き方)</h1>
+
+<h2 id="toc_3">レベル２の見出し</h2>
+
+<h2 id="toc_4">レベル２の見出し(別の書き方)</h2>
+
+<h3 id="toc_5">レベル３の見出し</h3>
+
+<h4 id="toc_6">レベル４の見出し</h4>
+
+<h5 id="toc_7">レベル５の見出し</h5>
+
+<h6 id="toc_8">レベル６の見出し</h6>
+
+<h2 id="toc_9">リンクする</h2>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="p">[</span><span class="nv">マークダウンの記法</span><span class="p">](</span><span class="sx">http://kojika17.com/2013/01/starting-markdown.html</span><span class="p">)</span>
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<p><a href="http://kojika17.com/2013/01/starting-markdown.html">マークダウンの記法</a></p>
+
+<h2 id="toc_10">画像をはる</h2>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="p">![</span><span class="nv">画像</span><span class="p">](</span><span class="sx">middleman.png</span><span class="p">)</span>
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<p><img alt="画像" src="/images/middleman.png" /></p>
+
+<h2 id="toc_11">水平線</h2>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code"><span class="gh">***
+---
+</span></td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<hr>
+
+<h2 id="toc_12">テキストの強調</h2>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code"><span class="gs">**strong**</span>
+<span class="ge">*em*</span>
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<p><strong>strong</strong><br>
+<em>em</em></p>
+
+<h2 id="toc_13">リスト</h2>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code"><span class="p">*</span> 順序無しリストのアイテム
+<span class="p">  *</span> サブアイテムは2つのスペースでインデントする
+<span class="p">*</span> 順序無しリストの別のアイテム
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<ul>
+<li>順序無しリストのアイテム
+
+<ul>
+<li>サブアイテムは2つのスペースでインデントする</li>
+</ul></li>
+<li>順序無しリストの別のアイテム</li>
+</ul>
+
+<h2 id="toc_14">テーブル</h2>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div></td><td class="code">| Left align | Right align | Center align |
+|:-----------|------------:|:------------:| &lt;- ここを調節して寄りを決定
+| This       |        This |     This     |
+| column     |      column |    column    |
+| will       |        will |     will     |
+| be         |          be |      be      |
+| left       |       right |    center    |
+| aligned    |     aligned |   aligned    |
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<table><thead>
+<tr>
+<th align="left">Left align</th>
+<th align="right">Right align</th>
+<th align="center">Center align</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">This</td>
+<td align="right">This</td>
+<td align="center">This</td>
+</tr>
+<tr>
+<td align="left">column</td>
+<td align="right">column</td>
+<td align="center">column</td>
+</tr>
+<tr>
+<td align="left">will</td>
+<td align="right">will</td>
+<td align="center">will</td>
+</tr>
+<tr>
+<td align="left">be</td>
+<td align="right">be</td>
+<td align="center">be</td>
+</tr>
+<tr>
+<td align="left">left</td>
+<td align="right">right</td>
+<td align="center">center</td>
+</tr>
+<tr>
+<td align="left">aligned</td>
+<td align="right">aligned</td>
+<td align="center">aligned</td>
+</tr>
+</tbody></table>
+
+<h2 id="toc_15">引用</h2>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code"><span class="gt">&gt;引用１</span>
+<span class="gt">&gt;&gt;引用２</span>
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<blockquote>
+<p>引用１</p>
+
+<blockquote>
+<p>引用２</p>
+</blockquote>
+</blockquote>
+
+<h2 id="toc_16">コード</h2>
+
+<p><em>対応言語</em></p>
+
+<p><a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">https://github.com/github/linguist/blob/master/lib/linguist/languages.yml</a></p>
+
+<p><em>表記</em></p>
+<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div></td><td class="code"><span class="ge">*test.rb*</span>
+
+<span class="sb">```</span>ruby
+puts &#39;The best way to log and share programmers knowledge.&#39;
+p test
+def test()
+    array.each do | ary |
+      p ary
+    end
+end
+</td></tr></tbody></table></pre>
+<p><em>表示</em></p>
+
+<p><em>test.rb</em></p>
+<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div></td><td class="code"><span class="nb">puts</span> <span class="s1">&#39;The best way to log and share programmers knowledge.&#39;</span>
+<span class="nb">p</span> <span class="nb">test</span>
+<span class="k">def </span><span class="nf">test</span><span class="p">()</span>
+    <span class="n">array</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">ary</span> <span class="o">|</span>
+      <span class="nb">p</span> <span class="n">ary</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</td></tr></tbody></table></pre>
+    </section>
+  </article>
+  
+<div class="pagination">
+
+
+</div>
+
+
+    </main>
+    <aside>
+      <h2>Recent Articles</h2>
+  <ol>
+    
+      <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
+    
+      <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
+    
+      <li><a href="/blog/article/2013/12/31/generalization.html">2013年総括</a> <span>(13/12/31 20:54)</span></li>
+    
+      <li><a href="/blog/article/2013/12/19/singapore-4.html">シンガポール旅行④</a> <span>(13/12/19 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/15/singapore-3.html">シンガポール旅行③</a> <span>(13/12/15 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/10/singapore-2.html">シンガポール旅行②</a> <span>(13/12/10 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/08/singapore-1.html">シンガポール旅行①</a> <span>(13/12/08 00:00)</span></li>
+    
+      <li><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a> <span>(13/12/03 23:36)</span></li>
+    
+  </ol>
+
+  <h2>Tags</h2>
+  <ol>
+    
+      <li><a href="/blog/article/categories/markdown.html">markdown</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/middleman.html">middleman</a> (6)</a></li>
+    
+      <li><a href="/blog/article/categories/test.html">test</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">焼肉</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">五反田</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/bundle.html">bundle</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/rbenv.html">rbenv</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/ruby.html">ruby</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">スポーツ</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">シンガポール</a> (4)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+  </ol>
+
+  <h2>By Year</h2>
+  <ul>
+    
+        <li><a href="/blog/article/2014.html">2014</a>(4)</li>
+      <ul>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (4)</li>
+      
+        <li><a href="#">12</a> (8)</li>
+      
+        <li><a href="#">11</a> (9)</li>
+      
+      </ul>
+    
+        <li><a href="/blog/article/2013.html">2013</a>(17)</li>
+      <ul>
+      
+        <li><a href="#">1</a> (4)</li>
+      
+        <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
+      
+        <li><a href="/blog/article/2013/11.html">11</a> (9)</li>
+      
+      </ul>
+    
+  </ul>
+
+    </aside>
+  </div>
+    <footer>
+  <p>&copy; Copyright 2013, amasok.</p>
+</footer>
+    
+    <script src="/javascripts/tweet.js" type="text/javascript"></script>
+<script src="/javascripts/googleAnalytics.js" type="text/javascript"></script>
+<script src="http://b.st-hatena.com/js/bookmark_button.js" type="text/javascript"></script>
+  </body>
+</html>
