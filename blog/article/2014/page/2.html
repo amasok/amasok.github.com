@@ -27,6 +27,85 @@
 </h2>
   
   <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a></h1>
+    <span>2014/01/30 21:12 tags:
+    <a href="/blog/article/categories/zsh.html">zsh</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/30/oh_my_zsh.html" data-text= "amasok's blog oh_my_zshがすごい" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/30/oh_my_zsh.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog oh_my_zshがすごい" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>職場のshellを最近zshにしたのだが、便利すぎたのでとうとう家でもzshに切り替えた話。</p>
+
+<p>なぜかちょっとだけはまったので、そのときのことをメモ</p>
+
+<p><a href="http://qiita.com/udzura/items/0d08d71d809bfd8c5981">http://qiita.com/udzura/items/0d08d71d809bfd8c5981</a></p>
+
+<p>基本的には上記URL通りやるだけ。
+何も変わらないです。</p>
+
+<h2 id="toc_0">前提条件</h2>
+
+<ul>
+<li>brewが入ってる<br></li>
+</ul>
+
+<h2 id="toc_1">方法</h2>
+
+<p><em>zshのインストール</em>  </p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">brew install zsh
+</td></tr></tbody></table></pre>
+<p><em>oh-my-zshのインストール</em></p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+</td></tr></tbody></table></pre>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh">https://github.com/robbyrussell/oh-my-zsh</a></p>
+
+<p>公式ページのsetupをうつだけ。</p>
+
+<p>zshに切り替えるのにパスワードを求められる。<br>
+ここでミスった。</p>
+
+<p>多分パスワードを間違えたんだと思う。</p>
+
+<p>本当なら新しいターミナルを立ち上げたらzshに切り替わってるはずが、bashのままだった。</p>
+
+<p>なのに、<em>.zshrc</em>を編集して再読み込みしようとしていた。</p>
+
+<p>その時のエラーがこれ。</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">~/.oh-my-zsh/oh-my-zsh.sh: line 13: syntax error near unexpected token <span class="sb">`</span><span class="o">(</span><span class="s1">&#39;
+</span></td></tr></tbody></table></pre>
+<p>で、同じようにはまっている人がgithubのissuesにいらっしゃった。</p>
+
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/issues/989">https://github.com/robbyrussell/oh-my-zsh/issues/989</a></p>
+
+<p>まあ、要はzshに切り替えてからじゃないとoh-my-zsh.shのシェルスクリプトは動かないよってことだ。</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">chsh -s /bin/zsh
+</td></tr></tbody></table></pre>
+<p>これで、再度パスワードを求められるので正しく入力してターミナルを再起動。</p>
+
+<p>そうすると、zshで立ち上がってくれるようになった。</p>
+
+<h2 id="toc_2">便利な点</h2>
+
+<p>これは、何が便利ってoh-my-zshのプラグインが便利</p>
+
+<p><em>.zshrc</em></p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="nv">plugins</span><span class="o">=(</span>git ruby osx bundler brew rails emoji-clock<span class="o">)</span>
+</td></tr></tbody></table></pre>
+<p>ここらへんのプラグインが便利だ。</p>
+
+<p>特にgitはすごい。</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">➜  <span class="nb">source</span>-amasok.github git:<span class="o">(</span>master<span class="o">)</span> ✗ git checkout slim
+Switched to branch <span class="s1">&#39;slim&#39;</span>
+➜  <span class="nb">source</span>-amasok.github git:<span class="o">(</span>slim<span class="o">)</span> ✗
+</td></tr></tbody></table></pre>
+<p>このように、自分が今なんのブランチで作業しているのかが一目でわかる。</p>
+
+<p>まじ、すげぇ。</p>
+
+    </section>
+  </article>
+  
+  <article class="blog-post">
     <h1 class="title"><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a></h1>
     <span>2014/01/29 21:16 tags:
     <a href="/blog/article/categories/knife-solo.html">knife-solo</a>,
@@ -263,53 +342,11 @@ UIViewController ライフサイクルは大事。</p>
     </section>
   </article>
   
-  <article class="blog-post">
-    <h1 class="title"><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a></h1>
-    <span>2014/01/02 21:28 tags:</span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/02/aspiration2014.html" data-text= "amasok's blog 2014年抱負" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/02/aspiration2014.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 2014年抱負" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-<section class="text">
-    <p>明けましておめでとうございます。</p>
-
-<p>新年早々、風邪をひいて熱をだしてしまいました。<br>
-年末には実家に帰る直前に肩が痛くなって動けなくなったり、割と大変な目にあっております。  </p>
-
-<p>今も、熱はないものの喉が痛くて口内炎もあるし。。</p>
-
-<p>体調管理しっかりしたいですね。</p>
-
-<p>今年の抱負としていくつか目標を箇条書きしていこうと思います。
-まあ、完璧ではなくてもなるべく達成できるように目指して行きたいですね。</p>
-
-<ul>
-<li>残業しない（自分の時間を作るため）</li>
-<li>料理する（お昼の弁当とか）</li>
-<li>英語に毎日触れる（本を読む、映画を見る、人と話す、等）</li>
-<li>海外に行く</li>
-<li>姿勢を直す（姿勢が悪いので）</li>
-<li>運動する(週１以上目標)</li>
-<li>何かしらサービスを作る</li>
-<li>新しい技術を学ぶ（会社関係なしに）</li>
-<li>ブログを週１以上のペースで書く（技術以外含む）</li>
-<li>本を年間２０冊読む(漫画以外、技術書含む)</li>
-<li>勉強会主催</li>
-<li><strong>記憶をなくさない</strong></li>
-<li>新しいバーの開拓</li>
-<li>一日睡眠6時間</li>
-<li>病気しない</li>
-<li>怪我しない</li>
-<li>怖がらないで人と話すようにする</li>
-</ul>
-
-<p>さて、いくつできるかな。<br>
-まあ、すでに達成不能なものもいくつかありますが、あくまで日々を律する目標ってことで。</p>
-
-    </section>
-  </article>
-  
 <div class="pagination">
-  <p>Page 2 of 2</p>
+  <p>Page 2 of 3</p>
 
+  
+    <div class="prev"><a href="/blog/article/2014/page/3.html">old pages</a></div>
   
   
     <div class="next"><a href="/blog/article/2014.html">new pages</a></div>
@@ -323,6 +360,8 @@ UIViewController ライフサイクルは大事。</p>
     <aside>
       <h2>Recent Articles</h2>
   <ol>
+    
+      <li><a href="/blog/article/2014/03/19/ios-scrollview-size.html">【iOS】上にスクロールした時だけバーを表示する</a> <span>(14/03/19 19:20)</span></li>
     
       <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
     
@@ -341,8 +380,6 @@ UIViewController ライフサイクルは大事。</p>
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
     
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
-    
-      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
     
   </ol>
 
@@ -371,9 +408,9 @@ UIViewController ライフサイクルは大事。</p>
     
       <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
     
-      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (3)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (6)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
     
@@ -386,10 +423,10 @@ UIViewController ライフサイクルは大事。</p>
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(11)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (5)</li>
       
         <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
@@ -402,7 +439,7 @@ UIViewController ライフサイクルは大事。</p>
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">3</a> (4)</li>
+        <li><a href="#">3</a> (5)</li>
       
         <li><a href="#">1</a> (6)</li>
       

@@ -21,6 +21,121 @@
   <div class="wrapper">
     <main>
         <article class="blog-post" >
+    <h1 class="title"><a href="/blog/article/2013/11/28/bundle-exec.html">bundle execの省略が微妙</a></h1>
+    <span>2013/11/28 01:00 tags:
+    <a href="/blog/article/categories/bundle.html">bundle</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/28/bundle-exec.html" data-text= "amasok's blog bundle execの省略が微妙" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/28/bundle-exec.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog bundle execの省略が微妙" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>結論から書くと、僕が望んでいた形ではインストールできませんでした。</p>
+
+<p>僕が望んでいた形は、</p>
+
+<ul>
+<li>gemをグローバルな領域にインストールしない(path=vendor/bundleを使用)</li>
+<li>プロジェクト配下のディレクトリならどの階層でも”bundle exec”を省略できる</li>
+</ul>
+
+<p>今回は、僕が調べたことを３つ記していこうかと思います。
+よかったら試してみてください。</p>
+
+<h2 id="toc_0">対象者</h2>
+
+<ul>
+<li>bundleを使って&ldquo;bundle exec&quot;を毎回打ってる人</li>
+</ul>
+
+<h2 id="toc_1">実行環境</h2>
+
+<ul>
+<li>mac(Mountain Lion)</li>
+<li>ruby(2.0.0p247)</li>
+</ul>
+
+<h2 id="toc_2">rbenv-binstubsを使う</h2>
+
+<h3 id="toc_3">制限事項</h3>
+
+<ul>
+<li>rbenvを使ってrubyを管理している</li>
+<li>bundle installはグローバルな領域にインストールする（pathは指定しない）</li>
+</ul>
+
+<h3 id="toc_4">方法</h3>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code">$ cd
+$ mkdir .rbenv/plugins
+$ cd .rbenv/plugins
+$ git clone git://github.com/ianheggie/rbenv-binstubs.git
+</td></tr></tbody></table></pre>
+<p>上記のようにrbenvのプラグインとしてrbenv-binstubsてのを導入</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">$ bundle install --binstubs=vendor/bin
+$ rbenv rehash
+$ middleman s
+</td></tr></tbody></table></pre>
+<p>上みたいに、bundle install &ndash;binstubs=bendor/binでgem自体はグローバルな領域で作るけど、バイナリ（コマンド）ファイルはプロジェクトディレクトリ内で作る。</p>
+
+<p>これならプロジェクト内のどの階層でもbundle execが必要なくなるけどgemがグローバルな領域で存在しつづけてしまう。</p>
+
+<h2 id="toc_5">binstubsで作ったbinにパスを通す</h2>
+
+<h3 id="toc_6">制限事項</h3>
+
+<ul>
+<li>プロジェクトディレクトリの第一階層のみで省略可（プロジェクトディレクトリ内のより深い階層からは省略不可）</li>
+</ul>
+
+<h3 id="toc_7">方法</h3>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ export PATH=./vendor/bin:$PATH
+</td></tr></tbody></table></pre>
+<p>上記パスを通した後、下記のようにbundle install時にオプションを指定</p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ bundle install --path=vendor/bundle --binstubs=vendor/bin
+</td></tr></tbody></table></pre>
+<p>はい、この方法でプロジェクトのディレクトリの第一階層上でのみbundle execを省略できます。<br>
+なんか、うまいパスの通し方ないかなぁ。。<br>
+うまくいくと、このやり方の応用が一番なんとかできそうだけど。。  </p>
+
+<h2 id="toc_8">aliasをかける</h2>
+
+<h3 id="toc_9">制限事項</h3>
+
+<ul>
+<li>文字数が少なければOK（完璧に省略する必要はないと考える人）</li>
+</ul>
+
+<h3 id="toc_10">方法</h3>
+
+<p>書くまでもないかな。。。</p>
+
+<p><em>.bash_profile</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">alias be=&#39;bundle exec&#39;
+</td></tr></tbody></table></pre>
+<p>はい、これで</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ be middleman s
+</td></tr></tbody></table></pre>
+<p>とかができるようになりました。<br>
+どれもいまいち腑に落ちないけど、今のところ調べた結果のログとして記します。<br>
+なんか良い方法見つけたら新しく書こう。<br>
+てか、誰か良い方法教えてほしい。  </p>
+
+<h4 id="toc_11">参考</h4>
+
+<p><a href="http://blog.takapra.com/2013/04/ruby-bundler-basic/">http://blog.takapra.com/2013/04/ruby-bundler-basic/</a></p>
+
+<p><a href="http://qiita.com/naoty_k/items/9000280b3c3a0e74a618">http://qiita.com/naoty_k/items/9000280b3c3a0e74a618</a></p>
+
+    </section>
+  
+  </article>
+  <article class="blog-post" >
     <h1 class="title"><a href="/blog/article/2013/11/27/bundle-init.html">bundlerによるgemの管理</a></h1>
     <span>2013/11/27 00:18 tags:
     <a href="/blog/article/categories/bundle.html">bundle</a>,
@@ -174,175 +289,8 @@ Writing new Gemfile to /Users/amasoktest3/Gemfile
     </section>
   
   </article>
-  <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/25/middleman-init2.html">middlemanの導入</a></h1>
-    <span>2013/11/25 12:47 tags:
-    <a href="/blog/article/categories/middleman.html">middleman</a>,
-  </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/25/middleman-init2.html" data-text= "amasok's blog middlemanの導入" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/25/middleman-init2.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog middlemanの導入" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-<section class="text">
-    <h2 id="toc_0">前提知識</h2>
-
-<ul>
-<li>簡単なコマンドライン操作ができる</li>
-<li>rubyを自分のPCにインストールするこができる</li>
-<li>gem,bundle installができる</li>
-</ul>
-
-<h2 id="toc_1">実行環境</h2>
-
-<ul>
-<li>mac(Mountain Lion)</li>
-<li>ruby(2.0.0p247)</li>
-<li>middleman(3.2.0)</li>
-</ul>
-
-<p>※windowsだとあんまりうまく動かないという話をよく目にします。</p>
-
-<h2 id="toc_2">middlemanのインストール</h2>
-
-<p>gemからインストールするだけです。</p>
-
-<p><em>terminal</em></p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="nv">$gem</span> install middleman
-</td></tr></tbody></table></pre>
-<h2 id="toc_3">middlemanのコマンド</h2>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div></td><td class="code">middleman build [options]           # 最終成果物を生成する
-middleman console [options]         # irbが立ち上がり、rubyを直書きして実行できたり
-middleman extension NAME [options]  # middlemanのプラグイン？をつくる時のやつ？
-middleman init NAME [options]       # プロジェクトを生成する
-middleman server [options]          # 開発時にプレビューする用のサーバをたてる
-middleman upgrade                   # bundle installされたものをアップグレードする
-middleman version                   # バージョンを表示
-</td></tr></tbody></table></pre>
-<h2 id="toc_4">middleman init の実行</h2>
-
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div><div class="lineno">30</div><div class="lineno">31</div></td><td class="code">&gt; middleman init testProject
-
-      create  testProject/Gemfile
-         run  bundle install from &quot;.&quot;
-Fetching gem metadata from http://rubygems.org/........
-Fetching gem metadata from http://rubygems.org/..
-Resolving dependencies...
-Using i18n (0.6.5)
-Using multi_json (1.8.2)
-Using activesupport (3.2.15)
-       ・
-       ・
-       ・
-       ・bundle install の実行
-       ・
-       ・
-       ・
-Your bundle is complete!
-Use `bundle show [gemname]` to see where a bundled gem is installed.
-      create  testProject/.gitignore
-      create  testProject/config.rb
-      create  testProject/source/index.html.erb
-      create  testProject/source/layouts/layout.erb
-      create  testProject/source/stylesheets
-      create  testProject/source/stylesheets/all.css
-      create  testProject/source/stylesheets/normalize.css
-      create  testProject/source/javascripts
-      create  testProject/source/javascripts/all.js
-      create  testProject/source/images
-      create  testProject/source/images/background.png
-      create  testProject/source/images/middleman.png
-</td></tr></tbody></table></pre>
-<p>bundle installが実行された後middlemanに必要なプロジェクトが生成されます。</p>
-
-<h3 id="toc_5">よく触るファイルとディレクトリ</h3>
-
-<ul>
-<li>config.rb</li>
-<li>sourceディレクトリ配下全部</li>
-</ul>
-
-<p>config.rbで設定を行った後はsourceの中をごりごりいじっていきます。</p>
-
-<h2 id="toc_6">middleman server の実行</h2>
-
-<p>上記のようにプロジェクトを作ったら、まずは開発環境でプロジェクトを実行してみる。</p>
-
-<p><em>terminal</em></p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="gp">$ </span>middleman server  <span class="c">#middleman s でも可</span>
-</td></tr></tbody></table></pre>
-<p><a href="http://localhost:4567/">http://localhost:4567/</a></p>
-
-<p>middleman serverが立ち上がっている状態で上記URLを確認してみましょう。</p>
-
-<p><img alt="画像" src="/images/middleman.png" /></p>
-
-<p>上記のように表示されたらOKです。</p>
-
-<h2 id="toc_7">middleman build の実行</h2>
-
-<p>webサイトが完成したらこのコマンドで静的ファイルを生成します。</p>
-
-<p><em>terminal</em></p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div></td><td class="code"><span class="gp">$ </span>middleman build  <span class="c">#middleman b でも可</span>
-
-WARN: Unresolved specs during Gem::Specification.reset:
-      activesupport <span class="o">(</span>~&gt; 3.2.6<span class="o">)</span>
-      listen <span class="o">(</span>~&gt; 1.1<span class="o">)</span>
-WARN: Clearing out unresolved specs.
-Please report a bug <span class="k">if </span>this causes problems.
-      create  build/images/background.png
-      create  build/images/middleman.png
-      create  build/javascripts/all.js
-      create  build/stylesheets/normalize.css
-      create  build/stylesheets/all.css
-      create  build/index.html
-</td></tr></tbody></table></pre>
-<p>なんかいろいろ作られてます。(WARNはほっといてください。めんどいだけです)
-このbuild配下を全部サーバにあげればwebサイトの完成。</p>
-
-<p>こういう構造になってます。</p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div></td><td class="code">.
-├── Gemfile
-├── Gemfile.lock
-├── build #ここのファイルをサーバにUP
-│   ├── images
-│   │   ├── background.png
-│   │   └── middleman.png
-│   ├── index.html
-│   ├── javascripts
-│   │   └── all.js
-│   └── stylesheets
-│       ├── all.css
-│       └── normalize.css
-├── config.rb
-└── source
-    ├── images
-    │   ├── background.png
-    │   └── middleman.png
-    ├── index.html.erb
-    ├── javascripts
-    │   └── all.js
-    ├── layouts
-    │   └── layout.erb
-    └── stylesheets
-        ├── all.css
-        └── normalize.css
-</td></tr></tbody></table></pre>
-<h2 id="toc_8">感想</h2>
-
-<p>ほんとrailsっぽいって思った。（あんまりrails知らないけど）</p>
-
-<p>基本的な仕組みはそんなに難しくないし、練習用にどんどん書いていこうと思う。<br>
-ちなみに、今回この記事を書く上で一番はまった点は、このブログの記事がmiddlemanを利用した初めての画像投稿となった点でした。</p>
-
-<p>markdownでの画像の投稿の仕方がわからない。<br>
-通常道理に記述したらどのようなパスになるのかがわからない。<br>
-等々まだまだ初心者丸出しですが、まがりなりにもブログを書くところまで至ったので、それができるようになるところまでは今後も書いていきたいと思います。</p>
-
-    </section>
-  
-  </article>
 <div class="pagination">
-  <p>Page 8 of 9</p>
+  <p>Page 8 of 10</p>
 
   
     <div class="prev"><a href="/blog/page/9/">old pages</a></div>
@@ -359,6 +307,8 @@ Please report a bug <span class="k">if </span>this causes problems.
     <aside>
       <h2>Recent Articles</h2>
   <ol>
+    
+      <li><a href="/blog/article/2014/03/19/ios-scrollview-size.html">【iOS】上にスクロールした時だけバーを表示する</a> <span>(14/03/19 19:20)</span></li>
     
       <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
     
@@ -377,8 +327,6 @@ Please report a bug <span class="k">if </span>this causes problems.
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
     
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
-    
-      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
     
   </ol>
 
@@ -407,9 +355,9 @@ Please report a bug <span class="k">if </span>this causes problems.
     
       <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
     
-      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (3)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (6)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
     
@@ -422,10 +370,10 @@ Please report a bug <span class="k">if </span>this causes problems.
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(11)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (5)</li>
       
         <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
@@ -438,7 +386,7 @@ Please report a bug <span class="k">if </span>this causes problems.
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">3</a> (4)</li>
+        <li><a href="#">3</a> (5)</li>
       
         <li><a href="#">1</a> (6)</li>
       

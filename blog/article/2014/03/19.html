@@ -20,9 +20,13 @@
 
   <div class="wrapper">
     <main>
-      <h2>Articles tagged 'iOS'</h2>
+      <h2>Archive for
   
-    <article class="blog-post" >
+    Mar 19 2014
+  
+</h2>
+  
+  <article class="blog-post">
     <h1 class="title"><a href="/blog/article/2014/03/19/ios-scrollview-size.html">【iOS】上にスクロールした時だけバーを表示する</a></h1>
     <span>2014/03/19 19:20 tags:
     <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
@@ -72,135 +76,7 @@
 <p>これでできた。</p>
 
     </section>
-    </article>
-  
-    <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a></h1>
-    <span>2014/01/15 10:23 tags:
-    <a href="/blog/article/categories/ios.html">iOS</a>,
-  </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/15/ios_regist.html" data-text= "amasok's blog iOSアプリを実機で動かすまで" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/15/ios_regist.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog iOSアプリを実機で動かすまで" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-<section class="text">
-    <p>iOSのディベロッパー登録めんどくさいです。</p>
-
-<p><a href="http://mushikago.com/i/?p=917">http://mushikago.com/i/?p=917</a></p>
-
-<p>こことかを見てやるといいです。</p>
-
-<h2 id="toc_0">前提条件</h2>
-
-<ul>
-<li>iOSのディベロッパー登録を済ませておく</li>
-<li>シミュレータでiOSアプリを動かしたことがある</li>
-</ul>
-
-<h2 id="toc_1">Provisioning Profileの入手</h2>
-
-<p><a href="https://developer.apple.com/">https://developer.apple.com/</a></p>
-
-<p>iOS Dev Center</p>
-
-<p>＞ [iOS Developer Program] Certificates, Identifiers &amp; Profiles<br>
-＞ [iOS Apps] Provisioning Profiles<br>
-上記をたどっていくと、
-「iOS Team Provisioning Profile: *」をダウンロードしておく</p>
-
-<h2 id="toc_2">実機をxcodeに登録</h2>
-
-<p>今回はデバイス登録で動かすまでのmemo</p>
-
-<ul>
-<li>xcodeを起動</li>
-<li>Window -> Orgnizer(shift + command + 2)に移動</li>
-<li>iOSでバイスをMacとUSB接続する</li>
-<li>「接続されたPCを信頼しますか？」的なダイアログがiOSでバイスで表示されるのでOKする</li>
-<li>Orgnizer - Devicesで接続したデバイスが認識されているかを確認する</li>
-<li>「Use for Development」というボタンをクリックして全部Requestをおす</li>
-<li>左のバーから「Provisioning Profiles」を選択</li>
-<li>下にあるAddから先ほど入手したProvisioning Profileを追加する</li>
-</ul>
-
-<h2 id="toc_3">アプリを動かす</h2>
-
-<ul>
-<li>Xcode右上の [アプリ名]　＞　iPhone(シミュレータ名)　をクリックして実際のデバイス名を選択</li>
-<li>▶(Run)をクリック</li>
-</ul>
-
-    </section>
-    </article>
-  
-    <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a></h1>
-    <span>2014/01/12 23:25 tags:
-    <a href="/blog/article/categories/ios.html">iOS</a>,
-  
-    <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
-  </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/12/ios1.html" data-text= "amasok's blog Objective-Cのクラスとかメソッドについて" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/12/ios1.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog Objective-Cのクラスとかメソッドについて" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-<section class="text">
-    <p>最近、ちょっとずつiOSアプリ開発のお勉強をしているので、それのメモ</p>
-
-<p>xcodeの使い方がまずよくわかってない。</p>
-
-<p>とりあえず、プロジェクトから始める。</p>
-
-<p>iOS &gt; Application &gt; Single View Application</p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div></td><td class="code">AppDelegate.h
-AppDelegate.m     
-Main.storyboard   <span class="c">#見た目をこれで作る</span>
-ViewController.h  <span class="c">#ViewControllerのヘッダファイル</span>
-ViewController.m  <span class="c">#基本的にプログラムを書くのはこのファイル</span>
-</td></tr></tbody></table></pre>
-<p>ViewController.mの中身を見てみる。</p>
-
-<p><em>ViewController.m</em></p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div></td><td class="code"><span class="cp">#import &quot;ViewController.h&quot;
-</span>
-<span class="err">@</span><span class="n">interface</span> <span class="n">ViewController</span> <span class="p">()</span>
-
-<span class="err">@</span><span class="n">end</span>
-
-<span class="err">@</span><span class="n">implementation</span> <span class="n">ViewController</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-    <span class="c1">// Do any additional setup after loading the view, typically from a nib.
-</span><span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didReceiveMemoryWarning</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">didReceiveMemoryWarning</span><span class="p">];</span>
-    <span class="c1">// Dispose of any resources that can be recreated.
-</span><span class="p">}</span>
-
-<span class="err">@</span><span class="n">end</span>
-</td></tr></tbody></table></pre>
-<h2 id="toc_0">objective-cのクラス</h2>
-
-<p>7行目にクラスのはじまりが書かれている。</p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div></td><td class="code"><span class="err">@</span><span class="n">implementation</span> <span class="err">クラス名</span>
-
-<span class="c1">// ここにメソッドを実装していく
-</span>
-<span class="err">@</span><span class="n">end</span>
-</td></tr></tbody></table></pre>
-<h2 id="toc_1">objective-cのメソッド</h2>
-
-<p>9行目や15行目にメソッドが書かれている。</p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code"><span class="o">-</span> <span class="p">(</span><span class="err">戻り値の型</span><span class="p">)</span><span class="err">メソッド名</span>
-<span class="p">{</span>
-  <span class="c1">//ここにコードを書いて行く
-</span><span class="p">}</span>
-</td></tr></tbody></table></pre>
-<p>どのタイミングでどのメソッドが呼ばれるかは、またいつか書きたいと思ってる。
-UIViewController ライフサイクルは大事。</p>
-
-    </section>
-    </article>
+  </article>
   
 <div class="pagination">
 

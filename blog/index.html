@@ -21,6 +21,58 @@
   <div class="wrapper">
     <main>
         <article class="blog-post" >
+    <h1 class="title"><a href="/blog/article/2014/03/19/ios-scrollview-size.html">【iOS】上にスクロールした時だけバーを表示する</a></h1>
+    <span>2014/03/19 19:20 tags:
+    <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
+  
+    <a href="/blog/article/categories/ios.html">iOS</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/03/19/ios-scrollview-size.html" data-text= "amasok's blog 【iOS】上にスクロールした時だけバーを表示する" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/03/19/ios-scrollview-size.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 【iOS】上にスクロールした時だけバーを表示する" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>1.上にスクロールした時だけバーを表示する<br>
+2.下にスクロールした際はバーを非表示にする<br>
+3.一番下までスクロールした際のバウンス時はバーを非表示にする  </p>
+<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div><div class="lineno">30</div><div class="lineno">31</div><div class="lineno">32</div><div class="lineno">33</div></td><td class="code">
+<span class="c1">//scrollしている間呼び出され続ける
+</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">scrollViewDidScroll</span><span class="o">:</span><span class="p">(</span><span class="n">UIScrollView</span> <span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+<span class="p">{</span>
+    <span class="c1">//scrollした位置を取得する
+</span>    <span class="n">CGPoint</span> <span class="n">currentPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">scrollView</span> <span class="n">contentOffset</span><span class="p">];</span>
+
+    <span class="c1">//上にスクロールした場合にバー(_tabBar)を表示する
+</span>    <span class="n">_tabBar</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">scrollBeginingPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">currentPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">?</span> <span class="n">YES</span> <span class="o">:</span> <span class="n">NO</span><span class="p">;</span>
+
+
+    <span class="c1">//バウンスした際にhiddenが解除されてしまうので、
+</span>    <span class="c1">//scrollViewの一番下までスクロールした際にバーを削除する
+</span>    <span class="c1">//scrollView.bounds.size.height=画面サイズ
+</span>    <span class="c1">//scrollView.contentOffset.y=スクロールした位置
+</span>
+    <span class="kt">int</span> <span class="n">viewSize</span> <span class="o">=</span> <span class="n">scrollView</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">+</span> <span class="n">scrollView</span><span class="p">.</span><span class="n">contentOffset</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="c1">//scrollView.contentSize.height=scrollView全体のサイズ
+</span>    <span class="kt">int</span> <span class="n">contentSize</span> <span class="o">=</span> <span class="n">scrollView</span><span class="p">.</span><span class="n">contentSize</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">viewSize</span> <span class="o">&gt;=</span> <span class="n">contentSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_tabBar</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">//scrollを開始した時点で一度だけ呼ばれる
+</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">scrollViewWillBeginDragging</span><span class="o">:</span><span class="p">(</span><span class="n">UIScrollView</span> <span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+<span class="p">{</span>
+    <span class="c1">//scrollを開始した値を取得する
+</span>    <span class="n">scrollBeginingPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">scrollView</span> <span class="n">contentOffset</span><span class="p">];</span>
+<span class="p">}</span>
+
+</td></tr></tbody></table></pre>
+<p>これでできた。</p>
+
+    </section>
+  
+  </article>
+  <article class="blog-post" >
     <h1 class="title"><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a></h1>
     <span>2014/03/18 05:26 tags:
     <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
@@ -95,55 +147,8 @@
     </section>
   
   </article>
-  <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2014/03/18/ios-userdefault.html">【Objective-C】カスタムセル内の状態を永続化(保存)させたい</a></h1>
-    <span>2014/03/18 00:18 tags:
-    <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
-  </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/03/18/ios-userdefault.html" data-text= "amasok's blog 【Objective-C】カスタムセル内の状態を永続化(保存)させたい" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/03/18/ios-userdefault.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 【Objective-C】カスタムセル内の状態を永続化(保存)させたい" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-<section class="text">
-    <p>以下のやり方でできました。 永続化させるためにNSUserDefaultを使用する。</p>
-
-<p>カスタムセル用クラスcell.mにて セル毎にユニークなIDを取得できるようsetterを作成する。</p>
-
-<p>ユニークな文字列は自分で生成する。</p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div><div class="lineno">30</div></td><td class="code">
-<span class="c1">//   #indexPath=セル毎に割り振られたユニークな文字列
-</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setIndex</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">indexPath</span><span class="p">{</span>
-    <span class="c1">//indexPathをインスタンス変数化
-</span>    <span class="n">index</span> <span class="o">=</span> <span class="n">indexPath</span><span class="p">;</span>
-    <span class="c1">//NSUserDefaultsを生成
-</span>    <span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">checkDefaults</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSUserDefaults</span> <span class="n">standardUserDefaults</span><span class="p">];</span>
-    <span class="c1">//NSUserDefaultからindexをキーに値を取得する
-</span>    <span class="n">NSString</span> <span class="o">*</span><span class="n">check</span> <span class="o">=</span> <span class="p">[</span><span class="n">checkDefaults</span> <span class="n">stringForKey</span><span class="o">:</span><span class="n">index</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">check</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span><span class="c1">//値があればその値をボタンにセット
-</span>        <span class="p">[</span><span class="n">_checkButton</span> <span class="n">setTitle</span><span class="o">:</span><span class="n">check</span> <span class="n">forState</span><span class="o">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="c1">//値がなければデフォルトの◯をセット&amp;◯をindexをキーとしてセット
-</span>        <span class="p">[</span><span class="n">_checkButton</span> <span class="n">setTitle</span><span class="o">:</span><span class="err">@</span><span class="s">&quot;◯&quot;</span> <span class="n">forState</span><span class="o">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
-        <span class="p">[</span><span class="n">checkDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="err">@</span><span class="s">&quot;◯&quot;</span> <span class="n">forKey</span><span class="o">:</span><span class="n">index</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">//ボタンをタップした時の処理
-</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">IBAction</span><span class="p">)</span><span class="n">checkAction</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">sender</span>
-<span class="p">{</span>
-    <span class="err">#</span><span class="n">NSUserDefaults</span><span class="err">を生成</span>
-    <span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">checkDefaults</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSUserDefaults</span> <span class="n">standardUserDefaults</span><span class="p">];</span>
-    <span class="err">#ボタンにセットされている文字列ば☓なら◯を、◯なら☓の文字列を変数</span><span class="n">check</span><span class="err">に取得。</span>
-    <span class="n">NSString</span> <span class="o">*</span><span class="n">check</span> <span class="o">=</span> <span class="p">[</span><span class="n">_checkButton</span><span class="p">.</span><span class="n">titleLabel</span><span class="p">.</span><span class="n">text</span> <span class="n">isEqual</span><span class="o">:</span> <span class="err">@</span><span class="s">&quot;☓&quot;</span><span class="p">]</span> <span class="o">?</span> <span class="err">@</span><span class="s">&quot;◯&quot;</span> <span class="o">:</span> <span class="err">@</span><span class="s">&quot;☓&quot;</span><span class="p">;</span>
-    <span class="err">#</span><span class="n">NSUserDefauls</span><span class="err">で</span><span class="n">check</span><span class="err">を</span><span class="n">index</span><span class="err">をキーとしてセット</span>
-    <span class="p">[</span><span class="n">checkDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="n">check</span> <span class="n">forKey</span><span class="o">:</span><span class="n">index</span><span class="p">];</span>
-    <span class="err">#ボタン名に</span><span class="n">check</span><span class="err">をセット</span>
-    <span class="p">[</span><span class="n">_checkButton</span> <span class="n">setTitle</span><span class="o">:</span><span class="n">check</span> <span class="n">forState</span><span class="o">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
-<span class="p">}</span>
-
-</td></tr></tbody></table></pre>
-    </section>
-  
-  </article>
 <div class="pagination">
-  <p>Page 1 of 9</p>
+  <p>Page 1 of 10</p>
 
   
     <div class="prev"><a href="/blog/page/2/">old pages</a></div>
@@ -158,6 +163,8 @@
     <aside>
       <h2>Recent Articles</h2>
   <ol>
+    
+      <li><a href="/blog/article/2014/03/19/ios-scrollview-size.html">【iOS】上にスクロールした時だけバーを表示する</a> <span>(14/03/19 19:20)</span></li>
     
       <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
     
@@ -176,8 +183,6 @@
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
     
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
-    
-      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
     
   </ol>
 
@@ -206,9 +211,9 @@
     
       <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
     
-      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (3)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (6)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
     
@@ -221,10 +226,10 @@
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(11)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (5)</li>
       
         <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
@@ -237,7 +242,7 @@
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">3</a> (4)</li>
+        <li><a href="#">3</a> (5)</li>
       
         <li><a href="#">1</a> (6)</li>
       

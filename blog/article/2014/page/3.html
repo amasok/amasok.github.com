@@ -22,47 +22,61 @@
     <main>
       <h2>Archive for
   
-    Mar 17 2014
+    2014
   
 </h2>
   
   <article class="blog-post">
-    <h1 class="title"><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a></h1>
-    <span>2014/03/17 23:32 tags:
-    <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
-  </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/03/17/ios-deleteCharactersInRange.html" data-text= "amasok's blog 【Objective-C】文字列内に特定の文字列があったら削除する" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/03/17/ios-deleteCharactersInRange.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 【Objective-C】文字列内に特定の文字列があったら削除する" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+    <h1 class="title"><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a></h1>
+    <span>2014/01/02 21:28 tags:</span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/02/aspiration2014.html" data-text= "amasok's blog 2014年抱負" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/02/aspiration2014.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 2014年抱負" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>HTMLソースから特定のデータを削除する</p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div></td><td class="code">  <span class="c1">//
-</span>  <span class="c1">// 引数htmlSourceはHTMLソース
-</span>  <span class="c1">//
-</span><span class="o">-</span> <span class="p">(</span><span class="n">NSMutableString</span> <span class="o">*</span><span class="p">)</span><span class="n">delete</span><span class="o">:</span><span class="p">(</span><span class="n">NSMutableString</span> <span class="o">*</span><span class="p">)</span><span class="n">htmlSource</span>
-<span class="p">{</span>
+    <p>明けましておめでとうございます。</p>
 
-    <span class="n">NSRange</span> <span class="n">searchStart</span> <span class="o">=</span> <span class="p">[</span><span class="n">htmlSource</span> <span class="n">rangeOfString</span><span class="o">:</span><span class="err">@</span><span class="s">&quot;search_start&quot;</span><span class="p">];</span>
-    <span class="n">NSRange</span> <span class="n">searchEnd</span> <span class="o">=</span> <span class="p">[</span><span class="n">htmlSource</span> <span class="n">rangeOfString</span><span class="o">:</span><span class="err">@</span><span class="s">&quot;serach_end&quot;</span><span class="p">];</span>
+<p>新年早々、風邪をひいて熱をだしてしまいました。<br>
+年末には実家に帰る直前に肩が痛くなって動けなくなったり、割と大変な目にあっております。  </p>
 
-    <span class="c1">//  searchStartとsearchEndが両方があった場合に処理する
-</span>    <span class="k">if</span> <span class="p">(</span><span class="n">searchSocialStart</span><span class="p">.</span><span class="n">location</span> <span class="o">!=</span> <span class="n">NSNotFound</span> <span class="o">&amp;&amp;</span>
-        <span class="n">searchSocialEnd</span><span class="p">.</span><span class="n">location</span> <span class="o">!=</span> <span class="n">NSNotFound</span><span class="p">)</span> <span class="p">{</span>
+<p>今も、熱はないものの喉が痛くて口内炎もあるし。。</p>
 
-        <span class="kt">int</span> <span class="n">deleteLocation</span> <span class="o">=</span> <span class="n">searchSocialStart</span><span class="p">.</span><span class="n">location</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="n">deleteLength</span> <span class="o">=</span> <span class="n">searchSocialEnd</span><span class="p">.</span><span class="n">location</span><span class="o">-</span><span class="n">searchSocialStart</span><span class="p">.</span><span class="n">location</span><span class="o">+</span><span class="n">searchSocialEnd</span><span class="p">.</span><span class="n">length</span><span class="p">;</span>
+<p>体調管理しっかりしたいですね。</p>
 
-        <span class="c1">//  deleteLocationは削除する位置
-</span>        <span class="c1">//  deleteLengthは削除する長さ
-</span>        <span class="p">[</span><span class="n">htmlSource</span> <span class="n">deleteCharactersInRange</span><span class="o">:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="n">deleteLocation</span><span class="p">,</span> <span class="n">deleteLength</span><span class="p">)];</span>
+<p>今年の抱負としていくつか目標を箇条書きしていこうと思います。
+まあ、完璧ではなくてもなるべく達成できるように目指して行きたいですね。</p>
 
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">htmlSource</span><span class="p">;</span>
-<span class="p">}</span>
-</td></tr></tbody></table></pre>
+<ul>
+<li>残業しない（自分の時間を作るため）</li>
+<li>料理する（お昼の弁当とか）</li>
+<li>英語に毎日触れる（本を読む、映画を見る、人と話す、等）</li>
+<li>海外に行く</li>
+<li>姿勢を直す（姿勢が悪いので）</li>
+<li>運動する(週１以上目標)</li>
+<li>何かしらサービスを作る</li>
+<li>新しい技術を学ぶ（会社関係なしに）</li>
+<li>ブログを週１以上のペースで書く（技術以外含む）</li>
+<li>本を年間２０冊読む(漫画以外、技術書含む)</li>
+<li>勉強会主催</li>
+<li><strong>記憶をなくさない</strong></li>
+<li>新しいバーの開拓</li>
+<li>一日睡眠6時間</li>
+<li>病気しない</li>
+<li>怪我しない</li>
+<li>怖がらないで人と話すようにする</li>
+</ul>
+
+<p>さて、いくつできるかな。<br>
+まあ、すでに達成不能なものもいくつかありますが、あくまで日々を律する目標ってことで。</p>
+
     </section>
   </article>
   
 <div class="pagination">
+  <p>Page 3 of 3</p>
+
+  
+  
+    <div class="next"><a href="/blog/article/2014/page/2.html">new pages</a></div>
+  
 
 
 </div>

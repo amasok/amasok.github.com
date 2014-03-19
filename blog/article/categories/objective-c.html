@@ -23,6 +23,58 @@
       <h2>Articles tagged 'Objective-C'</h2>
   
     <article class="blog-post" >
+    <h1 class="title"><a href="/blog/article/2014/03/19/ios-scrollview-size.html">【iOS】上にスクロールした時だけバーを表示する</a></h1>
+    <span>2014/03/19 19:20 tags:
+    <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
+  
+    <a href="/blog/article/categories/ios.html">iOS</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/03/19/ios-scrollview-size.html" data-text= "amasok's blog 【iOS】上にスクロールした時だけバーを表示する" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/03/19/ios-scrollview-size.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 【iOS】上にスクロールした時だけバーを表示する" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>1.上にスクロールした時だけバーを表示する<br>
+2.下にスクロールした際はバーを非表示にする<br>
+3.一番下までスクロールした際のバウンス時はバーを非表示にする  </p>
+<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div><div class="lineno">30</div><div class="lineno">31</div><div class="lineno">32</div><div class="lineno">33</div></td><td class="code">
+<span class="c1">//scrollしている間呼び出され続ける
+</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">scrollViewDidScroll</span><span class="o">:</span><span class="p">(</span><span class="n">UIScrollView</span> <span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+<span class="p">{</span>
+    <span class="c1">//scrollした位置を取得する
+</span>    <span class="n">CGPoint</span> <span class="n">currentPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">scrollView</span> <span class="n">contentOffset</span><span class="p">];</span>
+
+    <span class="c1">//上にスクロールした場合にバー(_tabBar)を表示する
+</span>    <span class="n">_tabBar</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">scrollBeginingPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">currentPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">?</span> <span class="n">YES</span> <span class="o">:</span> <span class="n">NO</span><span class="p">;</span>
+
+
+    <span class="c1">//バウンスした際にhiddenが解除されてしまうので、
+</span>    <span class="c1">//scrollViewの一番下までスクロールした際にバーを削除する
+</span>    <span class="c1">//scrollView.bounds.size.height=画面サイズ
+</span>    <span class="c1">//scrollView.contentOffset.y=スクロールした位置
+</span>
+    <span class="kt">int</span> <span class="n">viewSize</span> <span class="o">=</span> <span class="n">scrollView</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">+</span> <span class="n">scrollView</span><span class="p">.</span><span class="n">contentOffset</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="c1">//scrollView.contentSize.height=scrollView全体のサイズ
+</span>    <span class="kt">int</span> <span class="n">contentSize</span> <span class="o">=</span> <span class="n">scrollView</span><span class="p">.</span><span class="n">contentSize</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">viewSize</span> <span class="o">&gt;=</span> <span class="n">contentSize</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_tabBar</span><span class="p">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="n">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">//scrollを開始した時点で一度だけ呼ばれる
+</span><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">scrollViewWillBeginDragging</span><span class="o">:</span><span class="p">(</span><span class="n">UIScrollView</span> <span class="o">*</span><span class="p">)</span><span class="n">scrollView</span>
+<span class="p">{</span>
+    <span class="c1">//scrollを開始した値を取得する
+</span>    <span class="n">scrollBeginingPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">scrollView</span> <span class="n">contentOffset</span><span class="p">];</span>
+<span class="p">}</span>
+
+</td></tr></tbody></table></pre>
+<p>これでできた。</p>
+
+    </section>
+    </article>
+  
+    <article class="blog-post" >
     <h1 class="title"><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a></h1>
     <span>2014/03/18 05:26 tags:
     <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
@@ -180,78 +232,13 @@
     </section>
     </article>
   
-    <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a></h1>
-    <span>2014/01/12 23:25 tags:
-    <a href="/blog/article/categories/ios.html">iOS</a>,
-  
-    <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
-  </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/12/ios1.html" data-text= "amasok's blog Objective-Cのクラスとかメソッドについて" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/12/ios1.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog Objective-Cのクラスとかメソッドについて" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-<section class="text">
-    <p>最近、ちょっとずつiOSアプリ開発のお勉強をしているので、それのメモ</p>
-
-<p>xcodeの使い方がまずよくわかってない。</p>
-
-<p>とりあえず、プロジェクトから始める。</p>
-
-<p>iOS &gt; Application &gt; Single View Application</p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div></td><td class="code">AppDelegate.h
-AppDelegate.m     
-Main.storyboard   <span class="c">#見た目をこれで作る</span>
-ViewController.h  <span class="c">#ViewControllerのヘッダファイル</span>
-ViewController.m  <span class="c">#基本的にプログラムを書くのはこのファイル</span>
-</td></tr></tbody></table></pre>
-<p>ViewController.mの中身を見てみる。</p>
-
-<p><em>ViewController.m</em></p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div></td><td class="code"><span class="cp">#import &quot;ViewController.h&quot;
-</span>
-<span class="err">@</span><span class="n">interface</span> <span class="n">ViewController</span> <span class="p">()</span>
-
-<span class="err">@</span><span class="n">end</span>
-
-<span class="err">@</span><span class="n">implementation</span> <span class="n">ViewController</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
-    <span class="c1">// Do any additional setup after loading the view, typically from a nib.
-</span><span class="p">}</span>
-
-<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didReceiveMemoryWarning</span>
-<span class="p">{</span>
-    <span class="p">[</span><span class="n">super</span> <span class="n">didReceiveMemoryWarning</span><span class="p">];</span>
-    <span class="c1">// Dispose of any resources that can be recreated.
-</span><span class="p">}</span>
-
-<span class="err">@</span><span class="n">end</span>
-</td></tr></tbody></table></pre>
-<h2 id="toc_0">objective-cのクラス</h2>
-
-<p>7行目にクラスのはじまりが書かれている。</p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div></td><td class="code"><span class="err">@</span><span class="n">implementation</span> <span class="err">クラス名</span>
-
-<span class="c1">// ここにメソッドを実装していく
-</span>
-<span class="err">@</span><span class="n">end</span>
-</td></tr></tbody></table></pre>
-<h2 id="toc_1">objective-cのメソッド</h2>
-
-<p>9行目や15行目にメソッドが書かれている。</p>
-<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code"><span class="o">-</span> <span class="p">(</span><span class="err">戻り値の型</span><span class="p">)</span><span class="err">メソッド名</span>
-<span class="p">{</span>
-  <span class="c1">//ここにコードを書いて行く
-</span><span class="p">}</span>
-</td></tr></tbody></table></pre>
-<p>どのタイミングでどのメソッドが呼ばれるかは、またいつか書きたいと思ってる。
-UIViewController ライフサイクルは大事。</p>
-
-    </section>
-    </article>
-  
 <div class="pagination">
+  <p>Page 1 of 2</p>
+
+  
+    <div class="prev"><a href="/blog/article/categories/objective-c/page/2.html">old pages</a></div>
+  
+  
 
 
 </div>
@@ -261,6 +248,8 @@ UIViewController ライフサイクルは大事。</p>
     <aside>
       <h2>Recent Articles</h2>
   <ol>
+    
+      <li><a href="/blog/article/2014/03/19/ios-scrollview-size.html">【iOS】上にスクロールした時だけバーを表示する</a> <span>(14/03/19 19:20)</span></li>
     
       <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
     
@@ -279,8 +268,6 @@ UIViewController ライフサイクルは大事。</p>
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
     
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
-    
-      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
     
   </ol>
 
@@ -309,9 +296,9 @@ UIViewController ライフサイクルは大事。</p>
     
       <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
     
-      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (3)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (6)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
     
@@ -324,10 +311,10 @@ UIViewController ライフサイクルは大事。</p>
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(11)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (5)</li>
       
         <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
@@ -340,7 +327,7 @@ UIViewController ライフサイクルは大事。</p>
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">3</a> (4)</li>
+        <li><a href="#">3</a> (5)</li>
       
         <li><a href="#">1</a> (6)</li>
       
