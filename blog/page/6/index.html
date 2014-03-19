@@ -21,328 +21,193 @@
   <div class="wrapper">
     <main>
         <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/27/bundle-init.html">bundlerによるgemの管理</a></h1>
-    <span>2013/11/27 00:18 tags:
-    <a href="/blog/article/categories/bundle.html">bundle</a>,
-  
+    <h1 class="title"><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a></h1>
+    <span>2013/12/03 23:36 tags:
     <a href="/blog/article/categories/middleman.html">middleman</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/27/bundle-init.html" data-text= "amasok's blog bundlerによるgemの管理" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/27/bundle-init.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog bundlerによるgemの管理" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/03/middleman-config.html" data-text= "amasok's blog middlemanのconfig.rb" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/03/middleman-config.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog middlemanのconfig.rb" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>昨日書いたmiddlemanの導入の記事を見た友人から、</p>
+    <p>さて、今回はこのブログの現時点のconfig.rbを大公開
+ほとんど他のところのコピペだけど。。</p>
 
-<p>「gemをbundleで管理してないの？」<br>
-という話をされ、<br>
-「だってわざわざ&quot;bundle exec&quot;とかつけるのめんどくさいじゃんヾ(・д・｀ )」</p>
+<p>後、githubにもあがってるからわざわざ書く必要もないけど、一応備忘録的に。</p>
 
-<p>と返したのですが、せっかくブログから生まれた話だし、やってみるかー。<br>
-ということで、やってみました。  </p>
+<p><em>config.rb</em></p>
+<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div><div class="lineno">30</div><div class="lineno">31</div><div class="lineno">32</div><div class="lineno">33</div><div class="lineno">34</div><div class="lineno">35</div><div class="lineno">36</div><div class="lineno">37</div><div class="lineno">38</div><div class="lineno">39</div><div class="lineno">40</div><div class="lineno">41</div><div class="lineno">42</div><div class="lineno">43</div><div class="lineno">44</div><div class="lineno">45</div><div class="lineno">46</div><div class="lineno">47</div><div class="lineno">48</div><div class="lineno">49</div><div class="lineno">50</div><div class="lineno">51</div><div class="lineno">52</div><div class="lineno">53</div><div class="lineno">54</div><div class="lineno">55</div><div class="lineno">56</div><div class="lineno">57</div><div class="lineno">58</div><div class="lineno">59</div><div class="lineno">60</div><div class="lineno">61</div><div class="lineno">62</div><div class="lineno">63</div><div class="lineno">64</div><div class="lineno">65</div></td><td class="code">
+<span class="c1">###</span>
+<span class="c1"># Blog settings</span>
+<span class="c1">###</span>
 
-<h2 id="toc_0">対象者</h2>
+ <span class="no">Time</span><span class="nf">.zone</span> <span class="o">=</span> <span class="s2">&quot;Tokyo&quot;</span>
 
-<ul>
-<li>コマンドラインに慣れてる</li>
-<li>rubyをPC（Mac）にインストールできる</li>
-<li>gemで何かしらをインストールしたことある</li>
-<li>bundle installコマンドをわけわからずでも打ったことがある</li>
-</ul>
+<span class="n">activate</span> <span class="ss">:blog</span> <span class="k">do</span> <span class="o">|</span><span class="n">blog</span><span class="o">|</span>
+  <span class="n">blog</span><span class="nf">.prefix</span> <span class="o">=</span> <span class="s2">&quot;blog/article&quot;</span>
+  <span class="n">blog</span><span class="nf">.default_extension</span> <span class="o">=</span> <span class="s2">&quot;.md&quot;</span>
+  <span class="n">blog</span><span class="nf">.tag_template</span> <span class="o">=</span> <span class="s2">&quot;blog/tag.html&quot;</span>
+  <span class="n">blog</span><span class="nf">.taglink</span> <span class="o">=</span> <span class="s2">&quot;categories/:tag.html&quot;</span>
+  <span class="n">blog</span><span class="nf">.calendar_template</span> <span class="o">=</span> <span class="s2">&quot;blog/calendar.html&quot;</span>
+  <span class="n">blog</span><span class="nf">.paginate</span> <span class="o">=</span> <span class="kp">true</span>
+  <span class="n">blog</span><span class="nf">.per_page</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="n">blog</span><span class="nf">.page_link</span> <span class="o">=</span> <span class="s2">&quot;page/:num&quot;</span>
+<span class="k">end</span>
 
-<h2 id="toc_1">実施環境</h2>
+<span class="n">page</span> <span class="s2">&quot;blog/feed.xml&quot;</span><span class="p">,</span> <span class="ss">:layout</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+<span class="n">page</span> <span class="s2">&quot;blog/article/*&quot;</span><span class="p">,</span> <span class="ss">:layout</span> <span class="o">=&gt;</span> <span class="s2">&quot;layouts/article&quot;</span>
 
-<ul>
-<li>mac(Mountain Lion)</li>
-<li>ruby(2.0.0p247)</li>
-</ul>
+<span class="c1">###</span>
+<span class="c1"># markdown settings</span>
+<span class="c1">###</span>
 
-<h2 id="toc_2">bundlerとは</h2>
+<span class="n">activate</span> <span class="ss">:syntax</span><span class="p">,</span> <span class="ss">:line_numbers</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="n">set</span> <span class="ss">:markdown</span><span class="p">,</span> <span class="ss">:tables</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:autolink</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:gh_blockcode</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>  <span class="p">\</span>
+    <span class="ss">:fenced_code_blocks</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:with_toc_data</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:smartypants</span> <span class="o">=&gt;</span> <span class="kp">true</span>
 
-<p>完全に憶測で書くので間違ってたらしれっと直すかもですが。。</p>
+<span class="n">set</span> <span class="ss">:markdown_engine</span><span class="p">,</span> <span class="ss">:redcarpet</span>
 
-<p>bundleとはgemをPCに依存せずプロジェクト毎に管理できるツールです。。</p>
 
-<p>例えば、あるrailsプロジェクトがあったとして、一つは4.0系一つは3.2系を使っていたとします。<br>
-リポジトリ管理されており、同じPC内で違うバージョンのプロジェクトをどう扱えばいいか？</p>
 
-<p>そんな時にbundleが便利なようです（想像で書いてます）</p>
+<span class="c1">###</span>
+<span class="c1"># delecty settings</span>
+<span class="c1">###</span>
 
-<p>あとは、共同開発しててAさんとBさんで入ってるgemのバージョンが違うとかかな。<br>
-こっちのほうがよくありそう。  </p>
+<span class="n">set</span> <span class="ss">:css_dir</span><span class="p">,</span> <span class="s1">&#39;stylesheets&#39;</span>
 
-<h2 id="toc_3">bundlerのインストール</h2>
+<span class="n">set</span> <span class="ss">:js_dir</span><span class="p">,</span> <span class="s1">&#39;javascripts&#39;</span>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ gem install bundler
+<span class="n">set</span> <span class="ss">:images_dir</span><span class="p">,</span> <span class="s1">&#39;images&#39;</span>
+
+<span class="n">activate</span> <span class="ss">:livereload</span>
+
+<span class="c1">###</span>
+<span class="c1"># build settings</span>
+<span class="c1">###</span>
+
+<span class="n">configure</span> <span class="ss">:build</span> <span class="k">do</span>
+   <span class="n">activate</span> <span class="ss">:minify_css</span>
+   <span class="n">activate</span> <span class="ss">:minify_javascript</span>
+<span class="k">end</span>
+
+
+<span class="c1">###</span>
+<span class="c1"># deploy settings</span>
+<span class="c1">###</span>
+
+<span class="n">activate</span> <span class="ss">:deploy</span> <span class="k">do</span> <span class="o">|</span><span class="n">deploy</span><span class="o">|</span>
+    <span class="n">deploy</span><span class="nf">.method</span> <span class="o">=</span> <span class="ss">:git</span>
+    <span class="n">deploy</span><span class="nf">.remote</span> <span class="o">=</span> <span class="s2">&quot;deploy&quot;</span>
+    <span class="n">deploy</span><span class="nf">.branch</span> <span class="o">=</span> <span class="s2">&quot;master&quot;</span>
+<span class="k">end</span>
+
 </td></tr></tbody></table></pre>
-<p>これだけでOK</p>
+<p>言うほどたいした設定してない。
+今日はとりあえず載っけただけにしとく。</p>
 
-<p>さすがに、gemを管理するのにbundlerは入れないと動かないです。</p>
-
-<h2 id="toc_4">bundle initしてみる</h2>
-
-<p>プロジェクトのディレクトリを作って、とりあえずbundle initしてみましょう。<br>
-<em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code">$ mkdir project
-$ cd project
-$ bundle init
-Writing new Gemfile to /Users/amasoktest3/Gemfile
-</td></tr></tbody></table></pre>
-<p>するとGemfileファイルが出来上がると思います。</p>
-
-<p><em>Gemfile</em></p>
-<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code"><span class="c1"># A sample Gemfile</span>
-<span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
-
-<span class="c1"># gem &quot;rails&quot;</span>
-</td></tr></tbody></table></pre>
-<p>今はせっかくmiddlemanをやってるので、middlemanをインストールしてみましょう。</p>
-
-<p><em>Gemfile</em></p>
-<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code"><span class="c1"># A sample Gemfile</span>
-<span class="n">source</span> <span class="s2">&quot;https://rubygems.org&quot;</span>
-
-<span class="n">gem</span> <span class="s2">&quot;middleman&quot;</span>
-</td></tr></tbody></table></pre>
-<p>上記のように変更して、</p>
-
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ bundle install --path vendor/boudle
-</td></tr></tbody></table></pre>
-<p>上記コマンドでmiddlemanがインストールされます。</p>
-
-<p>また、middlemanに必要な関連ファイルもすべてインストールされます。<br>
-それらはすべて、vendor/bundle配下に格納されています。<br>
-しかし、vendor/bundle配下はパスが通っていません。どう使うか？<br>
-（パスを通すって何？って人は別で調べてください。）</p>
-
-<p>そこで、一番はじめに書いた&quot;bundle exec&quot;が登場します。</p>
-
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ bundle exec middleman init .
-</td></tr></tbody></table></pre>
-<p>&ldquo;init .&quot;のドットはカレントディレクトリをさします。
-今回でいうところの&quot;project&quot;です。</p>
-
-<p>後はmiddlemanコマンドの前に&quot;bundle exec&quot;を全部つければ
-<a href="/blog/article/2013/11/25/middleman-init2.html">middlemanの導入</a>と同じにすればいいです。</p>
-
-<p>また、rubyをrbenvでインストールしている方は&quot;binstubs&quot;てのを使って煩わしい&quot;bundle exec&quot;を省略できちゃうみたいです。</p>
-
-<p>試してみてうまくいきそうなら、また別記事で書きます。</p>
+<p>今後、この記事をちまちま更新するようにする。</p>
 
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/26/yakiniku-anan-gotanda.html">安い焼肉</a></h1>
-    <span>2013/11/26 00:00 tags:
-    <a href="/blog/article/categories/.html">焼肉</a>,
+    <h1 class="title"><a href="/blog/article/2013/12/02/rbenv-20.html">The Ruby openssl extension was not compiled. Missing the OpenSSL lib?</a></h1>
+    <span>2013/12/02 23:48 tags:
+    <a href="/blog/article/categories/ruby.html">ruby</a>,
   
-    <a href="/blog/article/categories/.html">五反田</a>,
+    <a href="/blog/article/categories/rbenv.html">rbenv</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/26/yakiniku-anan-gotanda.html" data-text= "amasok's blog 安い焼肉" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/26/yakiniku-anan-gotanda.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 安い焼肉" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/02/rbenv-20.html" data-text= "amasok's blog The Ruby openssl extension was not compiled. Missing the OpenSSL lib?" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/02/rbenv-20.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog The Ruby openssl extension was not compiled. Missing the OpenSSL lib?" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>せっかくなので、食べログの記事でも書いてみようかと思います。<br>
-昨日の夜に友人と焼肉を食べにいきました。</p>
+    <p>2.0以上のrubyをrbenvでインストールしようとすると出るっぽいエラーの対処</p>
 
-<p>技術ブログ以外も書いていけたらと思います。</p>
+<p>The Ruby openssl extension was not compiled. Missing the OpenSSL lib?</p>
 
-<h4 id="toc_0">場所</h4>
+<p>↑CentOS6.4こrubyをrbenv使ってインストールしようとしたらこのようなエラーが出ました。</p>
 
-<div class="tabelog-info-box">
-<p><a href="http://tabelog.com/tokyo/A1316/A131603/13051901/">七輪焼肉 安安 五反田西口店</a> （<a href="http://tabelog.com/rstLst/yakiniku/">焼肉</a> / <a href="http://tabelog.com/tokyo/A1316/A131603/R4018/rstLst/">五反田駅</a>、<a href="http://tabelog.com/tokyo/A1316/A131603/R1721/rstLst/">大崎広小路駅</a>、<a href="http://tabelog.com/tokyo/A1317/A131710/R8869/rstLst/">不動前駅</a>）
-<br />夜総合点<span style="color: #FF8C00;">★★★★</span><span style="color: #A9A9A9;">☆</span> 4.0
-</p>
-</div>
+<h2 id="toc_0">エラー文</h2>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div></td><td class="code">$ rbenv install 2.0.0-p353
 
-<p>僕が知る中で一位を争う安い焼肉店です。  </p>
+Downloading ruby-2.0.0-p353.tar.gz...
+-&gt; http://dqw8nmjcqpjn7.cloudfront.net/78282433fb697dd3613613ff55d734c1
+Installing ruby-2.0.0-p353...
 
-<h4 id="toc_1">味</h4>
+BUILD FAILED
 
-<p>肉は普通でした。（安いので十分）<br>
-安い焼肉屋は肉がボロボロってところもありますが、ここはそんなことなかったです。</p>
+Inspect or clean up the working tree at /tmp/ruby-build.20131201141930.25356
+Results logged to /tmp/ruby-build.20131201141930.25356.log
 
-<h4 id="toc_2">雰囲気</h4>
+Last 10 log lines:
+installing default gems:      /usr/local/rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0  \
+(build_info, cache, doc, gems, specifications)
+                              bigdecimal 1.2.0
+                              io-console 0.4.2
+                              json 1.7.7
+                              minitest 4.3.2
+                              psych 2.0.0
+                              rake 0.9.6
+                              rdoc 4.0.0
+                              test-unit 2.0.0.0
+The Ruby openssl extension was not compiled. Missing the OpenSSL lib?
 
-<p>あらゆる繁華街に存在する安安ですが、この五反田西口店のよかったところは煙たくなかったことですね。<br>
-もちろんたまたまかもしれませんが。。。<br>
-他の店舗でいくつか安安にいったことあるのですが、ほぼすべて煙たかったです。<br>
-日曜の夜だったので、人が少なかったからかもしれません。<br>
-<a href="#" rel="tabelog 4e6627c420f5c807658d3a5b98b46af1360a04e1"></a></p>
+</td></tr></tbody></table></pre>
+<h2 id="toc_1">対処</h2>
+
+<p>OpenSSLのライブラリですがせっかくなのでCenctOSとUbuntu両方乗っけときます。</p>
+
+<p><em>CentOS</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ sudo yum -y install openssl-devel
+</td></tr></tbody></table></pre>
+<p><em>Ubuntu</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ sudo apt-get -y install libssl-dev
+</td></tr></tbody></table></pre>
+<p>これでエラー解消です。
+ちょこっと焦りました。</p>
 
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/25/middleman-init2.html">middlemanの導入</a></h1>
-    <span>2013/11/25 12:47 tags:
-    <a href="/blog/article/categories/middleman.html">middleman</a>,
+    <h1 class="title"><a href="/blog/article/2013/12/01/bouldering.html">久々のボルダリング</a></h1>
+    <span>2013/12/01 23:20 tags:
+    <a href="/blog/article/categories/.html">スポーツ</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/25/middleman-init2.html" data-text= "amasok's blog middlemanの導入" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/25/middleman-init2.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog middlemanの導入" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/01/bouldering.html" data-text= "amasok's blog 久々のボルダリング" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/01/bouldering.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 久々のボルダリング" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <h2 id="toc_0">前提知識</h2>
+    <p>昨日ボルダリング行ってきた。</p>
 
-<ul>
-<li>簡単なコマンドライン操作ができる</li>
-<li>rubyを自分のPCにインストールするこができる</li>
-<li>gem,bundle installができる</li>
-</ul>
+<p>約半年ぶりぐらいだろうか。
+友人に誘われて行ったのだが、２〜３回登っただけでもう握力がなくなってしまった。
+一方友人は毎週登っているので、余裕しゃくしゃくだった。</p>
 
-<h2 id="toc_1">実行環境</h2>
+<p>そして、バリバリに登っている人に思わず(　ﾟдﾟ)ﾎﾟｶｰﾝとしてしまった。</p>
 
-<ul>
-<li>mac(Mountain Lion)</li>
-<li>ruby(2.0.0p247)</li>
-<li>middleman(3.2.0)</li>
-</ul>
+<h2 id="toc_0">場所</h2>
 
-<p>※windowsだとあんまりうまく動かないという話をよく目にします。</p>
+<p><a href="http://pump-climbing.com/gym/akiba/">B-PUMP TOKYO AKIHABARA</a></p>
 
-<h2 id="toc_2">middlemanのインストール</h2>
+<p>秋葉原から結構歩く。
+けど結構広い。</p>
 
-<p>gemからインストールするだけです。</p>
+<p><img alt="ボルダリング" src="/images/b-pump.jpg" /></p>
 
-<p><em>terminal</em></p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="nv">$gem</span> install middleman
-</td></tr></tbody></table></pre>
-<h2 id="toc_3">middlemanのコマンド</h2>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div></td><td class="code">middleman build [options]           # 最終成果物を生成する
-middleman console [options]         # irbが立ち上がり、rubyを直書きして実行できたり
-middleman extension NAME [options]  # middlemanのプラグイン？をつくる時のやつ？
-middleman init NAME [options]       # プロジェクトを生成する
-middleman server [options]          # 開発時にプレビューする用のサーバをたてる
-middleman upgrade                   # bundle installされたものをアップグレードする
-middleman version                   # バージョンを表示
-</td></tr></tbody></table></pre>
-<h2 id="toc_4">middleman init の実行</h2>
+<p>この写真は最近出来たらしい三階の写真です。  </p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div><div class="lineno">30</div><div class="lineno">31</div></td><td class="code">&gt; middleman init testProject
+<p>久々のボルダリングはかなり楽しかったです。<br>
+でも、たった数回登っただけでもうまともに登れなくなるのが悔しい。  </p>
 
-      create  testProject/Gemfile
-         run  bundle install from &quot;.&quot;
-Fetching gem metadata from http://rubygems.org/........
-Fetching gem metadata from http://rubygems.org/..
-Resolving dependencies...
-Using i18n (0.6.5)
-Using multi_json (1.8.2)
-Using activesupport (3.2.15)
-       ・
-       ・
-       ・
-       ・bundle install の実行
-       ・
-       ・
-       ・
-Your bundle is complete!
-Use `bundle show [gemname]` to see where a bundled gem is installed.
-      create  testProject/.gitignore
-      create  testProject/config.rb
-      create  testProject/source/index.html.erb
-      create  testProject/source/layouts/layout.erb
-      create  testProject/source/stylesheets
-      create  testProject/source/stylesheets/all.css
-      create  testProject/source/stylesheets/normalize.css
-      create  testProject/source/javascripts
-      create  testProject/source/javascripts/all.js
-      create  testProject/source/images
-      create  testProject/source/images/background.png
-      create  testProject/source/images/middleman.png
-</td></tr></tbody></table></pre>
-<p>bundle installが実行された後middlemanに必要なプロジェクトが生成されます。</p>
+<p>あー、デスクワークしてる場合じゃねえなーって思い知らされる。</p>
 
-<h3 id="toc_5">よく触るファイルとディレクトリ</h3>
+<p>筋肉痛を恐れていたのですが、思ったほど筋肉痛にならなかったです。<br>
+これで明日筋肉痛になったら、僕の肉体年齢はいったい。。。  </p>
 
-<ul>
-<li>config.rb</li>
-<li>sourceディレクトリ配下全部</li>
-</ul>
-
-<p>config.rbで設定を行った後はsourceの中をごりごりいじっていきます。</p>
-
-<h2 id="toc_6">middleman server の実行</h2>
-
-<p>上記のようにプロジェクトを作ったら、まずは開発環境でプロジェクトを実行してみる。</p>
-
-<p><em>terminal</em></p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="gp">$ </span>middleman server  <span class="c">#middleman s でも可</span>
-</td></tr></tbody></table></pre>
-<p><a href="http://localhost:4567/">http://localhost:4567/</a></p>
-
-<p>middleman serverが立ち上がっている状態で上記URLを確認してみましょう。</p>
-
-<p><img alt="画像" src="/images/middleman.png" /></p>
-
-<p>上記のように表示されたらOKです。</p>
-
-<h2 id="toc_7">middleman build の実行</h2>
-
-<p>webサイトが完成したらこのコマンドで静的ファイルを生成します。</p>
-
-<p><em>terminal</em></p>
-<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div></td><td class="code"><span class="gp">$ </span>middleman build  <span class="c">#middleman b でも可</span>
-
-WARN: Unresolved specs during Gem::Specification.reset:
-      activesupport <span class="o">(</span>~&gt; 3.2.6<span class="o">)</span>
-      listen <span class="o">(</span>~&gt; 1.1<span class="o">)</span>
-WARN: Clearing out unresolved specs.
-Please report a bug <span class="k">if </span>this causes problems.
-      create  build/images/background.png
-      create  build/images/middleman.png
-      create  build/javascripts/all.js
-      create  build/stylesheets/normalize.css
-      create  build/stylesheets/all.css
-      create  build/index.html
-</td></tr></tbody></table></pre>
-<p>なんかいろいろ作られてます。(WARNはほっといてください。めんどいだけです)
-このbuild配下を全部サーバにあげればwebサイトの完成。</p>
-
-<p>こういう構造になってます。</p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div></td><td class="code">.
-├── Gemfile
-├── Gemfile.lock
-├── build #ここのファイルをサーバにUP
-│   ├── images
-│   │   ├── background.png
-│   │   └── middleman.png
-│   ├── index.html
-│   ├── javascripts
-│   │   └── all.js
-│   └── stylesheets
-│       ├── all.css
-│       └── normalize.css
-├── config.rb
-└── source
-    ├── images
-    │   ├── background.png
-    │   └── middleman.png
-    ├── index.html.erb
-    ├── javascripts
-    │   └── all.js
-    ├── layouts
-    │   └── layout.erb
-    └── stylesheets
-        ├── all.css
-        └── normalize.css
-</td></tr></tbody></table></pre>
-<h2 id="toc_8">感想</h2>
-
-<p>ほんとrailsっぽいって思った。（あんまりrails知らないけど）</p>
-
-<p>基本的な仕組みはそんなに難しくないし、練習用にどんどん書いていこうと思う。<br>
-ちなみに、今回この記事を書く上で一番はまった点は、このブログの記事がmiddlemanを利用した初めての画像投稿となった点でした。</p>
-
-<p>markdownでの画像の投稿の仕方がわからない。<br>
-通常道理に記述したらどのようなパスになるのかがわからない。<br>
-等々まだまだ初心者丸出しですが、まがりなりにもブログを書くところまで至ったので、それができるようになるところまでは今後も書いていきたいと思います。</p>
+<p>今日は一日ぼーっとPC触りながら過ごしました。</p>
 
     </section>
   
   </article>
 <div class="pagination">
-  <p>Page 6 of 7</p>
+  <p>Page 6 of 9</p>
 
   
     <div class="prev"><a href="/blog/page/7/">old pages</a></div>
@@ -360,6 +225,18 @@ Please report a bug <span class="k">if </span>this causes problems.
       <h2>Recent Articles</h2>
   <ol>
     
+      <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/uicolor16.html">【Objective-C】iOSで色指定(16進数)を簡単にする方法</a> <span>(14/03/18 05:02)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/ios-userdefault.html">【Objective-C】カスタムセル内の状態を永続化(保存)させたい</a> <span>(14/03/18 00:18)</span></li>
+    
+      <li><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a> <span>(14/03/17 23:32)</span></li>
+    
+      <li><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a> <span>(14/01/30 21:12)</span></li>
+    
+      <li><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a> <span>(14/01/29 21:16)</span></li>
+    
       <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
     
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
@@ -367,18 +244,6 @@ Please report a bug <span class="k">if </span>this causes problems.
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
     
       <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
-    
-      <li><a href="/blog/article/2013/12/31/generalization.html">2013年総括</a> <span>(13/12/31 20:54)</span></li>
-    
-      <li><a href="/blog/article/2013/12/19/singapore-4.html">シンガポール旅行④</a> <span>(13/12/19 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/15/singapore-3.html">シンガポール旅行③</a> <span>(13/12/15 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/10/singapore-2.html">シンガポール旅行②</a> <span>(13/12/10 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/08/singapore-1.html">シンガポール旅行①</a> <span>(13/12/08 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a> <span>(13/12/03 23:36)</span></li>
     
   </ol>
 
@@ -409,19 +274,25 @@ Please report a bug <span class="k">if </span>this causes problems.
     
       <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (1)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/knife-solo.html">knife-solo</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/zsh.html">zsh</a> (1)</a></li>
     
   </ol>
 
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(4)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/01.html">1</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
         <li><a href="#">12</a> (8)</li>
       
@@ -432,7 +303,9 @@ Please report a bug <span class="k">if </span>this causes problems.
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">1</a> (4)</li>
+        <li><a href="#">3</a> (4)</li>
+      
+        <li><a href="#">1</a> (6)</li>
       
         <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
       

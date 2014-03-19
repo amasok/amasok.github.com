@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <title>amasok's blog  - oh_my_zshがすごい</title>
+    <link href="/stylesheets/normalize.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Finger+Paint" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/blog.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/syntaxhighlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    </head>
+  <body class="note" >
+    <header>
+  <h1><a href="/blog">amasok's blog</a></h1>
+</header>
+
+    <div class="wrapper">
+    <main>
+      <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a></h1>
+    <span>2014/01/30 21:12 tags:
+    <a href="/blog/article/categories/zsh.html">zsh</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/30/oh_my_zsh.html" data-text= "amasok's blog oh_my_zshがすごい" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/30/oh_my_zsh.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog oh_my_zshがすごい" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>職場のshellを最近zshにしたのだが、便利すぎたのでとうとう家でもzshに切り替えた話。</p>
+
+<p>なぜかちょっとだけはまったので、そのときのことをメモ</p>
+
+<p><a href="http://qiita.com/udzura/items/0d08d71d809bfd8c5981">http://qiita.com/udzura/items/0d08d71d809bfd8c5981</a></p>
+
+<p>基本的には上記URL通りやるだけ。
+何も変わらないです。</p>
+
+<h2 id="toc_0">前提条件</h2>
+
+<ul>
+<li>brewが入ってる<br></li>
+</ul>
+
+<h2 id="toc_1">方法</h2>
+
+<p><em>zshのインストール</em>  </p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">brew install zsh
+</td></tr></tbody></table></pre>
+<p><em>oh-my-zshのインストール</em></p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+</td></tr></tbody></table></pre>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh">https://github.com/robbyrussell/oh-my-zsh</a></p>
+
+<p>公式ページのsetupをうつだけ。</p>
+
+<p>zshに切り替えるのにパスワードを求められる。<br>
+ここでミスった。</p>
+
+<p>多分パスワードを間違えたんだと思う。</p>
+
+<p>本当なら新しいターミナルを立ち上げたらzshに切り替わってるはずが、bashのままだった。</p>
+
+<p>なのに、<em>.zshrc</em>を編集して再読み込みしようとしていた。</p>
+
+<p>その時のエラーがこれ。</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">~/.oh-my-zsh/oh-my-zsh.sh: line 13: syntax error near unexpected token <span class="sb">`</span><span class="o">(</span><span class="s1">&#39;
+</span></td></tr></tbody></table></pre>
+<p>で、同じようにはまっている人がgithubのissuesにいらっしゃった。</p>
+
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/issues/989">https://github.com/robbyrussell/oh-my-zsh/issues/989</a></p>
+
+<p>まあ、要はzshに切り替えてからじゃないとoh-my-zsh.shのシェルスクリプトは動かないよってことだ。</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">chsh -s /bin/zsh
+</td></tr></tbody></table></pre>
+<p>これで、再度パスワードを求められるので正しく入力してターミナルを再起動。</p>
+
+<p>そうすると、zshで立ち上がってくれるようになった。</p>
+
+<h2 id="toc_2">便利な点</h2>
+
+<p>これは、何が便利ってoh-my-zshのプラグインが便利</p>
+
+<p><em>.zshrc</em></p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="nv">plugins</span><span class="o">=(</span>git ruby osx bundler brew rails emoji-clock<span class="o">)</span>
+</td></tr></tbody></table></pre>
+<p>ここらへんのプラグインが便利だ。</p>
+
+<p>特にgitはすごい。</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">➜  <span class="nb">source</span>-amasok.github git:<span class="o">(</span>master<span class="o">)</span> ✗ git checkout slim
+Switched to branch <span class="s1">&#39;slim&#39;</span>
+➜  <span class="nb">source</span>-amasok.github git:<span class="o">(</span>slim<span class="o">)</span> ✗
+</td></tr></tbody></table></pre>
+<p>このように、自分が今なんのブランチで作業しているのかが一目でわかる。</p>
+
+<p>まじ、すげぇ。</p>
+
+    </section>
+      </article>
+      <div class="pagination">
+        
+          
+      <div class="next"><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a>
+    </div>
+    
+        
+          
+          <div class="prev"><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a></div>
+        
+    </div>
+    </main>
+    <aside>
+        <h2>Recent Articles</h2>
+  <ol>
+    
+      <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/uicolor16.html">【Objective-C】iOSで色指定(16進数)を簡単にする方法</a> <span>(14/03/18 05:02)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/ios-userdefault.html">【Objective-C】カスタムセル内の状態を永続化(保存)させたい</a> <span>(14/03/18 00:18)</span></li>
+    
+      <li><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a> <span>(14/03/17 23:32)</span></li>
+    
+      <li><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a> <span>(14/01/30 21:12)</span></li>
+    
+      <li><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a> <span>(14/01/29 21:16)</span></li>
+    
+      <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
+    
+      <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
+    
+  </ol>
+
+  <h2>Tags</h2>
+  <ol>
+    
+      <li><a href="/blog/article/categories/markdown.html">markdown</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/middleman.html">middleman</a> (6)</a></li>
+    
+      <li><a href="/blog/article/categories/test.html">test</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">焼肉</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">五反田</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/bundle.html">bundle</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/rbenv.html">rbenv</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/ruby.html">ruby</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">スポーツ</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">シンガポール</a> (4)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/knife-solo.html">knife-solo</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/zsh.html">zsh</a> (1)</a></li>
+    
+  </ol>
+
+  <h2>By Year</h2>
+  <ul>
+    
+        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
+      <ul>
+      
+        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
+      
+        <li><a href="#">12</a> (8)</li>
+      
+        <li><a href="#">11</a> (9)</li>
+      
+      </ul>
+    
+        <li><a href="/blog/article/2013.html">2013</a>(17)</li>
+      <ul>
+      
+        <li><a href="#">3</a> (4)</li>
+      
+        <li><a href="#">1</a> (6)</li>
+      
+        <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
+      
+        <li><a href="/blog/article/2013/11.html">11</a> (9)</li>
+      
+      </ul>
+    
+  </ul>
+
+    </aside>
+  </div>
+    <footer>
+  <p>&copy; Copyright 2013, amasok.</p>
+</footer>
+
+    <script src="/javascripts/tweet.js" type="text/javascript"></script>
+<script src="/javascripts/googleAnalytics.js" type="text/javascript"></script>
+<script src="http://b.st-hatena.com/js/bookmark_button.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -21,285 +21,248 @@
   <div class="wrapper">
     <main>
         <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/30/blog-month.html">【middleman】ブログのカレンダーで月単位の表示</a></h1>
-    <span>2013/11/30 12:20 tags:
-    <a href="/blog/article/categories/middleman.html">middleman</a>,
+    <h1 class="title"><a href="/blog/article/2013/12/15/singapore-3.html">シンガポール旅行③</a></h1>
+    <span>2013/12/15 00:00 tags:
+    <a href="/blog/article/categories/.html">シンガポール</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/30/blog-month.html" data-text= "amasok's blog 【middleman】ブログのカレンダーで月単位の表示" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/30/blog-month.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 【middleman】ブログのカレンダーで月単位の表示" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/15/singapore-3.html" data-text= "amasok's blog シンガポール旅行③" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/15/singapore-3.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog シンガポール旅行③" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>久々にブログの構造自体をちょっといじったのでメモ</p>
+    <h2 id="toc_0">マーライオン</h2>
 
-<p>middleman-blogではテンプレートで年単位のカレンダーを表示してくれます。<br>
-しかし、一般的には月単位でのカレンダーになると思うので、その変更点を書きます。</p>
+<p>世界三大がっかりスポットとか評されるマーライオンに到着。</p>
 
-<h2 id="toc_0">対象</h2>
+<p>しかし、個人的な感想として記すにまったくがっかりポイントはなかった。<br>
+何ががっかりなのかさっぱりわからない。</p>
 
-<ul>
-<li>middleman blogのテンプレートを生成した人</li>
-<li>月単位のカレンダーを表示させたい人</li>
-</ul>
+<p>大きい。とにかく大きい。</p>
 
-<h2 id="toc_1">方法</h2>
+<p><img alt="でっかいマーライオン" src="/images/malion.jpg" /></p>
 
-<p>カレンダー部分で年単位表示をさせる部分があると思います。</p>
+<p>写真を取ろうとして近くによったら、風でおもいっきりマーライオンの吐瀉物がふりかかってきてびしょぬれになった。</p>
 
-<p><em>source/layout.erb</em></p>
-<pre class="highlight erb"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div></td><td class="code"><span class="nt">&lt;h2&gt;</span>By Year<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;ol&gt;</span>
-  <span class="cp">&lt;%</span> <span class="n">blog</span><span class="nf">.articles.group_by</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="nf">.date.year</span> <span class="p">}</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">articles</span><span class="o">|</span> <span class="cp">%&gt;</span>
-    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="n">year</span><span class="p">,</span> <span class="n">blog_year_path</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="cp">%&gt;</span> (<span class="cp">&lt;%=</span> <span class="n">articles</span><span class="nf">.size</span> <span class="cp">%&gt;</span>)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
-<span class="nt">&lt;/ol&gt;</span>
-</td></tr></tbody></table></pre>
-<p>修正後</p>
-<pre class="highlight erb"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div></td><td class="code"><span class="nt">&lt;h2&gt;</span>By Year<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;ul&gt;</span>
-  <span class="cp">&lt;%</span> <span class="n">blog</span><span class="nf">.articles.group_by</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="nf">.date.year</span> <span class="p">}</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">articles_year</span> <span class="o">|</span> <span class="cp">%&gt;</span>
-      <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="n">year</span><span class="p">,</span> <span class="n">blog_year_path</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="cp">%&gt;</span>(<span class="cp">&lt;%=</span> <span class="n">articles_year</span><span class="nf">.size</span> <span class="cp">%&gt;</span>)<span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;ul&gt;</span>
-    <span class="cp">&lt;%</span> <span class="n">blog</span><span class="nf">.articles.group_by</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="nf">.date.month</span> <span class="p">}</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">month</span><span class="p">,</span> <span class="n">articles_month</span> <span class="o">|</span> <span class="cp">%&gt;</span>
-      <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="n">month</span><span class="p">,</span> <span class="n">blog_month_path</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span> <span class="cp">%&gt;</span> (<span class="cp">&lt;%=</span> <span class="n">articles_month</span><span class="nf">.size</span> <span class="cp">%&gt;</span>)<span class="nt">&lt;/li&gt;</span>
-    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
-    <span class="nt">&lt;/ul&gt;</span>
-  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
-<span class="nt">&lt;/ul&gt;</span>
-</td></tr></tbody></table></pre>
-<p>簡単な修正だったけど久々にいじれてよかった。</p>
+<p>マリーナベイサンズもばっちり見えるし、景色も最高だった。<br>
+皆こぞって写真をとっていた。</p>
 
-<h3 id="toc_2">参考</h3>
+<p>強いて言うなら近くの売店のアイスが高かった。
+カップのアイスが400円ぐらいした。</p>
 
-<p><a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_month_path-instance_method">http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_month_path-instance_method</a></p>
+<h2 id="toc_1">シンガポール河クルーズ</h2>
+
+<p>対岸にあるマリーナベイサンズ方面に渡るため、シンガポール河を往来している船を利用することにした。
+しかし、見てる限りだと対岸で下ろしてくれるのか不明だった。</p>
+
+<p>船のチケット売り場で対岸で下ろしてくれるのかを必死に聞いたのだが、</p>
+
+<p>「一周して最後に着くよ」（と言われている気がした）</p>
+
+<p>じゃあ、クルーズ料金丸ごとやっぱり払わないといけないのねってことで$20ほど払って乗船。</p>
+
+<p>船が出発したのだが、どういう経路をたどるのだろうと思っていると一直線に対岸へ。<br>
+そして大量におりて行く観光客（半分ぐらいおりた）。</p>
+
+<p>( ･`ω･´)ﾅﾝ…ﾀﾞﾄ!?</p>
+
+<p>そうこうしているうちに、残りはクルーズ料金を払った人らしく、シンガポール河を登り始めた。</p>
+
+<p>まあ、まあ僕らも観光なのでクルーズ楽しもうぜ(；´∀｀)</p>
+
+<p><img alt="クルーズ" src="/images/cruise.jpg" /></p>
+
+<p>ということで船を満喫させてもらった。<br>
+船に乗ること自体久々だったので割と楽しかった。</p>
+
+<p>40分ほどかけて一周し終えたのだが、マーライオンのところで僕ら以外の客が全員おりた。</p>
+
+<p>「えっ、僕たちも下ろされるってことないよね。でも、払った料金はクルーズ料金だし何か盛大な勘違いがあるのでは。。」</p>
+
+<p>等とドキドキしていたが、客は僕らだけだったがマリーナベイサンズの岸までしっかり送り届けてくれた。</p>
+
+<p>多分だけど、こういうことだと思う。</p>
+
+<p><strong>「クルーズ料金でクルージングした上でサービスでマリーナベイサンズのところまで送ってやるよ」</strong></p>
+
+<p>英語聞き取れなかったけど多分そうだと思う。英語聞き取れなかったけど。</p>
+
+<h2 id="toc_2">マリーナベイサンズにin</h2>
+
+<p><img alt="近くからみたベイサンズ" src="/images/bay2.jpg" /></p>
+
+<p>やっとの思いでマリーナベイサンズにinしてみる。<br>
+中に入ると、涼しくてとても快適だった。</p>
+
+<p>シンガポールについてからしばらくずーっと暑くて汗をかいてアイスまで食べていたので、ほっとしたのを覚えている。</p>
+
+<p>中は高級ショッピングモールとなっており、僕らのような小市民は入ることすらおこがましい気にさせられるような場所であったが、見ているだけで楽しかった。<br>
+建物内に川が流れており、しかも船で渡れるようになっていた（もう乗らなかったけど）</p>
+
+<p><img alt="川が流れてたよ" src="/images/bay1.jpg" /></p>
+
+<p>こんな空洞な作りをして天災が起こったら一発でつぶれるんじゃなかろうか。</p>
 
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/29/rbenv.html">rubyをrbenvで入れる</a></h1>
-    <span>2013/11/29 00:34 tags:
-    <a href="/blog/article/categories/rbenv.html">rbenv</a>,
-  
-    <a href="/blog/article/categories/ruby.html">ruby</a>,
+    <h1 class="title"><a href="/blog/article/2013/12/10/singapore-2.html">シンガポール旅行②</a></h1>
+    <span>2013/12/10 00:00 tags:
+    <a href="/blog/article/categories/.html">シンガポール</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/29/rbenv.html" data-text= "amasok's blog rubyをrbenvで入れる" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/29/rbenv.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog rubyをrbenvで入れる" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/10/singapore-2.html" data-text= "amasok's blog シンガポール旅行②" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/10/singapore-2.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog シンガポール旅行②" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>bundleをちゃんとするようになったら、ローカルがgemだらけなのが嫌になったので一から入れ直しました。
-今回はrubyの導入を説明しようかと思います。</p>
+    <h2 id="toc_0">荷物が邪魔</h2>
 
-<h2 id="toc_0">対象</h2>
+<p>朝７時ぐらいにシンガポールに到着したのだが、チェックインできる時間が１５時だった。<br>
+荷物だけ預けることは可能だったと思うけど、割と駅から遠かったのでコインロッカーにでも預けようと思った。  </p>
 
-<ul>
-<li>homebrewを使ってる人</li>
-<li>rubyをrbenvでバージョン管理したい人</li>
-</ul>
+<p>駅のコインロッカーにでも預けようと思ったのだが、まあコインロッカーが見当たらない。  </p>
 
-<h2 id="toc_1">実行環境</h2>
+<p>駅員に聞くしかないと思って駅の窓口で聞いてみた。<br>
+すると、<br>
+「あるわけねーじゃん(´ﾟ c_,ﾟ｀)」<br>
+と、半笑いで言われた。</p>
 
-<ul>
-<li>Mac(Mountain Lion)</li>
-</ul>
+<p>後で友人にこの出来事を話したところ、<br>
+「その辺にコインロッカーと自販機があるのは日本くらい」  </p>
 
-<h2 id="toc_2">方法</h2>
+<p>とのこと、マジかよ。。。知らんかった。</p>
 
-<p>まずはbrewで必要なものをインストールします</p>
+<h2 id="toc_1">交通機関はez-linkで</h2>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">$ brew install rbenv
-$ brew install ruby-build
-</td></tr></tbody></table></pre>
-<p>ホームディレクトリでディレクトリ作成</p>
+<p>さて、そんなわけで全ての荷物を運びつつ移動することになったのだが、<br>
+シンガポールの交通機関はez-linkカードという日本でいうsuicaみたいなカードがあるのだ。<br>
+まずはそれを購入することになった。</p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">$ cd ~  #ホームディレクトリへ
-$ mkdir .rbenv
-</td></tr></tbody></table></pre>
-<p>下記内容を.bash_profileに追記</p>
+<p>３日間乗車券買うより安くね？　多分そんなに乗らないでしょ。　ということで、ez-linkカードを購入</p>
 
-<p><em>.bash_profile</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;
-eval &quot;$(rbenv init -)&quot;
-</td></tr></tbody></table></pre>
-<p>.bash_profileを再読み込み</p>
+<p><img alt="チケット販売所" src="/images/ticket.JPG" /></p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ source ~/.bash_profile
-</td></tr></tbody></table></pre>
-<p>rubyのインストールできるリストを確認</p>
+<p><a href="http://ja.wikipedia.org/wiki/EZ-link">http://ja.wikipedia.org/wiki/EZ-link</a></p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div></td><td class="code">$ rbenv install -l
-Available versions:
-  .
-  .
-  .
-  1.9.3-p125
-  1.9.3-p194
-  1.9.3-p286
-  1.9.3-p327
-  1.9.3-p362
-  1.9.3-p374
-  1.9.3-p385
-  1.9.3-p392
-  1.9.3-p429
-  1.9.3-p448
-  1.9.3-p484
-  1.9.3-preview1
-  1.9.3-rc1
-  2.0.0-dev
-  2.0.0-p0
-  2.0.0-p195
-  2.0.0-p247
-  2.0.0-p353
-  2.0.0-preview1
-  2.0.0-preview2
-  2.0.0-rc1
-  .
-  .
-  .
-</td></tr></tbody></table></pre>
-<p>このようにリストがずらっと並ぶので、入れたいバージョンを指定してインストールします。</p>
+<p>詳しくはwiki参照</p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code">$ rbenv install 2.0.0-p353
-$ rbenv versions
-  system
-* 2.0.0-p353 (set by /Users/amasok/.rbenv/version)
-</td></tr></tbody></table></pre>
-<p>インストールした2.0.0-p353をglobalに設定</p>
+<p>このez-link、マジでsuica。コンビニでも使えるし電車だけじゃなくバスでも使えるし、非常に便利だ。
+$10以上じゃないとチャージできない等の制限があるため、短期間旅行者の我々にとっては若干不便ではあったが、<br>
+記念に買っておいた。  </p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">$ rbenv global 2.0.0-p353
-$ ruby -v
-ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-darwin12.5.0]
-</td></tr></tbody></table></pre>
-<p>以上です。</p>
+<h2 id="toc_2">いざマリーナ地区</h2>
 
-<p>もしrubyが意図したバージョンに鳴ってない場合は下記コマンドで反映されるかもしれません。</p>
+<p>さっそく観光地にでた我々はラッフルズプレイス駅に降り立った。<br>
+日本では真冬なのに、シンガポールは晴天で日差しが暑かった。  </p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ rbenv rehash
-</td></tr></tbody></table></pre>
+<p><img alt="ラッフルズプレイスでてすぐの風景" src="/images/marina1.jpg" /></p>
+
+<p>ここまで気温が違う体験をするのは初めてだったので、思わず感動した。  </p>
+
+<p>しかし、少し気になったのはタバコのことだ。<br>
+シンガポールは環境にうるさく、入国に際してもタバコ一本から課税対象とするほど喫煙に厳しい。<br>
+また、その辺にゴミ捨てしたら罰金だとかの法律も確かあったはず。  </p>
+
+<p>なので、てっきりタバコなんて全然吸ってないのだろうと思ったら、そこら中で吸ってた。<br>
+ポイ捨てもかなりあった。まあ、とりあえず東京よりかは喫煙者に優しそうな感じはした。（法律は知らんけど）  </p>
+
+<p>ラッフルズプレイス駅の周りは目もくらむようなビル群だった。<br>
+バシャバシャと写真をとったりしながらマーライオンを目指した。</p>
+
+<p>途中で高層ビルの窓ふきをしている３人組が、宙づり状態なのに水の掛け合いっこをしていたのが印象的だった。</p>
+
+<p>若干迷ってシンガポール河のところに出たのだが、川一面が茶色かった。<br>
+そういえば、南国の川は茶色いイメージがある。なんでだろうか。</p>
+
+<p><img alt="シンガポール河" src="/images/river.jpg" /></p>
+
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/28/bundle-exec.html">bundle execの省略が微妙</a></h1>
-    <span>2013/11/28 01:00 tags:
-    <a href="/blog/article/categories/bundle.html">bundle</a>,
+    <h1 class="title"><a href="/blog/article/2013/12/08/singapore-1.html">シンガポール旅行①</a></h1>
+    <span>2013/12/08 00:00 tags:
+    <a href="/blog/article/categories/.html">シンガポール</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/28/bundle-exec.html" data-text= "amasok's blog bundle execの省略が微妙" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/28/bundle-exec.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog bundle execの省略が微妙" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/08/singapore-1.html" data-text= "amasok's blog シンガポール旅行①" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/08/singapore-1.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog シンガポール旅行①" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>結論から書くと、僕が望んでいた形ではインストールできませんでした。</p>
+    <p>４日の夜から８日の朝にかけてシンガポールへちらっと旅行に行ってきました。  </p>
 
-<p>僕が望んでいた形は、</p>
-
-<ul>
-<li>gemをグローバルな領域にインストールしない(path=vendor/bundleを使用)</li>
-<li>プロジェクト配下のディレクトリならどの階層でも”bundle exec”を省略できる</li>
-</ul>
-
-<p>今回は、僕が調べたことを３つ記していこうかと思います。
-よかったら試してみてください。</p>
-
-<h2 id="toc_0">対象者</h2>
+<h2 id="toc_0">スペック</h2>
 
 <ul>
-<li>bundleを使って&ldquo;bundle exec&quot;を毎回打ってる人</li>
+<li>海外経験<br>
+２年前に一回だけ台湾へ（ほとんど日本語が通じた）</li>
+<li>英語<br>
+聞くのも話すのも読むのも中学生以下</li>
 </ul>
 
-<h2 id="toc_1">実行環境</h2>
+<p>まあ、なんでこんなことを書くかというと、どんな場面においても英語が話せなくて困ったことだらけだったのでとりあえず書きました。</p>
 
-<ul>
-<li>mac(Mountain Lion)</li>
-<li>ruby(2.0.0p247)</li>
-</ul>
+<p>今回の経験上思い出に残った部分をスポット的につらつら買いていこうと思います。</p>
 
-<h2 id="toc_2">rbenv-binstubsを使う</h2>
+<h2 id="toc_1">Wi-Fi</h2>
 
-<h3 id="toc_3">制限事項</h3>
+<p>海外での最初の鬼門は海外ローミングです。<br>
+スマホで海外ローミングしたりすると簡単にパケ死するので、<br>
+現地でWi-Fiを飛ばすようのSIMカードを購入しました。  </p>
 
-<ul>
-<li>rbenvを使ってrubyを管理している</li>
-<li>bundle installはグローバルな領域にインストールする（pathは指定しない）</li>
-</ul>
+<p>ポケットWi-Fiの機器は<a href="https://store.emobile.jp/pocketwifi/sp/">GL06P</a>（友人がもってた）を使用</p>
 
-<h3 id="toc_4">方法</h3>
+<p>SIMカード自体はわりとどこでも売ってるので探す必要すらなかったです。</p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code">$ cd
-$ mkdir .rbenv/plugins
-$ cd .rbenv/plugins
-$ git clone git://github.com/ianheggie/rbenv-binstubs.git
-</td></tr></tbody></table></pre>
-<p>上記のようにrbenvのプラグインとしてrbenv-binstubsてのを導入</p>
+<p>僕は外貨両替所で売ってたやつを購入しました。
+ちなみに為替レートは82.40SGD/JPYとかだったと思う。
+覚えてないけど。</p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">$ bundle install --binstubs=vendor/bin
-$ rbenv rehash
-$ middleman s
-</td></tr></tbody></table></pre>
-<p>上みたいに、bundle install &ndash;binstubs=bendor/binでgem自体はグローバルな領域で作るけど、バイナリ（コマンド）ファイルはプロジェクトディレクトリ内で作る。</p>
+<p>5日間で２G制限3G/LTEの$18でした。<br>
+３日券を売ってるところを探してもよかったんだけど、深夜飛行機であまり眠れず朝からグロッキーだったためそのまま購入。  </p>
 
-<p>これならプロジェクト内のどの階層でもbundle execが必要なくなるけどgemがグローバルな領域で存在しつづけてしまう。</p>
+<p>事前につなげ方を調査した上できていたのですが、APNの設定をしなくてもネットにつながってびっくりしました。</p>
 
-<h2 id="toc_5">binstubsで作ったbinにパスを通す</h2>
+<p>ちなみに会社は<a href="http://www.starhub.com/">StarHub</a>でした。</p>
 
-<h3 id="toc_6">制限事項</h3>
+<p><img alt="購入したSIM" src="/images/starhub.jpg" /></p>
 
-<ul>
-<li>プロジェクトディレクトリの第一階層のみで省略可（プロジェクトディレクトリ内のより深い階層からは省略不可）</li>
-</ul>
+<p><a href="http://shimajiro-mobiler.net/2013/06/13/post17059/">http://shimajiro-mobiler.net/2013/06/13/post17059/</a></p>
 
-<h3 id="toc_7">方法</h3>
+<p>こういうところでフムフムとか言いながら読んでたけど、僕がやった実際の手順は以下の通り</p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ export PATH=./vendor/bin:$PATH
-</td></tr></tbody></table></pre>
-<p>上記パスを通した後、下記のようにbundle install時にオプションを指定</p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ bundle install --path=vendor/bundle --binstubs=vendor/bin
-</td></tr></tbody></table></pre>
-<p>はい、この方法でプロジェクトのディレクトリの第一階層上でのみbundle execを省略できます。<br>
-なんか、うまいパスの通し方ないかなぁ。。<br>
-うまくいくと、このやり方の応用が一番なんとかできそうだけど。。  </p>
+<p>1.管理画面にログインする
+GL06PのWi-Fiネットワークに接続した状態の端末から下記URLにアクセス</p>
 
-<h2 id="toc_8">aliasをかける</h2>
+<p><a href="http://pocketwifi.home/">http://pocketwifi.home/</a></p>
 
-<h3 id="toc_9">制限事項</h3>
+<p>2.国際ローミングを有効にする
+初回の接続時に国際ローミングを有効にするか確認する画面が表示されるので、ローミングを『有効』に選択し、適用させる。
+※ローミング設定は標準で無効に設定されるため、再起動などをすると再度ローミング設定を有効にする必要がある。この再起動すると設定が戻るってのが割とめんどくさかった。</p>
 
-<ul>
-<li>文字数が少なければOK（完璧に省略する必要はないと考える人）</li>
-</ul>
+<h2 id="toc_2">ある店での話</h2>
 
-<h3 id="toc_10">方法</h3>
+<p>空港内でとりあえず朝飯を食おうぜってことで、そこらへんの店に入った。<br>
+適当にカレーセットを頼んだのだが、セットにカヤトースト（カヤジャムがぬられたトースト）だった。  </p>
 
-<p>書くまでもないかな。。。</p>
+<p>番号札を渡さる。<br>
+適当な席を選んで座って待っていれば店員さんが運んできてくれるスタイルだった。<br>
+日本でもカフェによくあるスタイルですね。  </p>
 
-<p><em>.bash_profile</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">alias be=&#39;bundle exec&#39;
-</td></tr></tbody></table></pre>
-<p>はい、これで</p>
+<p>で、僕は12番の札を渡されて席に座って待っていたのだけど、店員のおっさんが僕を見て<br>
+「１２番！　１２番！」  </p>
 
-<p><em>terminal</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ be middleman s
-</td></tr></tbody></table></pre>
-<p>とかができるようになりました。<br>
-どれもいまいち腑に落ちないけど、今のところ調べた結果のログとして記します。<br>
-なんか良い方法見つけたら新しく書こう。<br>
-てか、誰か良い方法教えてほしい。  </p>
+<p>と叫んでカウンターのほうを指差した。<br>
+座っている席からではカウンターのほうが見えなかったのでカウンターまで行くとカレーセットが置いてあった。  </p>
 
-<h4 id="toc_11">参考</h4>
+<p><img alt="肝心のカヤトースト写ってない自分で運んだカレー" src="/images/curry.png" /></p>
 
-<p><a href="http://blog.takapra.com/2013/04/ruby-bundler-basic/">http://blog.takapra.com/2013/04/ruby-bundler-basic/</a></p>
+<p>「あー、これは番号で呼ばれたら取りにいくものであって、持ってきてもらえるものではなかったんだ」</p>
 
-<p><a href="http://qiita.com/naoty_k/items/9000280b3c3a0e74a618">http://qiita.com/naoty_k/items/9000280b3c3a0e74a618</a></p>
+<p>そう思って僕は１２番の札を返してカレーセットを自席まで持っていったのだが、<br>
+僕以外の番号札（友人含め）は全て店員さんが客の席まで運んでいた。</p>
+
+<p>今でも店員のおっさんが僕だけカレーセットを取りにいかせた理由が気になるのだが、きっと僕がもっと英語できたらこんなことは起こらなかったのだろう。</p>
 
     </section>
   
   </article>
 <div class="pagination">
-  <p>Page 5 of 7</p>
+  <p>Page 5 of 9</p>
 
   
     <div class="prev"><a href="/blog/page/6/">old pages</a></div>
@@ -317,6 +280,18 @@ $ middleman s
       <h2>Recent Articles</h2>
   <ol>
     
+      <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/uicolor16.html">【Objective-C】iOSで色指定(16進数)を簡単にする方法</a> <span>(14/03/18 05:02)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/ios-userdefault.html">【Objective-C】カスタムセル内の状態を永続化(保存)させたい</a> <span>(14/03/18 00:18)</span></li>
+    
+      <li><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a> <span>(14/03/17 23:32)</span></li>
+    
+      <li><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a> <span>(14/01/30 21:12)</span></li>
+    
+      <li><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a> <span>(14/01/29 21:16)</span></li>
+    
       <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
     
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
@@ -324,18 +299,6 @@ $ middleman s
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
     
       <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
-    
-      <li><a href="/blog/article/2013/12/31/generalization.html">2013年総括</a> <span>(13/12/31 20:54)</span></li>
-    
-      <li><a href="/blog/article/2013/12/19/singapore-4.html">シンガポール旅行④</a> <span>(13/12/19 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/15/singapore-3.html">シンガポール旅行③</a> <span>(13/12/15 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/10/singapore-2.html">シンガポール旅行②</a> <span>(13/12/10 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/08/singapore-1.html">シンガポール旅行①</a> <span>(13/12/08 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a> <span>(13/12/03 23:36)</span></li>
     
   </ol>
 
@@ -366,19 +329,25 @@ $ middleman s
     
       <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (1)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/knife-solo.html">knife-solo</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/zsh.html">zsh</a> (1)</a></li>
     
   </ol>
 
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(4)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/01.html">1</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
         <li><a href="#">12</a> (8)</li>
       
@@ -389,7 +358,9 @@ $ middleman s
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">1</a> (4)</li>
+        <li><a href="#">3</a> (4)</li>
+      
+        <li><a href="#">1</a> (6)</li>
       
         <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
       

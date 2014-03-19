@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <title>amasok's blog</title>
+    <meta name="keywords" content="github, 技術, amasok, アマ">
+    <meta name="description" content="適当にブログ書いてます。rubyとか">
+    <link href="/stylesheets/normalize.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Finger+Paint" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/blog.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/syntaxhighlight.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    </head>
+  <body class="note" >
+    
+    <header>
+  <h1><a href="/blog">amasok's blog</a></h1>
+</header>
+
+  <div class="wrapper">
+    <main>
+      <h2>Archive for
+  
+    2014
+  
+</h2>
+  
+  <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a></h1>
+    <span>2014/01/29 21:16 tags:
+    <a href="/blog/article/categories/knife-solo.html">knife-solo</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/29/knifesolo.html" data-text= "amasok's blog knife soloの使い方" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/29/knifesolo.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog knife soloの使い方" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>反映したいサーバにchefがはいっていない時のknife soloのコマンド。</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="gp">$ </span>knife solo prepare &lt;ユーザ名@ドメイン&gt;  
+</td></tr></tbody></table></pre>
+<p>サーバに反映cookbookを反映したい時のコマンド</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code"><span class="c">#自分のcookbookディレクトリで実行</span>
+<span class="gp">$ </span>knife solo cook &lt;ユーザ@ドメイン&gt;
+</td></tr></tbody></table></pre>
+<p>たまに使うと、すぐに忘れる。。。</p>
+
+    </section>
+  </article>
+  
+  <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a></h1>
+    <span>2014/01/22 17:25 tags:
+    <a href="/blog/article/categories/.html">読書感想文</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/22/jonetu_programmer.html" data-text= "amasok's blog 「情熱プログラマー」読了" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/22/jonetu_programmer.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 「情熱プログラマー」読了" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>※あくまで個人の感想文です。</p>
+
+<p>ネタバレあり（問題無いと思うけど）</p>
+
+<p><a href="http://www.amazon.co.jp/%E6%83%85%E7%86%B1%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC-%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E9%96%8B%E7%99%BA%E8%80%85%E3%81%AE%E5%B9%B8%E3%81%9B%E3%81%AA%E7%94%9F%E3%81%8D%E6%96%B9-Chad-Fowler/dp/4274067939">情熱プログラマー ソフトウェア開発者の幸せな生き方</a>を読み終えました。
+この本は技術書というよりも、エンジニア（特にソフトウェア）はこう生きるべき！　という指南書的な本です。</p>
+
+<p>全体で53項目あり、１項目につき２〜３ページで書かれています。</p>
+
+<p>とりあえず全体的な感想だけ述べようと思う。</p>
+
+<h3 id="toc_0">今すぐ始めよう</h3>
+
+<p>項目毎に「今すぐ始めよう！」というのが書かれているのだが、それらは本当にちょっとしたことから始められるものが多かった。</p>
+
+<ul>
+<li>キャリアに関する最大の不安はなにか考えてリストアップしてみよう</li>
+<li>新しいプログラミング言語を学ぼう</li>
+<li>自分にとって「一番下手くそになる」状況を見つけよう</li>
+<li>ビジネス屋（エンジニア職ではなく営業職とか？）の連中をランチに誘ってみよう</li>
+</ul>
+
+<p>などなど、エンジニアとして伸び悩んだ時にどう行動すべきかの指針を示してくれている。
+このあたりはまた読み返そうと思う。  </p>
+
+<h3 id="toc_1">スペシャリスト</h3>
+
+<p>当たり前のことだけど以下の内容に焦りを感じた。</p>
+
+<blockquote>
+<p>ほかに何も知らないことがスペシャリストだって勘違いしてるんじゃないか？</p>
+</blockquote>
+
+<p>Javaのコードしか書いたことないJavaのスペシャリスト()<br>
+Railsのコードしか書いたことないRailsのスペシャリスト()<br>
+iOSアプリしか書いたことないiOSアプリのスペシャリスト()  </p>
+
+<p>その周辺技術も知らないと（もしくは同じ機能を有する別の技術）本当の意味で自分が使っている技術の旨味ってわからないですね。</p>
+
+<p>そのためだと思うけど、この本の項目には以下の内容が並んでいる。  </p>
+
+<ul>
+<li>万能選手になろう<br></li>
+<li>スペシャリストになろう<br></li>
+</ul>
+
+<p>一見、対照的に見えるかもしれないけど、スペシャリストになるためにあらゆる技術に精通する必要があるということだ。<br>
+まあ、その中で最も得意といえるものが必要になってくるんだろうけど。  </p>
+
+<p>僕はいろんな技術を中途半端にやっているので勘違いこそしていないが、これなら任せろと言えるものもあまりない。
+がんばらなければならないと思う。</p>
+
+<h3 id="toc_2">キャリア</h3>
+
+<ul>
+<li>自分の人生を他人任せにするな</li>
+</ul>
+
+<p>という項目でこのように書かれている。</p>
+
+<blockquote>
+<p>僕は従業員の一人にこう尋ねた。
+「これからどんな方向に進みたい？　何になりたいんだい？」
+返ってきた答えは「JavaEEのアーキテクトになりたいです」だった。
+~中略~
+彼は雇われているわけでもない特定の会社によって作られた特定のテクノロジの上にキャリアを築こうとしていたわけだ。</p>
+</blockquote>
+
+<p>ベンダ中心の見方はよろしくないというのはまさにそのとおりだと思う。<br>
+特にIT技術は進歩が早すぎる。  </p>
+
+<p>まあ、当たり前かもしれないけど、投資先は必要なわけで（投資しないよりは投資したほうがマシというレベルの低い目線）それに比べたら全然マシだよと思ったりもするが。。。<br>
+視野が狭くなりがちな人に対してのアンチテーゼとなっているが、最近は逆に「あれもしたい。これもしたい。もっとしたい。もっともっとしたい。。。」というようにいろんな技術に目がいっている気がする。</p>
+
+<p>あせりばかりが先行して身についていない気もする。</p>
+
+<p>あせっていないで、ここに書かれている「やってみよう」を少しでも実践してみようかな。。</p>
+
+    </section>
+  </article>
+  
+  <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a></h1>
+    <span>2014/01/15 10:23 tags:
+    <a href="/blog/article/categories/ios.html">iOS</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/15/ios_regist.html" data-text= "amasok's blog iOSアプリを実機で動かすまで" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/15/ios_regist.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog iOSアプリを実機で動かすまで" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>iOSのディベロッパー登録めんどくさいです。</p>
+
+<p><a href="http://mushikago.com/i/?p=917">http://mushikago.com/i/?p=917</a></p>
+
+<p>こことかを見てやるといいです。</p>
+
+<h2 id="toc_0">前提条件</h2>
+
+<ul>
+<li>iOSのディベロッパー登録を済ませておく</li>
+<li>シミュレータでiOSアプリを動かしたことがある</li>
+</ul>
+
+<h2 id="toc_1">Provisioning Profileの入手</h2>
+
+<p><a href="https://developer.apple.com/">https://developer.apple.com/</a></p>
+
+<p>iOS Dev Center</p>
+
+<p>＞ [iOS Developer Program] Certificates, Identifiers &amp; Profiles<br>
+＞ [iOS Apps] Provisioning Profiles<br>
+上記をたどっていくと、
+「iOS Team Provisioning Profile: *」をダウンロードしておく</p>
+
+<h2 id="toc_2">実機をxcodeに登録</h2>
+
+<p>今回はデバイス登録で動かすまでのmemo</p>
+
+<ul>
+<li>xcodeを起動</li>
+<li>Window -> Orgnizer(shift + command + 2)に移動</li>
+<li>iOSでバイスをMacとUSB接続する</li>
+<li>「接続されたPCを信頼しますか？」的なダイアログがiOSでバイスで表示されるのでOKする</li>
+<li>Orgnizer - Devicesで接続したデバイスが認識されているかを確認する</li>
+<li>「Use for Development」というボタンをクリックして全部Requestをおす</li>
+<li>左のバーから「Provisioning Profiles」を選択</li>
+<li>下にあるAddから先ほど入手したProvisioning Profileを追加する</li>
+</ul>
+
+<h2 id="toc_3">アプリを動かす</h2>
+
+<ul>
+<li>Xcode右上の [アプリ名]　＞　iPhone(シミュレータ名)　をクリックして実際のデバイス名を選択</li>
+<li>▶(Run)をクリック</li>
+</ul>
+
+    </section>
+  </article>
+  
+  <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a></h1>
+    <span>2014/01/12 23:25 tags:
+    <a href="/blog/article/categories/ios.html">iOS</a>,
+  
+    <a href="/blog/article/categories/objective-c.html">Objective-C</a>,
+  </span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/12/ios1.html" data-text= "amasok's blog Objective-Cのクラスとかメソッドについて" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/12/ios1.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog Objective-Cのクラスとかメソッドについて" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>最近、ちょっとずつiOSアプリ開発のお勉強をしているので、それのメモ</p>
+
+<p>xcodeの使い方がまずよくわかってない。</p>
+
+<p>とりあえず、プロジェクトから始める。</p>
+
+<p>iOS &gt; Application &gt; Single View Application</p>
+<pre class="highlight shell"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div></td><td class="code">AppDelegate.h
+AppDelegate.m     
+Main.storyboard   <span class="c">#見た目をこれで作る</span>
+ViewController.h  <span class="c">#ViewControllerのヘッダファイル</span>
+ViewController.m  <span class="c">#基本的にプログラムを書くのはこのファイル</span>
+</td></tr></tbody></table></pre>
+<p>ViewController.mの中身を見てみる。</p>
+
+<p><em>ViewController.m</em></p>
+<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div></td><td class="code"><span class="cp">#import &quot;ViewController.h&quot;
+</span>
+<span class="err">@</span><span class="n">interface</span> <span class="n">ViewController</span> <span class="p">()</span>
+
+<span class="err">@</span><span class="n">end</span>
+
+<span class="err">@</span><span class="n">implementation</span> <span class="n">ViewController</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+    <span class="c1">// Do any additional setup after loading the view, typically from a nib.
+</span><span class="p">}</span>
+
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didReceiveMemoryWarning</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="n">didReceiveMemoryWarning</span><span class="p">];</span>
+    <span class="c1">// Dispose of any resources that can be recreated.
+</span><span class="p">}</span>
+
+<span class="err">@</span><span class="n">end</span>
+</td></tr></tbody></table></pre>
+<h2 id="toc_0">objective-cのクラス</h2>
+
+<p>7行目にクラスのはじまりが書かれている。</p>
+<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div></td><td class="code"><span class="err">@</span><span class="n">implementation</span> <span class="err">クラス名</span>
+
+<span class="c1">// ここにメソッドを実装していく
+</span>
+<span class="err">@</span><span class="n">end</span>
+</td></tr></tbody></table></pre>
+<h2 id="toc_1">objective-cのメソッド</h2>
+
+<p>9行目や15行目にメソッドが書かれている。</p>
+<pre class="highlight c"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code"><span class="o">-</span> <span class="p">(</span><span class="err">戻り値の型</span><span class="p">)</span><span class="err">メソッド名</span>
+<span class="p">{</span>
+  <span class="c1">//ここにコードを書いて行く
+</span><span class="p">}</span>
+</td></tr></tbody></table></pre>
+<p>どのタイミングでどのメソッドが呼ばれるかは、またいつか書きたいと思ってる。
+UIViewController ライフサイクルは大事。</p>
+
+    </section>
+  </article>
+  
+  <article class="blog-post">
+    <h1 class="title"><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a></h1>
+    <span>2014/01/02 21:28 tags:</span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/02/aspiration2014.html" data-text= "amasok's blog 2014年抱負" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/02/aspiration2014.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 2014年抱負" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<section class="text">
+    <p>明けましておめでとうございます。</p>
+
+<p>新年早々、風邪をひいて熱をだしてしまいました。<br>
+年末には実家に帰る直前に肩が痛くなって動けなくなったり、割と大変な目にあっております。  </p>
+
+<p>今も、熱はないものの喉が痛くて口内炎もあるし。。</p>
+
+<p>体調管理しっかりしたいですね。</p>
+
+<p>今年の抱負としていくつか目標を箇条書きしていこうと思います。
+まあ、完璧ではなくてもなるべく達成できるように目指して行きたいですね。</p>
+
+<ul>
+<li>残業しない（自分の時間を作るため）</li>
+<li>料理する（お昼の弁当とか）</li>
+<li>英語に毎日触れる（本を読む、映画を見る、人と話す、等）</li>
+<li>海外に行く</li>
+<li>姿勢を直す（姿勢が悪いので）</li>
+<li>運動する(週１以上目標)</li>
+<li>何かしらサービスを作る</li>
+<li>新しい技術を学ぶ（会社関係なしに）</li>
+<li>ブログを週１以上のペースで書く（技術以外含む）</li>
+<li>本を年間２０冊読む(漫画以外、技術書含む)</li>
+<li>勉強会主催</li>
+<li><strong>記憶をなくさない</strong></li>
+<li>新しいバーの開拓</li>
+<li>一日睡眠6時間</li>
+<li>病気しない</li>
+<li>怪我しない</li>
+<li>怖がらないで人と話すようにする</li>
+</ul>
+
+<p>さて、いくつできるかな。<br>
+まあ、すでに達成不能なものもいくつかありますが、あくまで日々を律する目標ってことで。</p>
+
+    </section>
+  </article>
+  
+<div class="pagination">
+  <p>Page 2 of 2</p>
+
+  
+  
+    <div class="next"><a href="/blog/article/2014.html">new pages</a></div>
+  
+
+
+</div>
+
+
+    </main>
+    <aside>
+      <h2>Recent Articles</h2>
+  <ol>
+    
+      <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/uicolor16.html">【Objective-C】iOSで色指定(16進数)を簡単にする方法</a> <span>(14/03/18 05:02)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/ios-userdefault.html">【Objective-C】カスタムセル内の状態を永続化(保存)させたい</a> <span>(14/03/18 00:18)</span></li>
+    
+      <li><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a> <span>(14/03/17 23:32)</span></li>
+    
+      <li><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a> <span>(14/01/30 21:12)</span></li>
+    
+      <li><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a> <span>(14/01/29 21:16)</span></li>
+    
+      <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
+    
+      <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
+    
+      <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
+    
+  </ol>
+
+  <h2>Tags</h2>
+  <ol>
+    
+      <li><a href="/blog/article/categories/markdown.html">markdown</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/middleman.html">middleman</a> (6)</a></li>
+    
+      <li><a href="/blog/article/categories/test.html">test</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">焼肉</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">五反田</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/bundle.html">bundle</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/rbenv.html">rbenv</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/ruby.html">ruby</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">スポーツ</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">シンガポール</a> (4)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">総括</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
+    
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
+    
+      <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/knife-solo.html">knife-solo</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/zsh.html">zsh</a> (1)</a></li>
+    
+  </ol>
+
+  <h2>By Year</h2>
+  <ul>
+    
+        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
+      <ul>
+      
+        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
+      
+        <li><a href="#">12</a> (8)</li>
+      
+        <li><a href="#">11</a> (9)</li>
+      
+      </ul>
+    
+        <li><a href="/blog/article/2013.html">2013</a>(17)</li>
+      <ul>
+      
+        <li><a href="#">3</a> (4)</li>
+      
+        <li><a href="#">1</a> (6)</li>
+      
+        <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
+      
+        <li><a href="/blog/article/2013/11.html">11</a> (9)</li>
+      
+      </ul>
+    
+  </ul>
+
+    </aside>
+  </div>
+    <footer>
+  <p>&copy; Copyright 2013, amasok.</p>
+</footer>
+    
+    <script src="/javascripts/tweet.js" type="text/javascript"></script>
+<script src="/javascripts/googleAnalytics.js" type="text/javascript"></script>
+<script src="http://b.st-hatena.com/js/bookmark_button.js" type="text/javascript"></script>
+  </body>
+</html>

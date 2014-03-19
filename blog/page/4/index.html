@@ -21,193 +21,203 @@
   <div class="wrapper">
     <main>
         <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a></h1>
-    <span>2013/12/03 23:36 tags:
-    <a href="/blog/article/categories/middleman.html">middleman</a>,
-  </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/03/middleman-config.html" data-text= "amasok's blog middlemanのconfig.rb" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/03/middleman-config.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog middlemanのconfig.rb" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+    <h1 class="title"><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a></h1>
+    <span>2014/01/02 21:28 tags:</span>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2014/01/02/aspiration2014.html" data-text= "amasok's blog 2014年抱負" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2014/01/02/aspiration2014.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 2014年抱負" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>さて、今回はこのブログの現時点のconfig.rbを大公開
-ほとんど他のところのコピペだけど。。</p>
+    <p>明けましておめでとうございます。</p>
 
-<p>後、githubにもあがってるからわざわざ書く必要もないけど、一応備忘録的に。</p>
+<p>新年早々、風邪をひいて熱をだしてしまいました。<br>
+年末には実家に帰る直前に肩が痛くなって動けなくなったり、割と大変な目にあっております。  </p>
 
-<p><em>config.rb</em></p>
-<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div><div class="lineno">30</div><div class="lineno">31</div><div class="lineno">32</div><div class="lineno">33</div><div class="lineno">34</div><div class="lineno">35</div><div class="lineno">36</div><div class="lineno">37</div><div class="lineno">38</div><div class="lineno">39</div><div class="lineno">40</div><div class="lineno">41</div><div class="lineno">42</div><div class="lineno">43</div><div class="lineno">44</div><div class="lineno">45</div><div class="lineno">46</div><div class="lineno">47</div><div class="lineno">48</div><div class="lineno">49</div><div class="lineno">50</div><div class="lineno">51</div><div class="lineno">52</div><div class="lineno">53</div><div class="lineno">54</div><div class="lineno">55</div><div class="lineno">56</div><div class="lineno">57</div><div class="lineno">58</div><div class="lineno">59</div><div class="lineno">60</div><div class="lineno">61</div><div class="lineno">62</div><div class="lineno">63</div><div class="lineno">64</div><div class="lineno">65</div></td><td class="code">
-<span class="c1">###</span>
-<span class="c1"># Blog settings</span>
-<span class="c1">###</span>
+<p>今も、熱はないものの喉が痛くて口内炎もあるし。。</p>
 
- <span class="no">Time</span><span class="nf">.zone</span> <span class="o">=</span> <span class="s2">&quot;Tokyo&quot;</span>
+<p>体調管理しっかりしたいですね。</p>
 
-<span class="n">activate</span> <span class="ss">:blog</span> <span class="k">do</span> <span class="o">|</span><span class="n">blog</span><span class="o">|</span>
-  <span class="n">blog</span><span class="nf">.prefix</span> <span class="o">=</span> <span class="s2">&quot;blog/article&quot;</span>
-  <span class="n">blog</span><span class="nf">.default_extension</span> <span class="o">=</span> <span class="s2">&quot;.md&quot;</span>
-  <span class="n">blog</span><span class="nf">.tag_template</span> <span class="o">=</span> <span class="s2">&quot;blog/tag.html&quot;</span>
-  <span class="n">blog</span><span class="nf">.taglink</span> <span class="o">=</span> <span class="s2">&quot;categories/:tag.html&quot;</span>
-  <span class="n">blog</span><span class="nf">.calendar_template</span> <span class="o">=</span> <span class="s2">&quot;blog/calendar.html&quot;</span>
-  <span class="n">blog</span><span class="nf">.paginate</span> <span class="o">=</span> <span class="kp">true</span>
-  <span class="n">blog</span><span class="nf">.per_page</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="n">blog</span><span class="nf">.page_link</span> <span class="o">=</span> <span class="s2">&quot;page/:num&quot;</span>
-<span class="k">end</span>
+<p>今年の抱負としていくつか目標を箇条書きしていこうと思います。
+まあ、完璧ではなくてもなるべく達成できるように目指して行きたいですね。</p>
 
-<span class="n">page</span> <span class="s2">&quot;blog/feed.xml&quot;</span><span class="p">,</span> <span class="ss">:layout</span> <span class="o">=&gt;</span> <span class="kp">false</span>
-<span class="n">page</span> <span class="s2">&quot;blog/article/*&quot;</span><span class="p">,</span> <span class="ss">:layout</span> <span class="o">=&gt;</span> <span class="s2">&quot;layouts/article&quot;</span>
+<ul>
+<li>残業しない（自分の時間を作るため）</li>
+<li>料理する（お昼の弁当とか）</li>
+<li>英語に毎日触れる（本を読む、映画を見る、人と話す、等）</li>
+<li>海外に行く</li>
+<li>姿勢を直す（姿勢が悪いので）</li>
+<li>運動する(週１以上目標)</li>
+<li>何かしらサービスを作る</li>
+<li>新しい技術を学ぶ（会社関係なしに）</li>
+<li>ブログを週１以上のペースで書く（技術以外含む）</li>
+<li>本を年間２０冊読む(漫画以外、技術書含む)</li>
+<li>勉強会主催</li>
+<li><strong>記憶をなくさない</strong></li>
+<li>新しいバーの開拓</li>
+<li>一日睡眠6時間</li>
+<li>病気しない</li>
+<li>怪我しない</li>
+<li>怖がらないで人と話すようにする</li>
+</ul>
 
-<span class="c1">###</span>
-<span class="c1"># markdown settings</span>
-<span class="c1">###</span>
-
-<span class="n">activate</span> <span class="ss">:syntax</span><span class="p">,</span> <span class="ss">:line_numbers</span> <span class="o">=&gt;</span> <span class="kp">true</span>
-<span class="n">set</span> <span class="ss">:markdown</span><span class="p">,</span> <span class="ss">:tables</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:autolink</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:gh_blockcode</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>  <span class="p">\</span>
-    <span class="ss">:fenced_code_blocks</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:with_toc_data</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:smartypants</span> <span class="o">=&gt;</span> <span class="kp">true</span>
-
-<span class="n">set</span> <span class="ss">:markdown_engine</span><span class="p">,</span> <span class="ss">:redcarpet</span>
-
-
-
-<span class="c1">###</span>
-<span class="c1"># delecty settings</span>
-<span class="c1">###</span>
-
-<span class="n">set</span> <span class="ss">:css_dir</span><span class="p">,</span> <span class="s1">&#39;stylesheets&#39;</span>
-
-<span class="n">set</span> <span class="ss">:js_dir</span><span class="p">,</span> <span class="s1">&#39;javascripts&#39;</span>
-
-<span class="n">set</span> <span class="ss">:images_dir</span><span class="p">,</span> <span class="s1">&#39;images&#39;</span>
-
-<span class="n">activate</span> <span class="ss">:livereload</span>
-
-<span class="c1">###</span>
-<span class="c1"># build settings</span>
-<span class="c1">###</span>
-
-<span class="n">configure</span> <span class="ss">:build</span> <span class="k">do</span>
-   <span class="n">activate</span> <span class="ss">:minify_css</span>
-   <span class="n">activate</span> <span class="ss">:minify_javascript</span>
-<span class="k">end</span>
-
-
-<span class="c1">###</span>
-<span class="c1"># deploy settings</span>
-<span class="c1">###</span>
-
-<span class="n">activate</span> <span class="ss">:deploy</span> <span class="k">do</span> <span class="o">|</span><span class="n">deploy</span><span class="o">|</span>
-    <span class="n">deploy</span><span class="nf">.method</span> <span class="o">=</span> <span class="ss">:git</span>
-    <span class="n">deploy</span><span class="nf">.remote</span> <span class="o">=</span> <span class="s2">&quot;deploy&quot;</span>
-    <span class="n">deploy</span><span class="nf">.branch</span> <span class="o">=</span> <span class="s2">&quot;master&quot;</span>
-<span class="k">end</span>
-
-</td></tr></tbody></table></pre>
-<p>言うほどたいした設定してない。
-今日はとりあえず載っけただけにしとく。</p>
-
-<p>今後、この記事をちまちま更新するようにする。</p>
+<p>さて、いくつできるかな。<br>
+まあ、すでに達成不能なものもいくつかありますが、あくまで日々を律する目標ってことで。</p>
 
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/12/02/rbenv-20.html">The Ruby openssl extension was not compiled. Missing the OpenSSL lib?</a></h1>
-    <span>2013/12/02 23:48 tags:
-    <a href="/blog/article/categories/ruby.html">ruby</a>,
-  
-    <a href="/blog/article/categories/rbenv.html">rbenv</a>,
+    <h1 class="title"><a href="/blog/article/2013/12/31/generalization.html">2013年総括</a></h1>
+    <span>2013/12/31 20:54 tags:
+    <a href="/blog/article/categories/.html">総括</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/02/rbenv-20.html" data-text= "amasok's blog The Ruby openssl extension was not compiled. Missing the OpenSSL lib?" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/02/rbenv-20.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog The Ruby openssl extension was not compiled. Missing the OpenSSL lib?" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/31/generalization.html" data-text= "amasok's blog 2013年総括" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/31/generalization.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 2013年総括" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>2.0以上のrubyをrbenvでインストールしようとすると出るっぽいエラーの対処</p>
+    <p>今年も終わりなので、まとめでも書こうかと思います。</p>
 
-<p>The Ruby openssl extension was not compiled. Missing the OpenSSL lib?</p>
+<h2 id="toc_0">ブログ始めた</h2>
 
-<p>↑CentOS6.4こrubyをrbenv使ってインストールしようとしたらこのようなエラーが出ました。</p>
+<p>このブログのことですね。<br>
+11月下旬から始めたので、年内で言うと割と後半のことですが、<br>
+実は一年程前にはてなブログをちょこっとやってました。</p>
 
-<h2 id="toc_0">エラー文</h2>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div></td><td class="code">$ rbenv install 2.0.0-p353
+<p>まあ、全然続かなかったので心機一転したいといって、新しくブログ作りたいってことでmiddlemanで作りました。</p>
 
-Downloading ruby-2.0.0-p353.tar.gz...
--&gt; http://dqw8nmjcqpjn7.cloudfront.net/78282433fb697dd3613613ff55d734c1
-Installing ruby-2.0.0-p353...
+<p>来年も続けて行きたいです。アウトプットを癖にしたい。</p>
 
-BUILD FAILED
+<p>三日坊主あかん</p>
 
-Inspect or clean up the working tree at /tmp/ruby-build.20131201141930.25356
-Results logged to /tmp/ruby-build.20131201141930.25356.log
+<h2 id="toc_1">会社に１年勤めた</h2>
 
-Last 10 log lines:
-installing default gems:      /usr/local/rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0  \
-(build_info, cache, doc, gems, specifications)
-                              bigdecimal 1.2.0
-                              io-console 0.4.2
-                              json 1.7.7
-                              minitest 4.3.2
-                              psych 2.0.0
-                              rake 0.9.6
-                              rdoc 4.0.0
-                              test-unit 2.0.0.0
-The Ruby openssl extension was not compiled. Missing the OpenSSL lib?
+<p>一つの会社に1月から12月まで勤めたのは初めてでした。</p>
 
-</td></tr></tbody></table></pre>
-<h2 id="toc_1">対処</h2>
+<p>いや決して移り気が激しいとかではないんですが、中途で業界２年目なのでやっとちょっと落ち着いたというところでしょうか。</p>
 
-<p>OpenSSLのライブラリですがせっかくなのでCenctOSとUbuntu両方乗っけときます。</p>
+<p>とりあえず来年もがんばろっ</p>
 
-<p><em>CentOS</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ sudo yum -y install openssl-devel
-</td></tr></tbody></table></pre>
-<p><em>Ubuntu</em></p>
-<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ sudo apt-get -y install libssl-dev
-</td></tr></tbody></table></pre>
-<p>これでエラー解消です。
-ちょこっと焦りました。</p>
+<h2 id="toc_2">ジムに通った</h2>
+
+<p>春から秋にかけて週１〜３のペースで通っていたが、やはり時間の使い方がうまくないとだめだな(ヽ&#39;ω`)</p>
+
+<p>ちょっと忙しくなったら通えなくなってすぐに辞めてしまった。<br>
+運動する意識を作らないと。。。</p>
+
+<h2 id="toc_3">海外旅行に行った</h2>
+
+<p>２年前に台湾にいったのだけど、こんなに英語を覚えたいと思える旅行はなかった。</p>
+
+<p>本当に英語って大事だなぁ。。。(；´∀｀)</p>
+
+<p>来年も海外行きたい。（お金があれば）</p>
+
+<h2 id="toc_4">わりとたくさん勉強会にいった</h2>
+
+<p>今年の暑い時期はわりと時間があったのでいろんな勉強会に参加した（主にweb系？）<br>
+(主催もしてみたし登壇もしてみた)</p>
+
+<p>しかしまあ、思ったことがある。</p>
+
+<p>「いろんな勉強会に参加しすぎるのもよくない！」</p>
+
+<p>なんでよくないと思ったかというと、下地がないのに参加しても勉強会の内容についていけないということだ。</p>
+
+<p>それだけ僕のレベルは低いわけだけど、何がよくないって勉強した気になっちゃうのがよくない。</p>
+
+<p>下地がないのにインプットを多くしても整理できずに流れて行くだけ。</p>
+
+<p>じゃあ身に付いてるかと言われたらあんまし身に付いてなかったりする。</p>
+
+<p>決して勉強会に参加すること自体を否定したいわけじゃなくて、参加する目的をはっきりした上で参加しないと時間の無駄になってしまうと思った。</p>
+
+<p>来年にでも書く。</p>
+
+<h3 id="toc_5">こうやって見ると</h3>
+
+<p>ガチすぎるプライベートな内容は避けて今年一年の出来事を綴ったが、内容うっす。。。(ヽ&#39;ω`)</p>
+
+<p>まあ、来年やらなきゃいけないことが自然と決まった課題の多い一年だったということで。</p>
+
+<p>来年あたまにでも2014年の豊富やら目標やら書くかな。</p>
 
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/12/01/bouldering.html">久々のボルダリング</a></h1>
-    <span>2013/12/01 23:20 tags:
-    <a href="/blog/article/categories/.html">スポーツ</a>,
+    <h1 class="title"><a href="/blog/article/2013/12/19/singapore-4.html">シンガポール旅行④</a></h1>
+    <span>2013/12/19 00:00 tags:
+    <a href="/blog/article/categories/.html">シンガポール</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/01/bouldering.html" data-text= "amasok's blog 久々のボルダリング" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/01/bouldering.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 久々のボルダリング" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/12/19/singapore-4.html" data-text= "amasok's blog シンガポール旅行④" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/12/19/singapore-4.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog シンガポール旅行④" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>昨日ボルダリング行ってきた。</p>
+    <p>ちょっと書く時間がとれないので写真を張りながら一言感想的な記事に。</p>
 
-<p>約半年ぶりぐらいだろうか。
-友人に誘われて行ったのだが、２〜３回登っただけでもう握力がなくなってしまった。
-一方友人は毎週登っているので、余裕しゃくしゃくだった。</p>
+<h2 id="toc_0">ベイサンズのデッキすげぇ</h2>
 
-<p>そして、バリバリに登っている人に思わず(　ﾟдﾟ)ﾎﾟｶｰﾝとしてしまった。</p>
+<p>マリーナベイサンズの上にいます。</p>
 
-<h2 id="toc_0">場所</h2>
+<p>やっぱすごい。<br>
+<img alt="観光客たくさん" src="/images/bay3.JPG" /></p>
 
-<p><a href="http://pump-climbing.com/gym/akiba/">B-PUMP TOKYO AKIHABARA</a></p>
+<p>貿易船がたくさん見えた。<br>
+<img src="/images/bay4.JPG" /></p>
 
-<p>秋葉原から結構歩く。
-けど結構広い。</p>
+<p>プールがあるところはホテル宿泊者しか行けないようです。<br>
+<img src="/images/bay5.jpg" /></p>
 
-<p><img alt="ボルダリング" src="/images/b-pump.jpg" /></p>
+<p>ちょっとホテルに泊まる金額調べたらやっぱりそこそこ高かった。  </p>
 
-<p>この写真は最近出来たらしい三階の写真です。  </p>
+<p>いやー、無理だな。。。  </p>
 
-<p>久々のボルダリングはかなり楽しかったです。<br>
-でも、たった数回登っただけでもうまともに登れなくなるのが悔しい。  </p>
+<h2 id="toc_1">ホテルで休憩した後はゲイランへ</h2>
 
-<p>あー、デスクワークしてる場合じゃねえなーって思い知らされる。</p>
+<p>さて、ゲイランの写真はほとんどないので文章で。</p>
 
-<p>筋肉痛を恐れていたのですが、思ったほど筋肉痛にならなかったです。<br>
-これで明日筋肉痛になったら、僕の肉体年齢はいったい。。。  </p>
+<p>ゲイランは中華だったり歓楽街？な感じ。実際のところどういうところなのかは知らないが、<br>
+ネットで調べたところ「植民地時代風」とのことだった。</p>
 
-<p>今日は一日ぼーっとPC触りながら過ごしました。</p>
+<p>実際、わりと治安はよくなさそうな感じだった。</p>
+
+<p>飛び交う言葉は中国語が多かった気がする。（多分地元の人が多い？）</p>
+
+<p>↓ある店の水槽にカエルぎっしり<br>
+<img alt="aaaa" src="/images/kaeru.jpg" /></p>
+
+<p>まあ、どうせならそういうところに行ってみたいよね。てことでゲイランに向かったわけだが、<br>
+今まで超有名どころの観光地にいただけにゲイランは新鮮だった。</p>
+
+<p>適当に歩いて町を堪能した後、適当に中華の店に。</p>
+
+<p>店員さんに英語か日本語しゃべれるか聞いたところ、</p>
+
+<p>できない(；´∀｀)って言われた。</p>
+
+<p>でもまあ単語が通じればなんとかなる。</p>
+
+<p>タイガービールを頼みました。
+<img alt="ビールおいしかった" src="/images/yoru.jpg" /></p>
+
+<p>さて、この後料理が運ばれてきたのだが、<br>
+そこからがわりと大変だった。  </p>
+
+<p>立てかけてあったメニューが倒れる　→　ビールビンが倒れる　→　僕のジョッキにあたってジョッキ粉砕</p>
+
+<p>(ヽ&#39;ω`)</p>
+
+<p>慌てて店員に謝ったけど通じたのだろうか。</p>
+
+<p>店員さんはとても親切だった。<br>
+料理はガラスの破片が入ってるかもしれないから食うなってことで下げてくれた。  </p>
+
+<p>怪我ない？　みたいな感じ心配してくれた（と思う）<br>
+まあ、正直お互い片言の英語と身振り手振りだったから本当のところはよくわからんが。</p>
+
+<p>この後、申し訳なく思った僕らはおなかの許す限りここで食事をしまくった。（お金を店に落とそうと思って）  </p>
 
     </section>
   
   </article>
 <div class="pagination">
-  <p>Page 4 of 7</p>
+  <p>Page 4 of 9</p>
 
   
     <div class="prev"><a href="/blog/page/5/">old pages</a></div>
@@ -225,6 +235,18 @@ The Ruby openssl extension was not compiled. Missing the OpenSSL lib?
       <h2>Recent Articles</h2>
   <ol>
     
+      <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/uicolor16.html">【Objective-C】iOSで色指定(16進数)を簡単にする方法</a> <span>(14/03/18 05:02)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/ios-userdefault.html">【Objective-C】カスタムセル内の状態を永続化(保存)させたい</a> <span>(14/03/18 00:18)</span></li>
+    
+      <li><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a> <span>(14/03/17 23:32)</span></li>
+    
+      <li><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a> <span>(14/01/30 21:12)</span></li>
+    
+      <li><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a> <span>(14/01/29 21:16)</span></li>
+    
       <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
     
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
@@ -232,18 +254,6 @@ The Ruby openssl extension was not compiled. Missing the OpenSSL lib?
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
     
       <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
-    
-      <li><a href="/blog/article/2013/12/31/generalization.html">2013年総括</a> <span>(13/12/31 20:54)</span></li>
-    
-      <li><a href="/blog/article/2013/12/19/singapore-4.html">シンガポール旅行④</a> <span>(13/12/19 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/15/singapore-3.html">シンガポール旅行③</a> <span>(13/12/15 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/10/singapore-2.html">シンガポール旅行②</a> <span>(13/12/10 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/08/singapore-1.html">シンガポール旅行①</a> <span>(13/12/08 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a> <span>(13/12/03 23:36)</span></li>
     
   </ol>
 
@@ -274,19 +284,25 @@ The Ruby openssl extension was not compiled. Missing the OpenSSL lib?
     
       <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (1)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/knife-solo.html">knife-solo</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/zsh.html">zsh</a> (1)</a></li>
     
   </ol>
 
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(4)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/01.html">1</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
         <li><a href="#">12</a> (8)</li>
       
@@ -297,7 +313,9 @@ The Ruby openssl extension was not compiled. Missing the OpenSSL lib?
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">1</a> (4)</li>
+        <li><a href="#">3</a> (4)</li>
+      
+        <li><a href="#">1</a> (6)</li>
       
         <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
       

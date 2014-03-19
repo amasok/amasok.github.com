@@ -21,278 +21,288 @@
   <div class="wrapper">
     <main>
         <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/24/middleman_init.html">middlemanとは</a></h1>
-    <span>2013/11/24 00:55 tags:
+    <h1 class="title"><a href="/blog/article/2013/11/30/blog-month.html">【middleman】ブログのカレンダーで月単位の表示</a></h1>
+    <span>2013/11/30 12:20 tags:
     <a href="/blog/article/categories/middleman.html">middleman</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/24/middleman_init.html" data-text= "amasok's blog middlemanとは" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/24/middleman_init.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog middlemanとは" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/30/blog-month.html" data-text= "amasok's blog 【middleman】ブログのカレンダーで月単位の表示" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/30/blog-month.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 【middleman】ブログのカレンダーで月単位の表示" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <h3 id="toc_0">middlemanについて解説</h3>
+    <p>久々にブログの構造自体をちょっといじったのでメモ</p>
 
-<p>markdwonやblogを書く作業に慣れるために、とりあえずmiddlemanについてちょっとずつ解説していこうと思います。</p>
+<p>middleman-blogではテンプレートで年単位のカレンダーを表示してくれます。<br>
+しかし、一般的には月単位でのカレンダーになると思うので、その変更点を書きます。</p>
 
-<p>middlemanは一言で書いてしまうとruby製の静的サイトジェネレーターです。<br>
-ローカル内でhtml,css,javascriptを生成します。
-本ブログはmiddlemanを使って静的なファイルで構成いますが、ブログとしてはとてもマイナーなやり方だと思います。</p>
-
-<p><strong>メリット</strong></p>
+<h2 id="toc_0">対象</h2>
 
 <ul>
-<li>運用するサーバにDBやruby,php等のプログラミング言語がいらない<br></li>
-<li>つまり安いレンサバでいいのでコストパフォーマンスがいい</li>
-<li>SQLインジェクション等アプリケーションレイヤーのサーバ攻撃には強い<br></li>
-<li>軽くなる（と思う）<br></li>
-<li>github pageが使える</li>
-<li>バージョン管理もしやすい</li>
-<li>サイトの引っ越しもしやすい</li>
+<li>middleman blogのテンプレートを生成した人</li>
+<li>月単位のカレンダーを表示させたい人</li>
 </ul>
 
-<p><strong>デメリット</strong></p>
+<h2 id="toc_1">方法</h2>
 
-<ul>
-<li>単純にブログを始めようとかwebサイト作ってみようという人にとっては敷居が高い。</li>
-<li>テーマが少ない。てか、ない（テーマが豊富なツールがいいなら<a href="http://octopress.org/">octopress</a>をおすすめします）</li>
-</ul>
+<p>カレンダー部分で年単位表示をさせる部分があると思います。</p>
 
-<p><strong>僕がmiddlemanを使っている理由</strong></p>
+<p><em>source/layout.erb</em></p>
+<pre class="highlight erb"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div></td><td class="code"><span class="nt">&lt;h2&gt;</span>By Year<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;ol&gt;</span>
+  <span class="cp">&lt;%</span> <span class="n">blog</span><span class="nf">.articles.group_by</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="nf">.date.year</span> <span class="p">}</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">articles</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="n">year</span><span class="p">,</span> <span class="n">blog_year_path</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="cp">%&gt;</span> (<span class="cp">&lt;%=</span> <span class="n">articles</span><span class="nf">.size</span> <span class="cp">%&gt;</span>)<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/ol&gt;</span>
+</td></tr></tbody></table></pre>
+<p>修正後</p>
+<pre class="highlight erb"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div></td><td class="code"><span class="nt">&lt;h2&gt;</span>By Year<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+  <span class="cp">&lt;%</span> <span class="n">blog</span><span class="nf">.articles.group_by</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="nf">.date.year</span> <span class="p">}</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">year</span><span class="p">,</span> <span class="n">articles_year</span> <span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="n">year</span><span class="p">,</span> <span class="n">blog_year_path</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="cp">%&gt;</span>(<span class="cp">&lt;%=</span> <span class="n">articles_year</span><span class="nf">.size</span> <span class="cp">%&gt;</span>)<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;ul&gt;</span>
+    <span class="cp">&lt;%</span> <span class="n">blog</span><span class="nf">.articles.group_by</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="nf">.date.month</span> <span class="p">}</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span><span class="n">month</span><span class="p">,</span> <span class="n">articles_month</span> <span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;li&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="n">month</span><span class="p">,</span> <span class="n">blog_month_path</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span> <span class="cp">%&gt;</span> (<span class="cp">&lt;%=</span> <span class="n">articles_month</span><span class="nf">.size</span> <span class="cp">%&gt;</span>)<span class="nt">&lt;/li&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</td></tr></tbody></table></pre>
+<p>簡単な修正だったけど久々にいじれてよかった。</p>
 
-<ul>
-<li>流行ってるみたいだから( ･ㅂ･)و ̑̑</li>
-</ul>
+<h3 id="toc_2">参考</h3>
 
-<p>このgithub pageでブログ作るってのが流行ってるっぽいというのが僕がこのサイトを作った最大の理由です。<br>
-むしろ、メリットデメリットは(　´_ゝ｀)ﾌｰﾝぐらいに流し見してとりあえずやってみた感が強いです。</p>
-
-<p>次回からは、実際に導入編を書いていきたいと思います。</p>
+<p><a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_month_path-instance_method">http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_month_path-instance_method</a></p>
 
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/23/init.html">実質初投稿</a></h1>
-    <span>2013/11/23 22:28 tags:
-    <a href="/blog/article/categories/test.html">test</a>,
+    <h1 class="title"><a href="/blog/article/2013/11/29/rbenv.html">rubyをrbenvで入れる</a></h1>
+    <span>2013/11/29 00:34 tags:
+    <a href="/blog/article/categories/rbenv.html">rbenv</a>,
+  
+    <a href="/blog/article/categories/ruby.html">ruby</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/23/init.html" data-text= "amasok's blog 実質初投稿" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/23/init.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog 実質初投稿" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/29/rbenv.html" data-text= "amasok's blog rubyをrbenvで入れる" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/29/rbenv.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog rubyをrbenvで入れる" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>テスト投稿です。
-middleman-deployをするためにテストをしています。</p>
+    <p>bundleをちゃんとするようになったら、ローカルがgemだらけなのが嫌になったので一から入れ直しました。
+今回はrubyの導入を説明しようかと思います。</p>
 
-<p>初投稿成功。</p>
+<h2 id="toc_0">対象</h2>
 
+<ul>
+<li>homebrewを使ってる人</li>
+<li>rubyをrbenvでバージョン管理したい人</li>
+</ul>
+
+<h2 id="toc_1">実行環境</h2>
+
+<ul>
+<li>Mac(Mountain Lion)</li>
+</ul>
+
+<h2 id="toc_2">方法</h2>
+
+<p>まずはbrewで必要なものをインストールします</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">$ brew install rbenv
+$ brew install ruby-build
+</td></tr></tbody></table></pre>
+<p>ホームディレクトリでディレクトリ作成</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">$ cd ~  #ホームディレクトリへ
+$ mkdir .rbenv
+</td></tr></tbody></table></pre>
+<p>下記内容を.bash_profileに追記</p>
+
+<p><em>.bash_profile</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code">export PATH=&quot;$HOME/.rbenv/bin:$PATH&quot;
+eval &quot;$(rbenv init -)&quot;
+</td></tr></tbody></table></pre>
+<p>.bash_profileを再読み込み</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ source ~/.bash_profile
+</td></tr></tbody></table></pre>
+<p>rubyのインストールできるリストを確認</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div><div class="lineno">11</div><div class="lineno">12</div><div class="lineno">13</div><div class="lineno">14</div><div class="lineno">15</div><div class="lineno">16</div><div class="lineno">17</div><div class="lineno">18</div><div class="lineno">19</div><div class="lineno">20</div><div class="lineno">21</div><div class="lineno">22</div><div class="lineno">23</div><div class="lineno">24</div><div class="lineno">25</div><div class="lineno">26</div><div class="lineno">27</div><div class="lineno">28</div><div class="lineno">29</div></td><td class="code">$ rbenv install -l
+Available versions:
+  .
+  .
+  .
+  1.9.3-p125
+  1.9.3-p194
+  1.9.3-p286
+  1.9.3-p327
+  1.9.3-p362
+  1.9.3-p374
+  1.9.3-p385
+  1.9.3-p392
+  1.9.3-p429
+  1.9.3-p448
+  1.9.3-p484
+  1.9.3-preview1
+  1.9.3-rc1
+  2.0.0-dev
+  2.0.0-p0
+  2.0.0-p195
+  2.0.0-p247
+  2.0.0-p353
+  2.0.0-preview1
+  2.0.0-preview2
+  2.0.0-rc1
+  .
+  .
+  .
+</td></tr></tbody></table></pre>
+<p>このようにリストがずらっと並ぶので、入れたいバージョンを指定してインストールします。</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code">$ rbenv install 2.0.0-p353
+$ rbenv versions
+  system
+* 2.0.0-p353 (set by /Users/amasok/.rbenv/version)
+</td></tr></tbody></table></pre>
+<p>インストールした2.0.0-p353をglobalに設定</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">$ rbenv global 2.0.0-p353
+$ ruby -v
+ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-darwin12.5.0]
+</td></tr></tbody></table></pre>
+<p>以上です。</p>
+
+<p>もしrubyが意図したバージョンに鳴ってない場合は下記コマンドで反映されるかもしれません。</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ rbenv rehash
+</td></tr></tbody></table></pre>
     </section>
   
   </article>
   <article class="blog-post" >
-    <h1 class="title"><a href="/blog/article/2013/11/16/markdown.html">markdown記法まとめ</a></h1>
-    <span>2013/11/16 21:15 tags:
-    <a href="/blog/article/categories/markdown.html">markdown</a>,
-  
-    <a href="/blog/article/categories/middleman.html">middleman</a>,
+    <h1 class="title"><a href="/blog/article/2013/11/28/bundle-exec.html">bundle execの省略が微妙</a></h1>
+    <span>2013/11/28 01:00 tags:
+    <a href="/blog/article/categories/bundle.html">bundle</a>,
   </span>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/16/markdown.html" data-text= "amasok's blog markdown記法まとめ" data-lang="ja" data-hashtags="amasok">ツイート</a>
-<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/16/markdown.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog markdown記法まとめ" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://amasok.github.io/blog/article/2013/11/28/bundle-exec.html" data-text= "amasok's blog bundle execの省略が微妙" data-lang="ja" data-hashtags="amasok">ツイート</a>
+<a href="http://b.hatena.ne.jp/entry/amasok.github.io/blog/article/2013/11/28/bundle-exec.html" class="hatena-bookmark-button" data-hatena-bookmark-title="amasok's blog bundle execの省略が微妙" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
 <section class="text">
-    <p>markdown記法を下記にまとめます。<br>
-表記自体はcssの設定に依存します。</p>
+    <p>結論から書くと、僕が望んでいた形ではインストールできませんでした。</p>
 
-<h2 id="toc_0">見出し</h2>
-
-<hr>
-
-<p><em>表記</em></p>
-<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div></td><td class="code"><span class="c1"># レベル１の見出し</span>
-<span class="err">レベル１の見出し</span><span class="p">(</span><span class="err">別の書き方</span><span class="p">)</span>
-<span class="o">============</span>
-<span class="c1">## レベル２の見出し</span>
-<span class="err">レベル２の見出し</span><span class="p">(</span><span class="err">別の書き方</span><span class="p">)</span>
-<span class="o">---------------------</span>
-<span class="c1">### レベル３の見出し</span>
-<span class="c1">#### レベル４の見出し</span>
-<span class="c1">##### レベル５の見出し</span>
-<span class="c1">###### レベル６の見出し</span>
-</td></tr></tbody></table></pre>
-<p><em>表示</em></p>
-
-<h1 id="toc_1">レベル１の見出し</h1>
-
-<h1 id="toc_2">レベル１の見出し(別の書き方)</h1>
-
-<h2 id="toc_3">レベル２の見出し</h2>
-
-<h2 id="toc_4">レベル２の見出し(別の書き方)</h2>
-
-<h3 id="toc_5">レベル３の見出し</h3>
-
-<h4 id="toc_6">レベル４の見出し</h4>
-
-<h5 id="toc_7">レベル５の見出し</h5>
-
-<h6 id="toc_8">レベル６の見出し</h6>
-
-<h2 id="toc_9">リンクする</h2>
-
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="p">[</span><span class="nv">マークダウンの記法</span><span class="p">](</span><span class="sx">http://kojika17.com/2013/01/starting-markdown.html</span><span class="p">)</span>
-</td></tr></tbody></table></pre>
-<p><em>表示</em></p>
-
-<p><a href="http://kojika17.com/2013/01/starting-markdown.html">マークダウンの記法</a></p>
-
-<h2 id="toc_10">画像をはる</h2>
-
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code"><span class="p">![</span><span class="nv">画像</span><span class="p">](</span><span class="sx">middleman.png</span><span class="p">)</span>
-</td></tr></tbody></table></pre>
-<p><em>表示</em></p>
-
-<p><img alt="画像" src="/images/middleman.png" /></p>
-
-<h2 id="toc_11">水平線</h2>
-
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code"><span class="gh">***
----
-</span></td></tr></tbody></table></pre>
-<p><em>表示</em></p>
-
-<hr>
-
-<h2 id="toc_12">テキストの強調</h2>
-
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code"><span class="gs">**strong**</span>
-<span class="ge">*em*</span>
-</td></tr></tbody></table></pre>
-<p><em>表示</em></p>
-
-<p><strong>strong</strong><br>
-<em>em</em></p>
-
-<h2 id="toc_13">リスト</h2>
-
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code"><span class="p">*</span> 順序無しリストのアイテム
-<span class="p">  *</span> サブアイテムは2つのスペースでインデントする
-<span class="p">*</span> 順序無しリストの別のアイテム
-</td></tr></tbody></table></pre>
-<p><em>表示</em></p>
+<p>僕が望んでいた形は、</p>
 
 <ul>
-<li>順序無しリストのアイテム
-
-<ul>
-<li>サブアイテムは2つのスペースでインデントする</li>
-</ul></li>
-<li>順序無しリストの別のアイテム</li>
+<li>gemをグローバルな領域にインストールしない(path=vendor/bundleを使用)</li>
+<li>プロジェクト配下のディレクトリならどの階層でも”bundle exec”を省略できる</li>
 </ul>
 
-<h2 id="toc_14">テーブル</h2>
+<p>今回は、僕が調べたことを３つ記していこうかと思います。
+よかったら試してみてください。</p>
 
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div></td><td class="code">| Left align | Right align | Center align |
-|:-----------|------------:|:------------:| &lt;- ここを調節して寄りを決定
-| This       |        This |     This     |
-| column     |      column |    column    |
-| will       |        will |     will     |
-| be         |          be |      be      |
-| left       |       right |    center    |
-| aligned    |     aligned |   aligned    |
+<h2 id="toc_0">対象者</h2>
+
+<ul>
+<li>bundleを使って&ldquo;bundle exec&quot;を毎回打ってる人</li>
+</ul>
+
+<h2 id="toc_1">実行環境</h2>
+
+<ul>
+<li>mac(Mountain Lion)</li>
+<li>ruby(2.0.0p247)</li>
+</ul>
+
+<h2 id="toc_2">rbenv-binstubsを使う</h2>
+
+<h3 id="toc_3">制限事項</h3>
+
+<ul>
+<li>rbenvを使ってrubyを管理している</li>
+<li>bundle installはグローバルな領域にインストールする（pathは指定しない）</li>
+</ul>
+
+<h3 id="toc_4">方法</h3>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div></td><td class="code">$ cd
+$ mkdir .rbenv/plugins
+$ cd .rbenv/plugins
+$ git clone git://github.com/ianheggie/rbenv-binstubs.git
 </td></tr></tbody></table></pre>
-<p><em>表示</em></p>
+<p>上記のようにrbenvのプラグインとしてrbenv-binstubsてのを導入</p>
 
-<table><thead>
-<tr>
-<th align="left">Left align</th>
-<th align="right">Right align</th>
-<th align="center">Center align</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">This</td>
-<td align="right">This</td>
-<td align="center">This</td>
-</tr>
-<tr>
-<td align="left">column</td>
-<td align="right">column</td>
-<td align="center">column</td>
-</tr>
-<tr>
-<td align="left">will</td>
-<td align="right">will</td>
-<td align="center">will</td>
-</tr>
-<tr>
-<td align="left">be</td>
-<td align="right">be</td>
-<td align="center">be</td>
-</tr>
-<tr>
-<td align="left">left</td>
-<td align="right">right</td>
-<td align="center">center</td>
-</tr>
-<tr>
-<td align="left">aligned</td>
-<td align="right">aligned</td>
-<td align="center">aligned</td>
-</tr>
-</tbody></table>
-
-<h2 id="toc_15">引用</h2>
-
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div></td><td class="code"><span class="gt">&gt;引用１</span>
-<span class="gt">&gt;&gt;引用２</span>
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div></td><td class="code">$ bundle install --binstubs=vendor/bin
+$ rbenv rehash
+$ middleman s
 </td></tr></tbody></table></pre>
-<p><em>表示</em></p>
+<p>上みたいに、bundle install &ndash;binstubs=bendor/binでgem自体はグローバルな領域で作るけど、バイナリ（コマンド）ファイルはプロジェクトディレクトリ内で作る。</p>
 
-<blockquote>
-<p>引用１</p>
+<p>これならプロジェクト内のどの階層でもbundle execが必要なくなるけどgemがグローバルな領域で存在しつづけてしまう。</p>
 
-<blockquote>
-<p>引用２</p>
-</blockquote>
-</blockquote>
+<h2 id="toc_5">binstubsで作ったbinにパスを通す</h2>
 
-<h2 id="toc_16">コード</h2>
+<h3 id="toc_6">制限事項</h3>
 
-<p><em>対応言語</em></p>
+<ul>
+<li>プロジェクトディレクトリの第一階層のみで省略可（プロジェクトディレクトリ内のより深い階層からは省略不可）</li>
+</ul>
 
-<p><a href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">https://github.com/github/linguist/blob/master/lib/linguist/languages.yml</a></p>
+<h3 id="toc_7">方法</h3>
 
-<p><em>表記</em></p>
-<pre class="highlight markdown"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div><div class="lineno">8</div><div class="lineno">9</div><div class="lineno">10</div></td><td class="code"><span class="ge">*test.rb*</span>
-
-<span class="sb">```</span>ruby
-puts &#39;The best way to log and share programmers knowledge.&#39;
-p test
-def test()
-    array.each do | ary |
-      p ary
-    end
-end
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ export PATH=./vendor/bin:$PATH
 </td></tr></tbody></table></pre>
-<p><em>表示</em></p>
-
-<p><em>test.rb</em></p>
-<pre class="highlight ruby"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div><div class="lineno">2</div><div class="lineno">3</div><div class="lineno">4</div><div class="lineno">5</div><div class="lineno">6</div><div class="lineno">7</div></td><td class="code"><span class="nb">puts</span> <span class="s1">&#39;The best way to log and share programmers knowledge.&#39;</span>
-<span class="nb">p</span> <span class="nb">test</span>
-<span class="k">def </span><span class="nf">test</span><span class="p">()</span>
-    <span class="n">array</span><span class="nf">.each</span> <span class="k">do</span> <span class="o">|</span> <span class="n">ary</span> <span class="o">|</span>
-      <span class="nb">p</span> <span class="n">ary</span>
-    <span class="k">end</span>
-<span class="k">end</span>
+<p>上記パスを通した後、下記のようにbundle install時にオプションを指定</p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ bundle install --path=vendor/bundle --binstubs=vendor/bin
 </td></tr></tbody></table></pre>
+<p>はい、この方法でプロジェクトのディレクトリの第一階層上でのみbundle execを省略できます。<br>
+なんか、うまいパスの通し方ないかなぁ。。<br>
+うまくいくと、このやり方の応用が一番なんとかできそうだけど。。  </p>
+
+<h2 id="toc_8">aliasをかける</h2>
+
+<h3 id="toc_9">制限事項</h3>
+
+<ul>
+<li>文字数が少なければOK（完璧に省略する必要はないと考える人）</li>
+</ul>
+
+<h3 id="toc_10">方法</h3>
+
+<p>書くまでもないかな。。。</p>
+
+<p><em>.bash_profile</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">alias be=&#39;bundle exec&#39;
+</td></tr></tbody></table></pre>
+<p>はい、これで</p>
+
+<p><em>terminal</em></p>
+<pre class="highlight text"><table><tbody><tr><td class="gutter gl"><div class="lineno">1</div></td><td class="code">$ be middleman s
+</td></tr></tbody></table></pre>
+<p>とかができるようになりました。<br>
+どれもいまいち腑に落ちないけど、今のところ調べた結果のログとして記します。<br>
+なんか良い方法見つけたら新しく書こう。<br>
+てか、誰か良い方法教えてほしい。  </p>
+
+<h4 id="toc_11">参考</h4>
+
+<p><a href="http://blog.takapra.com/2013/04/ruby-bundler-basic/">http://blog.takapra.com/2013/04/ruby-bundler-basic/</a></p>
+
+<p><a href="http://qiita.com/naoty_k/items/9000280b3c3a0e74a618">http://qiita.com/naoty_k/items/9000280b3c3a0e74a618</a></p>
+
     </section>
   
   </article>
 <div class="pagination">
-  <p>Page 7 of 7</p>
+  <p>Page 7 of 9</p>
 
+  
+    <div class="prev"><a href="/blog/page/8/">old pages</a></div>
   
   
     <div class="next"><a href="/blog/page/6/">new pages</a></div>
@@ -307,6 +317,18 @@ end
       <h2>Recent Articles</h2>
   <ol>
     
+      <li><a href="/blog/article/2014/03/18/webview-scrollview.html">webViewを継承しているclassでscrollViewのメソッドを使う時のメモ</a> <span>(14/03/18 05:26)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/uicolor16.html">【Objective-C】iOSで色指定(16進数)を簡単にする方法</a> <span>(14/03/18 05:02)</span></li>
+    
+      <li><a href="/blog/article/2014/03/18/ios-userdefault.html">【Objective-C】カスタムセル内の状態を永続化(保存)させたい</a> <span>(14/03/18 00:18)</span></li>
+    
+      <li><a href="/blog/article/2014/03/17/ios-deleteCharactersInRange.html">【Objective-C】文字列内に特定の文字列があったら削除する</a> <span>(14/03/17 23:32)</span></li>
+    
+      <li><a href="/blog/article/2014/01/30/oh_my_zsh.html">oh_my_zshがすごい</a> <span>(14/01/30 21:12)</span></li>
+    
+      <li><a href="/blog/article/2014/01/29/knifesolo.html">knife soloの使い方</a> <span>(14/01/29 21:16)</span></li>
+    
       <li><a href="/blog/article/2014/01/22/jonetu_programmer.html">「情熱プログラマー」読了</a> <span>(14/01/22 17:25)</span></li>
     
       <li><a href="/blog/article/2014/01/15/ios_regist.html">iOSアプリを実機で動かすまで</a> <span>(14/01/15 10:23)</span></li>
@@ -314,18 +336,6 @@ end
       <li><a href="/blog/article/2014/01/12/ios1.html">Objective-Cのクラスとかメソッドについて</a> <span>(14/01/12 23:25)</span></li>
     
       <li><a href="/blog/article/2014/01/02/aspiration2014.html">2014年抱負</a> <span>(14/01/02 21:28)</span></li>
-    
-      <li><a href="/blog/article/2013/12/31/generalization.html">2013年総括</a> <span>(13/12/31 20:54)</span></li>
-    
-      <li><a href="/blog/article/2013/12/19/singapore-4.html">シンガポール旅行④</a> <span>(13/12/19 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/15/singapore-3.html">シンガポール旅行③</a> <span>(13/12/15 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/10/singapore-2.html">シンガポール旅行②</a> <span>(13/12/10 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/08/singapore-1.html">シンガポール旅行①</a> <span>(13/12/08 00:00)</span></li>
-    
-      <li><a href="/blog/article/2013/12/03/middleman-config.html">middlemanのconfig.rb</a> <span>(13/12/03 23:36)</span></li>
     
   </ol>
 
@@ -356,19 +366,25 @@ end
     
       <li><a href="/blog/article/categories/ios.html">iOS</a> (2)</a></li>
     
-      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (1)</a></li>
+      <li><a href="/blog/article/categories/objective-c.html">Objective-C</a> (5)</a></li>
     
       <li><a href="/blog/article/categories/.html">読書感想文</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/knife-solo.html">knife-solo</a> (1)</a></li>
+    
+      <li><a href="/blog/article/categories/zsh.html">zsh</a> (1)</a></li>
     
   </ol>
 
   <h2>By Year</h2>
   <ul>
     
-        <li><a href="/blog/article/2014.html">2014</a>(4)</li>
+        <li><a href="/blog/article/2014.html">2014</a>(10)</li>
       <ul>
       
-        <li><a href="/blog/article/2014/01.html">1</a> (4)</li>
+        <li><a href="/blog/article/2014/03.html">3</a> (4)</li>
+      
+        <li><a href="/blog/article/2014/01.html">1</a> (6)</li>
       
         <li><a href="#">12</a> (8)</li>
       
@@ -379,7 +395,9 @@ end
         <li><a href="/blog/article/2013.html">2013</a>(17)</li>
       <ul>
       
-        <li><a href="#">1</a> (4)</li>
+        <li><a href="#">3</a> (4)</li>
+      
+        <li><a href="#">1</a> (6)</li>
       
         <li><a href="/blog/article/2013/12.html">12</a> (8)</li>
       
